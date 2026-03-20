@@ -11,6 +11,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
+    --secondary: #D5B4FB;
     --purple: #9398C3;
     --purple-light: #D4DEE8;
     --purple-mid: #D4DEE8;
@@ -222,9 +223,9 @@
   /* placeholder photo */
   .photo-placeholder {
     width: clamp(160px, 22vw, 260px);
-    height: clamp(160px, 22vw, 260px);
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple-mid) 100%);
+    height: clamp(200px, 28vw, 320px);
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+    background: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: center;
