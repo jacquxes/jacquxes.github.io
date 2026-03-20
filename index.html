@@ -150,7 +150,6 @@
     right: -80px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, #EBE9FE 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -187,60 +186,47 @@
     font-weight: 300;
   }
 
-  .hero-image-wrap {
+  /* .hero-image-wrap {
     position: relative;
     flex-shrink: 0;
+  } */
+
+  .hero-image-wrap {
+    position: relative;
+    width: clamp(250px, 28vw, 260px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-arch {
+    width: clamp(250px, 24vw, 260px);
+    height: clamp(260px, 28vw, 340px);
+    border-radius: 9999px 9999px 0 0;
+    background: var(--secondary);
+    border: 3px solid var(--navy);
+  }
+  
+  .hero-photo {
+    position: absolute;
+    bottom: 0px;
+    width: 105%;
+    height: 110%;
+    object-fit: cover;
+    object-position: top;
   }
 
   .hero-image-wrap .sparkle {
     position: absolute;
-    font-size: 1.6rem;
+    font-size: 2.0rem;
+    color: var(--navy);
     animation: spin 4s linear infinite;
   }
-  .sparkle-1 { top: -10px; right: 10px; }
-  .sparkle-2 { bottom: 20px; left: -5px; animation-direction: reverse; animation-duration: 6s; }
+  .sparkle-1 { top: 34px; right: 10px; }
+  .sparkle-2 { bottom: 100px; left: -12px; animation-direction: reverse; animation-duration: 6s; }
 
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-  }
-
-  .hero-photo {
-    width: clamp(160px, 22vw, 260px);
-    height: clamp(160px, 22vw, 260px);
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--purple-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    overflow: hidden;
-    border: 4px solid var(--white);
-    box-shadow: 0 0 0 3px var(--purple-mid), 0 20px 60px rgba(124,111,247,0.2);
-  }
-
-  /* placeholder photo */
-  .photo-placeholder {
-    width: clamp(160px, 22vw, 260px);
-    height: clamp(200px, 28vw, 320px);
-    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
-    background: var(--secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    border: 4px solid var(--white);
-    box-shadow: 0 0 0 3px var(--purple-mid), 0 20px 60px rgba(124,111,247,0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  .photo-placeholder::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(255,255,255,0.3) 0%, transparent 60%);
-    border-radius: 50%;
   }
 
   /* ── SECTION HEADERS ── */
@@ -697,11 +683,11 @@
     <p class="hero-bio">Hi I'm Jacquelyn, a product designer with past lives as a data strategist and business analyst. I bring data and design together to solve complex problems and create solutions that work for people.</p>
   </div>
   <div class="hero-image-wrap">
-    <img src="hero.png" alt="Jacquelyn" class="hero-photo">
-    <!-- <span class="sparkle sparkle-1">✦</span>
-    <span class="sparkle sparkle-2">✦</span>
-    <div class="photo-placeholder">👩‍💻</div> -->
-  </div>
+  <div class="hero-arch"></div>
+  <span class="sparkle sparkle-1">✦</span>
+  <span class="sparkle sparkle-2">✦</span>
+  <img src="hero.png" alt="Jacquelyn" class="hero-photo">
+</div>
 </section>
 
 <!-- PROJECTS -->
