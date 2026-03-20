@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -465,12 +466,12 @@
 
   .btn-outline {
     background: transparent;
-    color: var(--black);
-    border: 1.5px solid #DDDAEC;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
   }
   .btn-outline:hover {
-    border-color: var(--purple);
-    color: var(--purple);
+    background: var(--gray-light);
+    transform: translateY(-1px);
   }
 
   .skills-grid {
@@ -535,9 +536,15 @@
     justify-content: center;
     margin: 0 auto 20px;
     font-size: 1.5rem;
-    box-shadow: 0 4px 16px rgba(147,152,195,0.2);
+    /* box-shadow: 0 4px 16px rgba(147,152,195,0.2); */
     position: relative;
     z-index: 1;
+  }
+
+  .cta-icon .material-symbols-outlined {
+    font-size: 28px;
+    /* font-variation-settings: 'FILL' 1, 'wght' 400; */
+    color: var(--primary-dark);
   }
 
   .cta-title {
@@ -765,27 +772,35 @@
         <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.4rem);">About Me</h2>
       </div>
       <p class="about-text">I started out in data and strategy, where I built analytics tools and solved data problems. Looking back, I realised what motivated me was when the product worked for the user. Now, I'm using that experience to design impactful products.</p>
-      <a href="#" class="btn btn-outline">Learn more →</a>
+      <a href="#" class="btn btn-outline" style="align-self:flex-start;">Learn more →</a>
     </div>
 
     <div class="skills-grid fade-up d1">
       <div class="skill-card">
-        <span class="skill-icon">📊</span>
+        <span class="skill-icon">
+          <span class="material-symbols-outlined">bar_chart_4_bars</span>
+        </span>
         <p class="skill-name">Data &amp; Analytics</p>
         <p class="skill-desc">Data visualisation, A/B testing, metrics</p>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">🧭</span>
+        <span class="skill-icon">
+          <span class="material-symbols-outlined">co_present</span>
+        </span>
         <p class="skill-name">Strategy</p>
         <p class="skill-desc">Product roadmapping, OKRs, business design</p>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">👥</span>
+        <span class="skill-icon">
+          <span class="material-symbols-outlined">user_attributes</span>
+        </span>
         <p class="skill-name">User Research</p>
         <p class="skill-desc">Interviews, user persona, user testing</p>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">💡</span>
+        <span class="skill-icon">
+          <span class="material-symbols-outlined">wb_incandescent</span>
+        </span>
         <p class="skill-name">Innovation</p>
         <p class="skill-desc">Design thinking, design sprints</p>
       </div>
@@ -795,7 +810,9 @@
 
 <!-- CTA -->
 <section class="cta" id="contact">
-  <div class="cta-icon">✉️</div>
+  <div class="cta-icon">
+    <span class="material-symbols-outlined">mail</span>
+  </div>
   <h2 class="cta-title">Let's work together</h2>
   <p class="cta-sub">I'm currently available for freelance projects. Let's chat about how we can create something amazing together.</p>
   <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch →</a>
@@ -807,7 +824,7 @@
   <img src="logo.png" alt="Logo" style="height:20px;width:auto;">
   acquelyn
 </span>
-  <span class="footer-copy">© 2025 · Product Designer</span>
+  <span class="footer-copy">© 2026 · Jacquelyn Tan</span>
 </footer>
 
 <script>
