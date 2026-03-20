@@ -35,9 +35,6 @@ body {
 
 /* ── NAV ── */
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -47,6 +44,12 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#nav-placeholder {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-logo {
@@ -317,13 +320,14 @@ section { padding: clamp(60px, 8vw, 120px) clamp(20px, 5vw, 80px); }
 
 .tag {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: normal;
   padding: 4px 10px;
   border-radius: 100px;
-  background: var(--primary-light);
+  background: transparent;
+  border: 1px solid var(--gray);
   color: var(--primary);
 }
-.tag.accent { background: var(--accent); color: var(--primary-dark); }
+.tag.accent { background: var(--purple-mid); color: var(--primary-dark); }
 
 .project-link {
   display: inline-flex;
@@ -518,13 +522,13 @@ footer {
 .footer-name {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 1px;
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 800;
-  color: var(--primary);
+  font-weight: bold;
+  color: var(--navy);
 }
-.footer-name img { height: 24px; width: auto; }
+.footer-name img { height: 16px; width: auto; }
 
 .footer-copy { font-size: 0.8rem; color: var(--gray); }
 

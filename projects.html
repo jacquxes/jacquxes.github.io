@@ -6,586 +6,52 @@
 <title>Projects — Jacquelyn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent,arrow_outward" />
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
+<link rel="stylesheet" href="styles.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* PAGE-SPECIFIC STYLES (projects only) */
 
-  :root {
-    --primary: #1E2A6E;
-    --primary-dark: #141A4A;
-    --primary-light: #D6D9EE;
-    --secondary: #C9B8F5;
-    --accent: #C8E000;
-    --neutral-light: #E8E8EC;
-    --white: #FFFFFF;
-    --gray: #6B6E8A;
-    --font-display: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Plus Jakarta Sans', sans-serif;
-    --radius: 16px;
-    --radius-sm: 10px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-body);
-    background: var(--white);
-    color: var(--primary-dark);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--primary-light);
-    padding: 0 clamp(20px, 5vw, 80px);
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--primary);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-logo img { height: 28px; width: auto; }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.875rem;
-    color: var(--gray);
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--primary); }
-  .nav-links a.active { color: var(--primary); font-weight: 600; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    border: none;
-    background: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--primary);
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 60px;
-    left: 0; right: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--primary-light);
-    padding: 20px clamp(20px, 5vw, 80px);
-    z-index: 99;
-    flex-direction: column;
-    gap: 16px;
-    animation: slideDown 0.25s ease;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    font-size: 1rem;
-    color: var(--primary-dark);
-    text-decoration: none;
-    font-weight: 400;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--neutral-light);
-  }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── PAGE HEADER ── */
   .page-header {
     padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
-    border-bottom: 1px solid var(--primary-light);
   }
-
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-bottom: 20px;
-  }
-
-  .breadcrumb a {
-    color: var(--gray);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--gray); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
   .breadcrumb a:hover { color: var(--primary); }
   .breadcrumb span { color: var(--primary-light); }
+  .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -0.03em; color: var(--primary-dark); margin-bottom: 14px; }
+  .page-title em { font-style: normal; background: var(--accent); color: var(--primary-dark); padding: 0 6px 2px; border-radius: 4px; }
+  .page-desc { font-size: clamp(0.95rem, 1.5vw, 1.05rem); color: var(--gray); line-height: 1.7; max-width: 520px; }
 
-  .page-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--primary-dark);
-    margin-bottom: 14px;
-  }
+  .filter-bar { padding: 20px clamp(20px, 5vw, 80px); border-bottom: 1px solid var(--primary-light); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px; }
+  .filter-btn { padding: 7px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; font-family: var(--font-body); cursor: pointer; border: 1.5px solid var(--navy); background: transparent; color: var(--gray); transition: all 0.2s; }
+  .filter-btn:hover { border-color: var(--gray); color: var(--gray); }
+  .filter-btn.active { background: var(--gray); border-color: var(--gray); color: var(--white); }
 
-  .page-title em {
-    font-style: normal;
-    background: var(--accent);
-    color: var(--primary-dark);
-    padding: 0 6px 2px;
-    border-radius: 4px;
-  }
+  .projects-section { padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px); }
+  .projects-count { font-size: 0.82rem; color: var(--gray); margin-bottom: 28px; }
+  .projects-count strong { color: var(--primary-dark); font-weight: 700; }
 
-  .page-desc {
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    color: var(--gray);
-    line-height: 1.7;
-    max-width: 520px;
-    font-weight: 400;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 
-  /* ── FILTER BAR ── */
-  .filter-bar {
-    padding: 20px clamp(20px, 5vw, 80px);
-    border-bottom: 1px solid var(--primary-light);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+  /* Featured card spans full width */
+  .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .project-card.featured .project-thumb { aspect-ratio: auto; height: 100%; min-height: 280px; }
+  .project-card.featured .project-info { padding: 32px; justify-content: center; }
+  .project-card.featured .project-name { font-size: clamp(1.2rem, 2vw, 1.6rem); }
 
-  .filter-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--gray);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-right: 4px;
-  }
-
-  .filter-btn {
-    padding: 7px 16px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    font-family: var(--font-body);
-    cursor: pointer;
-    border: 1.5px solid var(--primary-light);
-    background: transparent;
-    color: var(--gray);
-    transition: all 0.2s;
-  }
-
-  .filter-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-
-  .filter-btn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: var(--white);
-  }
-
-  /* ── PROJECTS GRID ── */
-  .projects-section {
-    padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px);
-  }
-
-  .projects-count {
-    font-size: 0.82rem;
-    color: var(--gray);
-    margin-bottom: 28px;
-    font-weight: 400;
-  }
-
-  .projects-count strong {
-    color: var(--primary-dark);
-    font-weight: 700;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-  }
-
-  /* featured card spans full width */
-  .project-card.featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .project-card {
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--neutral-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    border: 1.5px solid transparent;
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(30,42,110,0.12);
-    border-color: var(--primary-light);
-  }
-
-  .project-thumb {
-    width: 100%;
-    aspect-ratio: 16/10;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-card.featured .project-thumb {
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 280px;
-  }
-
-  .project-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .project-thumb-alt {
-    background: linear-gradient(135deg, #C9B8F5 0%, #9B8AF0 100%);
-  }
-
-  .project-thumb-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(6px);
-    color: var(--primary);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 100px;
-  }
-
-  .project-info {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .project-card.featured .project-info {
-    padding: 32px;
-    justify-content: center;
-  }
-
-  .project-meta {
-    font-size: 0.72rem;
-    color: var(--gray);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .project-meta .dot {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: var(--primary-light);
-    display: inline-block;
-  }
-
-  .project-name {
-    font-family: var(--font-display);
-    font-size: clamp(1rem, 1.6vw, 1.2rem);
-    line-height: 1.3;
-    font-weight: 700;
-    color: var(--primary-dark);
-    letter-spacing: -0.02em;
-  }
-
-  .project-card.featured .project-name {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-  }
-
-  .project-desc {
-    font-size: 0.875rem;
-    color: var(--gray);
-    line-height: 1.6;
-    font-weight: 400;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-  }
-
-  .tag {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: var(--primary-light);
-    color: var(--primary);
-  }
-
-  .tag.accent { background: var(--accent); color: var(--primary-dark); }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-top: 8px;
-    transition: gap 0.2s;
-  }
-
-  .project-link .material-symbols-outlined {
-    font-size: 16px;
-    transition: transform 0.2s;
-  }
-
-  .project-card:hover .project-link { gap: 8px; }
-  .project-card:hover .project-link .material-symbols-outlined { transform: translate(2px, -2px); }
-
-  /* ── CTA ── */
-  .cta {
-    background: var(--primary);
-    text-align: center;
-    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px);
-    position: relative;
-    overflow: hidden;
-    margin-top: clamp(40px, 6vw, 80px);
-  }
-
-  .cta::before, .cta::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: var(--primary-dark);
-    opacity: 0.5;
-  }
-  .cta::before { width: 300px; height: 300px; top: -100px; left: -80px; }
-  .cta::after { width: 200px; height: 200px; bottom: -60px; right: -40px; }
-
-  .cta-icon {
-    width: 56px;
-    height: 56px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    box-shadow: 0 4px 20px rgba(200,224,0,0.4);
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta-icon .material-symbols-outlined {
-    font-size: 28px;
-    font-variation-settings: 'FILL' 1, 'wght' 400;
-    color: var(--primary-dark);
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: -0.03em;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 14px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta-sub {
-    font-size: 0.95rem;
-    color: var(--primary-light);
-    margin-bottom: 28px;
-    font-weight: 400;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    z-index: 1;
-    line-height: 1.6;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    position: relative;
-    z-index: 1;
-  }
-
-  .btn-accent {
-    background: var(--accent);
-    color: var(--primary-dark);
-  }
-  .btn-accent:hover {
-    background: #b8d000;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(200,224,0,0.4);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 28px clamp(20px, 5vw, 80px);
-    border-top: 1px solid var(--primary-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-name {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--primary);
-  }
-
-  .footer-name img { height: 24px; width: auto; }
-
-  .footer-copy {
-    font-size: 0.8rem;
-    color: var(--gray);
-  }
-
-  /* ── ANIMATIONS ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .d1 { transition-delay: 0.05s; }
-  .d2 { transition-delay: 0.12s; }
-  .d3 { transition-delay: 0.19s; }
-  .d4 { transition-delay: 0.26s; }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
     .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured {
-      grid-column: auto;
-      grid-template-columns: 1fr;
-    }
-    .project-card.featured .project-thumb {
-      min-height: 220px;
-      height: auto;
-      aspect-ratio: 16/10;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .filter-bar { gap: 6px; }
+    .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .project-card.featured .project-thumb { min-height: 220px; height: auto; aspect-ratio: 16/10; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="https://jacquxes.github.io/logo.png" alt="Logo">
-    acquelyn
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html#hero">Home</a></li>
-    <li><a href="projects.html" class="active">Projects</a></li>
-    <li><a href="index.html#articles">Articles</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<div id="nav-placeholder"></div>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html#hero">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="index.html#articles">Articles</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#contact">Contact</a>
-</div>
-
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="breadcrumb">
     <a href="index.html">Home</a>
@@ -596,7 +62,6 @@
   <p class="page-desc">A collection of product design projects spanning fintech, community, and data-driven experiences.</p>
 </div>
 
-<!-- FILTER BAR -->
 <div class="filter-bar">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" data-filter="all">All</button>
@@ -606,143 +71,67 @@
   <button class="filter-btn" data-filter="data">Data</button>
 </div>
 
-<!-- PROJECTS -->
 <section class="projects-section">
-  <p class="projects-count">Showing <strong>5 projects</strong></p>
-
-  <div class="projects-grid">
-
-    <!-- Featured card -->
-    <a href="#" class="project-card featured fade-up">
-      <div class="project-thumb">
-        <img src="https://jacquxes.github.io/thumbnail-cpf.png" alt="Grow with CPF">
-        <span class="project-thumb-tag">Featured</span>
-      </div>
-      <div class="project-info">
-        <p class="project-meta">UX Design <span class="dot"></span> 2025</p>
-        <h2 class="project-name">Grow with CPF: Reframing retirement for the next generation</h2>
-        <p class="project-desc">Reframed retirement planning to motivate young adults to start saving. Led end-to-end UX from research through to high-fidelity prototype.</p>
-        <div class="project-tags">
-          <span class="tag accent">UX Design</span>
-          <span class="tag">Research</span>
-          <span class="tag">Strategy</span>
-        </div>
-        <span class="project-link">View case study <span class="material-symbols-outlined">arrow_outward</span></span>
-      </div>
-    </a>
-
-    <!-- Card 2 -->
-    <a href="#" class="project-card fade-up d1">
-      <div class="project-thumb project-thumb-alt">
-        <img src="https://jacquxes.github.io/thumbnail-neighbours.png" alt="Neighbourhood">
-      </div>
-      <div class="project-info">
-        <p class="project-meta">UX Design <span class="dot"></span> 2025</p>
-        <h2 class="project-name">Neighbourhood: From vague problem to meaningful product</h2>
-        <p class="project-desc">Designed community networking product to help neighbours connect with each other.</p>
-        <div class="project-tags">
-          <span class="tag accent">UX Design</span>
-          <span class="tag">Research</span>
-        </div>
-        <span class="project-link">View case study <span class="material-symbols-outlined">arrow_outward</span></span>
-      </div>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="#" class="project-card fade-up d2">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #D6D9EE 0%, #C9B8F5 100%);">
-      </div>
-      <div class="project-info">
-        <p class="project-meta">Data <span class="dot"></span> 2024</p>
-        <h2 class="project-name">Dashboard redesign: Making data actually useful</h2>
-        <p class="project-desc">Redesigned an internal analytics dashboard to surface insights that teams actually act on.</p>
-        <div class="project-tags">
-          <span class="tag accent">Data</span>
-          <span class="tag">Strategy</span>
-        </div>
-        <span class="project-link">View case study <span class="material-symbols-outlined">arrow_outward</span></span>
-      </div>
-    </a>
-
-    <!-- Card 4 -->
-    <a href="#" class="project-card fade-up d1">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #C8E000 30%, #D6D9EE 100%);">
-      </div>
-      <div class="project-info">
-        <p class="project-meta">Research <span class="dot"></span> 2024</p>
-        <h2 class="project-name">Understanding the first-time investor: A research study</h2>
-        <p class="project-desc">Conducted 20 user interviews to map the mental models of people investing for the first time.</p>
-        <div class="project-tags">
-          <span class="tag accent">Research</span>
-        </div>
-        <span class="project-link">View case study <span class="material-symbols-outlined">arrow_outward</span></span>
-      </div>
-    </a>
-
-    <!-- Card 5 -->
-    <a href="#" class="project-card fade-up d2">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #141A4A 0%, #1E2A6E 100%);">
-      </div>
-      <div class="project-info">
-        <p class="project-meta">Strategy <span class="dot"></span> 2023</p>
-        <h2 class="project-name">0 to 1: Building a product strategy from scratch</h2>
-        <p class="project-desc">Defined the product vision, OKRs and roadmap for a new fintech feature from zero.</p>
-        <div class="project-tags">
-          <span class="tag accent">Strategy</span>
-          <span class="tag">Data</span>
-        </div>
-        <span class="project-link">View case study <span class="material-symbols-outlined">arrow_outward</span></span>
-      </div>
-    </a>
-
-  </div>
+  <p class="projects-count">Showing <strong id="project-count"></strong></p>
+  <!-- All project cards injected from PROJECTS in components.js -->
+  <div class="projects-grid" id="all-projects"></div>
 </section>
 
-<!-- CTA -->
-<div class="cta">
-  <div class="cta-icon">
-    <span class="material-symbols-outlined">mail</span>
-  </div>
-  <h2 class="cta-title">Let's work together</h2>
-  <p class="cta-sub">I'm currently available for freelance projects. Let's chat about how we can create something amazing together.</p>
-  <a href="mailto:hello@jacquelyn.com" class="btn btn-accent">Get in touch →</a>
-</div>
+<div id="cta-placeholder"></div>
+<div id="footer-placeholder"></div>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-name">
-    <img src="https://jacquxes.github.io/logo.png" alt="Logo">
-    acquelyn
-  </span>
-  <span class="footer-copy">© 2026 · Jacquelyn Tan</span>
-</footer>
-
+<script src="components.js"></script>
 <script>
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  renderNav('Projects');
+  renderCTA();
+  renderFooter();
+ 
+  // Define updateCount first so it's available everywhere
+  function updateCount(n) {
+    document.getElementById('project-count').textContent =
+      n + ' project' + (n !== 1 ? 's' : '');
+  }
+ 
+  renderProjectCards('all-projects', { featured: true });
+ 
+  // Count cards actually in the DOM after rendering
+  updateCount(document.querySelectorAll('.project-card').length);
 
   // Filter buttons
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // Filter logic placeholder — add data-category attributes to cards to wire up
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+  
+        const selected = btn.dataset.filter;
+  
+        // Show/hide cards
+        const cards = document.querySelectorAll('.project-card');
+        let visible = 0;
+        cards.forEach(card => {
+          const cardTags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+          const match = selected === 'all' || cardTags.includes(selected);
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+  
+        // Accent matching tag, default the rest
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (card.style.display === 'none') return;
+          card.querySelectorAll('.tag').forEach(tag => {
+            if (selected === 'all') {
+              tag.classList.remove('accent');
+            } else {
+              tag.classList.toggle('accent', tag.dataset.tag === selected);
+            }
+          });
+        });
+  
+        updateCount(visible);
+      });
     });
-  });
+
+  initScrollAnimations();
 </script>
 </body>
 </html>

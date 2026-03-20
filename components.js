@@ -33,7 +33,7 @@ const PROJECTS = [
     desc:     'Reframed retirement planning to motivate young adults to start saving.',
     meta:     'UX Design',
     year:     '2025',
-    tags:     ['UX Design', 'Research', 'Strategy'],
+    tags:     ['ux', 'research', 'strategy'],
     image:    'https://jacquxes.github.io/thumbnail-cpf.png',
     href:     '#',
     featured: true,
@@ -44,7 +44,7 @@ const PROJECTS = [
     desc:     'Designed community networking product to help neighbours connect with each other.',
     meta:     'UX Design',
     year:     '2025',
-    tags:     ['UX Design', 'Research'],
+    tags:     ['ux', 'research'],
     image:    'https://jacquxes.github.io/thumbnail-neighbours.png',
     href:     '#',
     thumbClass: 'project-thumb-alt',
@@ -55,7 +55,7 @@ const PROJECTS = [
     desc:     'Redesigned an internal analytics dashboard to surface insights that teams actually act on.',
     meta:     'Data',
     year:     '2024',
-    tags:     ['Data', 'Strategy'],
+    tags:     ['data', 'strategy'],
     thumbStyle: 'background: linear-gradient(135deg, #D6D9EE 0%, #C9B8F5 100%);',
     href:     '#',
   },
@@ -65,7 +65,7 @@ const PROJECTS = [
     desc:     'Conducted 20 user interviews to map the mental models of people investing for the first time.',
     meta:     'Research',
     year:     '2024',
-    tags:     ['Research'],
+    tags:     ['research'],
     thumbStyle: 'background: linear-gradient(135deg, #C8E000 30%, #D6D9EE 100%);',
     href:     '#',
   },
@@ -75,7 +75,7 @@ const PROJECTS = [
     desc:     'Defined the product vision, OKRs and roadmap for a new fintech feature from zero.',
     meta:     'Strategy',
     year:     '2023',
-    tags:     ['Strategy', 'Data'],
+    tags:     ['strategy', 'data'],
     thumbStyle: 'background: linear-gradient(135deg, #141A4A 0%, #1E2A6E 100%);',
     href:     '#',
   },
@@ -151,18 +151,20 @@ function projectCardHTML(project, featured = false) {
   const thumb = project.image
     ? `<img src="${project.image}" alt="${project.title}">`
     : '';
-
+ 
   const thumbStyle = project.thumbStyle ? `style="${project.thumbStyle}"` : '';
   const thumbClass = `project-thumb ${project.thumbClass || ''}`;
-
-  const tags = project.tags.map((t, i) =>
-    `<span class="tag${i === 0 ? ' accent' : ''}">${t}</span>`
+ 
+  const tagLabels = { ux: 'UX Design', research: 'Research', strategy: 'Strategy', data: 'Data' };
+ 
+  const tags = project.tags.map(t =>
+    `<span class="tag" data-tag="${t}">${tagLabels[t] || t}</span>`
   ).join('');
 
   const featuredClass = featured ? ' featured' : '';
 
   return `
-    <a href="${project.href}" class="project-card${featuredClass} fade-up">
+    <a href="${project.href}" class="project-card${featuredClass} fade-up" data-tags="${project.tags.join(',')}">
       <div class="${thumbClass}" ${thumbStyle}>
         ${thumb}
         ${featured ? '<span class="project-thumb-tag">Featured</span>' : ''}
@@ -175,8 +177,7 @@ function projectCardHTML(project, featured = false) {
         <p class="project-desc">${project.desc}</p>
         <div class="project-tags">${tags}</div>
         <span class="project-link">
-          View case study
-          <span class="material-symbols-outlined">arrow_outward</span>
+          View case study →
         </span>
       </div>
     </a>
@@ -204,21 +205,4 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-}
-
-function initActiveNav() {
-  const sections  = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.nav-links a');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach(s => observer.observe(s));
 }
