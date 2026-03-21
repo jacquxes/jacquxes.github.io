@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* PAGE-SPECIFIC STYLES (about only) */
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 40px;
+      border-bottom: 1px solid var(--purple-light);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--navy);
+    }
+
+    .breadcrumb span {
+      color: var(--purple-light);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    .page-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .header-avatar-wrap {
+      position: relative;
+      width: clamp(120px, 16vw, 180px);
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .header-arch {
+      width: clamp(120px, 16vw, 180px);
+      height: clamp(160px, 20vw, 230px);
+      border-radius: 9999px 9999px 0 0;
+      background: var(--secondary);
+      border: 3px solid var(--navy);
+    }
+
+    .header-photo {
+      position: absolute;
+      bottom: -10px;
+      width: 105%;
+      height: 110%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: var(--white);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .intro-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .intro-text p {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .intro-text p.lead {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: var(--black);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience {
+      background: var(--gray-light);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 680px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--purple-light);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      padding-bottom: 36px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--navy);
+      margin-top: 4px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-dot.current {
+      background: var(--navy);
+    }
+
+    .timeline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .timeline-period {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--black);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .timeline-company {
+      font-size: 0.875rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .timeline-desc {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-top: 4px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: var(--white);
+    }
+
+    .skills-full-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 24px 20px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      background: var(--purple-light);
+      transform: translateY(-2px);
+    }
+
+    .skill-icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      display: block;
+      color: var(--navy);
+    }
+
+    .skill-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .skill-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    /* ── VALUES ── */
+    .values {
+      background: var(--gray-light);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--purple-light);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(147, 152, 195, 0.1);
+    }
+
+    .value-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .value-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--black);
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .value-desc {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page-header {
+        grid-template-columns: 1fr;
+      }
+
+      .header-avatar-wrap {
+        display: none;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .intro-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .skills-full-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-full-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>About</span>
+      </div>
+      <h1 class="page-title">Designer, analyst,<br>problem solver</h1>
+      <p class="page-desc">I bring together data and design to build products that actually work for people — not just
+        look good on a screen.</p>
+      <div style="display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary">View CV</a>
+      </div>
+    </div>
+    <div class="header-avatar-wrap">
+      <div class="header-arch"></div>
+      <img src="https://jacquxes.github.io/hero.png" alt="Jacquelyn" class="header-photo">
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-grid">
+      <div class="intro-text fade-up">
+        <p class="lead">I started out in data and strategy — building analytics tools, running A/B tests, and
+          translating messy data into decisions that teams could act on.</p>
+        <p>Looking back, the work I was most proud of always had one thing in common: the product worked for the user.
+          Not just the business. That realisation led me to product design, where I get to combine both worlds.</p>
+        <p>Today I work at the intersection of UX, data, and strategy — helping teams move from vague problems to
+          meaningful products. I believe good design is invisible, and that the best solutions come from understanding
+          both the numbers and the people behind them.</p>
+        <p>When I'm not designing, I write about the trade-offs of shipping products and the role data should (and
+          shouldn't) play in design decisions.</p>
+      </div>
+
+      <div class="intro-stats fade-up d1">
+        <div class="stat-card">
+          <p class="stat-number">5+</p>
+          <p class="stat-label">Years in data, strategy &amp; design</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-number">12</p>
+          <p class="stat-label">Products shipped end-to-end</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-number">20+</p>
+          <p class="stat-label">User interviews conducted</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-number">3</p>
+          <p class="stat-label">Industries: fintech, community, enterprise</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <div class="section-header fade-up">
+      <div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Where I've been and what I've done</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-content">
+          <p class="timeline-period">2025 — Present</p>
+          <p class="timeline-role">Product Designer</p>
+          <p class="timeline-company">Cross.code Studio</p>
+          <p class="timeline-desc">End-to-end UX design for community products. Planning, wireframes,
+            prototyping, testing and handoff. AI-powered workflow to handoff frontend code to developers.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up d1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-period">2020 — 2023</p>
+          <p class="timeline-role">Data Strategist</p>
+          <p class="timeline-company">Ministry of Defence</p>
+          <p class="timeline-desc">Led data strategy for customer-facing products. Built dashboards, ran A/B tests, and
+            collaborated with design and engineering to translate insights into product decisions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up d2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-period">2015 — 2019</p>
+          <p class="timeline-role">Business Analyst</p>
+          <p class="timeline-company">Ministry of Defence</p>
+          <p class="timeline-desc">Built analytics tooling from scratch, defined metrics frameworks, and worked closely
+            with product managers to scope and validate new features.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up d3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-period">2018 — 2020</p>
+          <p class="timeline-role">Strategy Consultant</p>
+          <p class="timeline-company">Consulting Firm</p>
+          <p class="timeline-desc">Delivered market entry, operational strategy, and business model projects across
+            retail, logistics, and financial services clients in Southeast Asia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section">
+    <div class="section-header fade-up">
+      <div>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">What I bring to the table</p>
+      </div>
+    </div>
+
+    <div class="skills-full-grid">
+      <div class="skill-card fade-up d1">
+        <span class="skill-icon material-symbols-outlined">user_attributes</span>
+        <p class="skill-name">User Research</p>
+        <p class="skill-desc">Interviews, usability testing, user personas, journey mapping</p>
+      </div>
+      <div class="skill-card fade-up d2">
+        <span class="skill-icon material-symbols-outlined">bar_chart_4_bars</span>
+        <p class="skill-name">Data &amp; Analytics</p>
+        <p class="skill-desc">Data visualisation, A/B testing, metrics definition, SQL</p>
+      </div>
+      <div class="skill-card fade-up d3">
+        <span class="skill-icon material-symbols-outlined">co_present</span>
+        <p class="skill-name">Strategy</p>
+        <p class="skill-desc">Product roadmapping, OKRs, business design, stakeholder alignment</p>
+      </div>
+      <div class="skill-card fade-up d4">
+        <span class="skill-icon material-symbols-outlined">wb_incandescent</span>
+        <p class="skill-name">Innovation</p>
+        <p class="skill-desc">Design thinking, design sprints, rapid prototyping, concept validation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="section-header fade-up">
+      <div>
+        <h2 class="section-title">How I work</h2>
+        <p class="section-sub">Principles that guide my process</p>
+      </div>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card fade-up d1">
+        <p class="value-number">01</p>
+        <p class="value-title">Start with the problem</p>
+        <p class="value-desc">I resist jumping to solutions. Every project starts with understanding the problem deeply
+          — who has it, how often, and what it costs them. Good framing is half the work.</p>
+      </div>
+      <div class="value-card fade-up d2">
+        <p class="value-number">02</p>
+        <p class="value-title">Data informs, design decides</p>
+        <p class="value-desc">Data tells you what is happening. Design figures out what should happen. I use both
+          together — not to validate assumptions, but to challenge them.</p>
+      </div>
+      <div class="value-card fade-up d3">
+        <p class="value-number">03</p>
+        <p class="value-title">Ship, learn, improve</p>
+        <p class="value-desc">The best product is the one that ships. I care about doing the work well, but I also know
+          when something is good enough to put in front of real users and learn from.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="cta-placeholder"></div>
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script>
+    renderNav('About');
+    renderCTA();
+    renderFooter();
+    initScrollAnimations();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,send" />
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,link,send,check_circle" /> -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- reCAPTCHA v3 — replace YOUR_SITE_KEY with your key from google.com/recaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+  <style>
+    /* PAGE-SPECIFIC STYLES (contact only) */
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
+      border-bottom: 1px solid var(--purple-light);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--navy);
+    }
+
+    .breadcrumb span {
+      color: var(--purple-light);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    .page-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-section {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .sidebar-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sidebar-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--black);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-text {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--purple-light);
+      transition: gap 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:last-child {
+      border-bottom: none;
+    }
+
+    .contact-link:hover {
+      gap: 12px;
+      border-color: var(--navy);
+    }
+
+    .contact-link .material-symbols-outlined {
+      font-size: 18px;
+      color: var(--purple);
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-light);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--black);
+      width: fit-content;
+    }
+
+    .availability-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4CAF50;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(76, 175, 80, 0.1);
+      }
+    }
+
+    /* ── FORM ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--black);
+      letter-spacing: 0.01em;
+    }
+
+    .form-label span {
+      color: var(--navy);
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--black);
+      background: var(--gray-light);
+      border: 1.5px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      width: 100%;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--navy);
+      background: var(--white);
+    }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23464871' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+
+    /* character count */
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: -16px;
+    }
+
+    .char-count {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    /* submit row */
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+    }
+
+    .btn-send:hover {
+      background: var(--black);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(40, 50, 135, 0.25);
+    }
+
+    .btn-send .material-symbols-outlined {
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .btn-send:hover .material-symbols-outlined {
+      transform: translate(2px, -2px);
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-message {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      gap: 16px;
+    }
+
+    .success-message.visible {
+      display: flex;
+    }
+
+    .success-icon .material-symbols-outlined {
+      font-size: 48px;
+      color: #4CAF50;
+      font-variation-settings: 'FILL' 1;
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--black);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .success-text {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header fade-up">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Contact</span>
+    </div>
+    <h1 class="page-title">Let's work together</h1>
+    <p class="page-desc">Have a project in mind, or just want to chat about design and data? I'd love to hear from you.
+    </p>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="contact-grid">
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar fade-up">
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">Availability</p>
+          <div class="availability-badge">
+            <span class="availability-dot"></span>
+            Available for freelance projects
+          </div>
+          <p class="sidebar-text">I'm currently taking on new freelance projects. Typical response time is within 24
+            hours.</p>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">Get in touch</p>
+          <a href="/cdn-cgi/l/email-protection#bdd5d8d1d1d2fdd7dcdeccc8d8d1c4d393ded2d0" class="contact-link">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="__cf_email__"
+              data-cfemail="f199949d9d9eb19b90928084949d889fdf929e9c">[email&#160;protected]</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="contact-link">
+            <span class="material-symbols-outlined">link</span>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="sidebar-block">
+          <p class="sidebar-label">What I can help with</p>
+          <p class="sidebar-text">End-to-end product design, UX research, data strategy, design systems, and product
+            consulting for startups and scale-ups.</p>
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+      <div class="fade-up d1">
+        <form class="contact-form" id="contactForm" novalidate>
+
+          <!-- Formspree & reCAPTCHA hidden fields -->
+          <input type="hidden" name="_subject" value="New message from portfolio contact form">
+          <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Name <span>*</span></label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email <span>*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">What are you reaching out about?</label>
+            <select class="form-select" id="subject" name="subject">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="freelance">Freelance project</option>
+              <option value="fulltime">Full-time opportunity</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="speaking">Speaking / writing</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message <span>*</span></label>
+            <textarea class="form-textarea" id="message" name="message"
+              placeholder="Tell me about your project, timeline, and what you're hoping to achieve..." required
+              maxlength="1000"></textarea>
+            <div class="form-footer">
+              <span></span>
+              <span class="char-count" id="charCount">0 / 1000</span>
+            </div>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn-send" id="submitBtn">
+              <span id="btnText">Send message</span>
+              <span class="material-symbols-outlined" id="btnIcon">send</span>
+            </button>
+            <p class="form-note">I'll get back to you within 24 hours.</p>
+          </div>
+
+        </form>
+
+        <div class="success-message" id="successMessage">
+          <div class="success-icon">
+            <span class="material-symbols-outlined">check_circle</span>
+          </div>
+          <p class="success-title">Message sent!</p>
+          <p class="success-text">Thanks for reaching out. I'll get back to you within 24 hours.</p>
+          <a href="index.html" class="btn btn-outline" style="margin-top:8px;">Back to home</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script>
+    renderNav('Contact');
+    renderFooter();
+    initScrollAnimations();
+
+    const FORMSPREE_URL = 'https://formspree.io/f/xyknvqzo';
+    const RECAPTCHA_KEY = 'YOUR_SITE_KEY'; // replace with your reCAPTCHA v3 site key from google.com/recaptcha
+
+    // Character count
+    const textarea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    textarea.addEventListener('input', () => {
+      charCount.textContent = textarea.value.length + ' / 1000';
+    });
+
+    // Form submit
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate required fields
+      const nameVal = document.getElementById('name').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+      const messageVal = document.getElementById('message').value.trim();
+      let valid = true;
+
+      [['name', nameVal], ['email', emailVal], ['message', messageVal]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!val) {
+          el.style.borderColor = '#E05C5C';
+          el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+          valid = false;
+        }
+      });
+
+      if (!valid) return;
+
+      // Loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending…';
+      btnIcon.textContent = 'hourglass_empty';
+
+      try {
+        // Get reCAPTCHA v3 token then submit
+        const token = await grecaptcha.execute(RECAPTCHA_KEY, { action: 'contact' });
+        document.getElementById('recaptchaToken').value = token;
+
+        const response = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMessage.classList.add('visible');
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send message';
+        btnIcon.textContent = 'send';
+        alert('Something went wrong. Please try again or email me directly at hello@jacquelyn.com');
+      }
+    });
+  </script>

@@ -7,19 +7,19 @@
 // ── CONFIG ─────────────────────────────────
 // Change these values to update across the whole site
 const SITE = {
-  name:      'acquelyn',
-  logo:      'https://jacquxes.github.io/logo.png',
-  email:     'hello@jacquelyn.com',
+  name: 'acquelyn',
+  logo: 'https://jacquxes.github.io/logo.png',
+  email: 'hello@jacquelyn.com',
   copyright: '© 2026 · Jacquelyn Tan',
 
   // Nav links — { label, href }
   // Use full paths like 'index.html#projects' from other pages
   navLinks: [
-    { label: 'Home',     href: 'index.html#hero' },
-    { label: 'Projects', href: 'projects.html'   },
+    { label: 'Home', href: 'index.html#hero' },
+    { label: 'Projects', href: 'projects.html' },
     { label: 'Articles', href: 'article.html' },
-    { label: 'About',    href: 'index.html#about' },
-    { label: 'Contact',  href: 'index.html#contact' },
+    { label: 'About', href: 'about.html' },
+    { label: 'Contact', href: 'contact.html' },
   ],
 };
 
@@ -28,56 +28,56 @@ const SITE = {
 // They will render on any page that calls renderProjectCards()
 const PROJECTS = [
   {
-    id:       'cpf',
-    title:    'Grow with CPF: Reframing retirement for the next generation',
-    desc:     'Reframed retirement planning to motivate young adults to start saving.',
-    meta:     'UX Design',
-    year:     '2025',
-    tags:     ['ux', 'research', 'strategy'],
-    image:    'https://jacquxes.github.io/thumbnail-cpf.png',
-    href:     '#',
+    id: 'cpf',
+    title: 'Grow with CPF: Reframing retirement for the next generation',
+    desc: 'Reframed retirement planning to motivate young adults to start saving.',
+    meta: 'UX Design',
+    year: '2025',
+    tags: ['ux', 'research', 'strategy'],
+    image: 'https://jacquxes.github.io/thumbnail-cpf.png',
+    href: '#',
     featured: true,
   },
   {
-    id:       'neighbourhood',
-    title:    'Neighbourhood: From vague problem to meaningful product',
-    desc:     'Designed community networking product to help neighbours connect with each other.',
-    meta:     'UX Design',
-    year:     '2025',
-    tags:     ['ux', 'research'],
-    image:    'https://jacquxes.github.io/thumbnail-neighbours.png',
-    href:     '#',
+    id: 'neighbourhood',
+    title: 'Neighbourhood: From vague problem to meaningful product',
+    desc: 'Designed community networking product to help neighbours connect with each other.',
+    meta: 'UX Design',
+    year: '2025',
+    tags: ['ux', 'research'],
+    image: 'https://jacquxes.github.io/thumbnail-neighbours.png',
+    href: '#',
     thumbClass: 'project-thumb-alt',
   },
   {
-    id:       'dashboard',
-    title:    'Dashboard redesign: Making data actually useful',
-    desc:     'Redesigned an internal analytics dashboard to surface insights that teams actually act on.',
-    meta:     'Data',
-    year:     '2024',
-    tags:     ['data', 'strategy'],
+    id: 'dashboard',
+    title: 'Dashboard redesign: Making data actually useful',
+    desc: 'Redesigned an internal analytics dashboard to surface insights that teams actually act on.',
+    meta: 'Data',
+    year: '2024',
+    tags: ['data', 'strategy'],
     thumbStyle: 'background: linear-gradient(135deg, #D6D9EE 0%, #C9B8F5 100%);',
-    href:     '#',
+    href: '#',
   },
   {
-    id:       'research',
-    title:    'Understanding the first-time investor: A research study',
-    desc:     'Conducted 20 user interviews to map the mental models of people investing for the first time.',
-    meta:     'Research',
-    year:     '2024',
-    tags:     ['research'],
+    id: 'research',
+    title: 'Understanding the first-time investor: A research study',
+    desc: 'Conducted 20 user interviews to map the mental models of people investing for the first time.',
+    meta: 'Research',
+    year: '2024',
+    tags: ['research'],
     thumbStyle: 'background: linear-gradient(135deg, #C8E000 30%, #D6D9EE 100%);',
-    href:     '#',
+    href: '#',
   },
   {
-    id:       'strategy',
-    title:    '0 to 1: Building a product strategy from scratch',
-    desc:     'Defined the product vision, OKRs and roadmap for a new fintech feature from zero.',
-    meta:     'Strategy',
-    year:     '2023',
-    tags:     ['strategy', 'data'],
+    id: 'strategy',
+    title: '0 to 1: Building a product strategy from scratch',
+    desc: 'Defined the product vision, OKRs and roadmap for a new fintech feature from zero.',
+    meta: 'Strategy',
+    year: '2023',
+    tags: ['strategy', 'data'],
     thumbStyle: 'background: linear-gradient(135deg, #141A4A 0%, #1E2A6E 100%);',
-    href:     '#',
+    href: '#',
   },
 ];
 
@@ -112,7 +112,7 @@ function renderNav(activePage) {
   `;
 
   // Wire up hamburger
-  const hamburger  = document.getElementById('hamburger');
+  const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   mobileMenu.querySelectorAll('a').forEach(a =>
@@ -151,12 +151,12 @@ function projectCardHTML(project, featured = false) {
   const thumb = project.image
     ? `<img src="${project.image}" alt="${project.title}">`
     : '';
- 
+
   const thumbStyle = project.thumbStyle ? `style="${project.thumbStyle}"` : '';
   const thumbClass = `project-thumb ${project.thumbClass || ''}`;
- 
+
   const tagLabels = { ux: 'UX Design', research: 'Research', strategy: 'Strategy', data: 'Data' };
- 
+
   const tags = project.tags.map(t =>
     `<span class="tag" data-tag="${t}">${tagLabels[t] || t}</span>`
   ).join('');
