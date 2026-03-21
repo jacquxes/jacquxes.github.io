@@ -17,7 +17,7 @@ const SITE = {
   navLinks: [
     { label: 'Home',     href: 'index.html#hero' },
     { label: 'Projects', href: 'projects.html'   },
-    { label: 'Articles', href: 'index.html#articles' },
+    { label: 'Articles', href: 'article.html' },
     { label: 'About',    href: 'index.html#about' },
     { label: 'Contact',  href: 'index.html#contact' },
   ],

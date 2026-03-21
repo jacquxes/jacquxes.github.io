@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* PAGE-SPECIFIC STYLES (articles only) */
+
+    .page-header {
+      padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--navy);
+    }
+
+    .breadcrumb span {
+      color: var(--purple);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .page-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .articles-section {
+      padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px);
+      background: var(--gray-light);
+    }
+
+    .articles-count {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    .articles-count strong {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Articles</span>
+    </div>
+    <h1 class="page-title">Thoughts &amp; insights</h1>
+    <p class="page-desc">Articles about design, data, strategy and whatever else comes to mind.</p>
+  </div>
+
+  <section class="articles-section">
+    <!-- <p class="articles-count">Showing <strong id="article-count">3 articles</strong></p> -->
+    <div class="articles-grid" id="all-articles">
+      <a href="#" class="article-card fade-up d1">
+        <p class="article-date">January 13, 2025</p>
+        <h3 class="article-title">Closing the distance between 0 and 1</h3>
+        <p class="article-desc">What I learnt about the trade-offs to ship a product</p>
+      </a>
+      <a href="#" class="article-card fade-up d2">
+        <p class="article-date">January 13, 2025</p>
+        <h3 class="article-title">Stop using data as decoration</h3>
+        <p class="article-desc">Data visualisation without outcomes is just wallpaper</p>
+      </a>
+      <a href="#" class="article-card fade-up d3">
+        <p class="article-date">January 13, 2025</p>
+        <h3 class="article-title">When data needs design to be useful</h3>
+        <p class="article-desc">Throwing data at the problem solves nothing; design does</p>
+      </a>
+    </div>
+  </section>
+
+  <div id="cta-placeholder"></div>
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script>
+    renderNav('Articles');
+    renderCTA();
+    renderFooter();
+    initScrollAnimations();
+  </script>
+</body>
+
+</html>
