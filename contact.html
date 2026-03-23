@@ -22,7 +22,7 @@
     /* ── PAGE HEADER ── */
     .page-header {
       padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
-      border-bottom: 1px solid var(--purple-light);
+      /* border-bottom: 1px solid var(--purple-light); */
     }
 
     .breadcrumb {
@@ -264,7 +264,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: -16px;
+      margin-top: 0px;
     }
 
     .char-count {
@@ -281,7 +281,7 @@
     }
 
     .btn-send {
-      display: inline-flex;
+      /* display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 14px 28px;
@@ -294,23 +294,37 @@
       transition: all 0.2s;
       background: var(--navy);
       color: var(--white);
+      border: none; */
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
       border: none;
+      background: var(--black);
+      color: var(--white);
     }
 
     .btn-send:hover {
-      background: var(--black);
+      background: var(--purple);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(40, 50, 135, 0.25);
+      /* box-shadow: 0 6px 20px rgba(40, 50, 135, 0.25); */
     }
 
-    .btn-send .material-symbols-outlined {
+    /* .btn-send .material-symbols-outlined {
       font-size: 18px;
       transition: transform 0.2s;
     }
 
     .btn-send:hover .material-symbols-outlined {
       transform: translate(2px, -2px);
-    }
+    } */
 
     .form-note {
       font-size: 0.8rem;
@@ -446,11 +460,15 @@
             <label class="form-label" for="subject">What are you reaching out about?</label>
             <select class="form-select" id="subject" name="subject">
               <option value="" disabled selected>Select a topic</option>
-              <option value="freelance">Freelance project</option>
+              <!-- <option value="freelance">Freelance project</option>
               <option value="fulltime">Full-time opportunity</option>
               <option value="collaboration">Collaboration</option>
               <option value="speaking">Speaking / writing</option>
-              <option value="other">Something else</option>
+              <option value="other">Something else</option> -->
+              <option value="product">I want to ship a product</option>
+              <option value="problem">I have a vague problem</option>
+              <option value="data">I want to make the most of my data</option>
+              <option value="other">Not sure, let's just talk</option>
             </select>
           </div>
 
@@ -497,7 +515,7 @@
     initScrollAnimations();
 
     const FORMSPREE_URL = 'https://formspree.io/f/xyknvqzo';
-    const RECAPTCHA_KEY = 'YOUR_SITE_KEY'; // replace with your reCAPTCHA v3 site key from google.com/recaptcha
+    const RECAPTCHA_KEY = '6LfQOpMsAAAAAKODwnJydTF0PT2U8fWSAQ8lWruf'; // replace with your reCAPTCHA v3 site key from google.com/recaptcha
 
     // Character count
     const textarea = document.getElementById('message');

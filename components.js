@@ -35,7 +35,7 @@ const PROJECTS = [
     year: '2025',
     tags: ['ux', 'research', 'strategy'],
     image: 'https://jacquxes.github.io/thumbnail-cpf.png',
-    href: '#',
+    href: 'https://jacquxes.github.io/projects/cpf.html',
     featured: true,
   },
   {
@@ -46,7 +46,7 @@ const PROJECTS = [
     year: '2025',
     tags: ['ux', 'research'],
     image: 'https://jacquxes.github.io/thumbnail-neighbours.png',
-    href: '#',
+    href: 'https://jacquxes.github.io/projects/neighbourhood.html',
     thumbClass: 'project-thumb-alt',
   },
   {
