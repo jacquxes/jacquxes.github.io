@@ -15,11 +15,11 @@ const SITE = {
   // Nav links — { label, href }
   // Use full paths like 'index.html#projects' from other pages
   navLinks: [
-    { label: 'Home', href: 'index.html#hero' },
-    { label: 'Projects', href: 'projects.html' },
-    { label: 'Articles', href: 'article.html' },
-    { label: 'About', href: 'about.html' },
-    { label: 'Contact', href: 'contact.html' },
+    { label: 'Home', href: 'https://jacquxes.github.io/' },
+    { label: 'Projects', href: 'https://jacquxes.github.io/projects.html' },
+    { label: 'Articles', href: 'https://jacquxes.github.io/article.html' },
+    { label: 'About', href: 'https://jacquxes.github.io/about.html' },
+    { label: 'Contact', href: 'https://jacquxes.github.io/contact.html' },
   ],
 };
 
