@@ -1,1227 +1,1596 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grow with CPF — Jacquelyn</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward,trending_up,flag,people,school" />
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* ── PAGE-SPECIFIC: CPF CASE STUDY ── */
-
-  /* ── HERO ── */
-  .case-hero {
-    background: var(--navy);
-    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) 0;
-    overflow: hidden;
-    position: relative;
-  }
-  .case-hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    pointer-events: none;
-  }
-  .case-hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: -60px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(213,180,251,0.06);
-    pointer-events: none;
-  }
-
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 28px;
-    position: relative;
-    z-index: 1;
-  }
-  .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .breadcrumb a:hover { color: var(--white); }
-  .breadcrumb span { color: rgba(255,255,255,0.25); }
-
-  .case-hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: end;
-    position: relative;
-    z-index: 1;
-  }
-
-  .case-hero-content { padding-bottom: clamp(48px, 6vw, 80px); }
-
-  .case-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--secondary);
-    margin-bottom: 20px;
-  }
-
-  .case-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-
-  .case-subtitle {
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 36px;
-    max-width: 480px;
-  }
-
-  .case-meta-row {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .case-meta-item { display: flex; flex-direction: column; gap: 4px; }
-  .case-meta-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-  }
-  .case-meta-value {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.85);
-    font-weight: 400;
-  }
-
-  /* hero illustration area */
-  .case-hero-image {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 0;
-    gap: 20px;
-  }
-
-  .hero-illustration {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 4/3;
-    background: rgba(255,255,255,0.06);
-    border-radius: 20px 20px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-illustration img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* ── BODY LAYOUT ── */
-  .case-body {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 60px;
-    padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
-    align-items: start;
-  }
-
-  /* ── TOC ── */
-  .case-toc {
-    position: sticky;
-    top: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .toc-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 8px;
-  }
-  .toc-link {
-    font-size: 0.82rem;
-    color: var(--gray);
-    text-decoration: none;
-    padding: 6px 12px;
-    border-left: 2px solid var(--purple-light);
-    transition: color 0.2s, border-color 0.2s;
-    line-height: 1.4;
-  }
-  .toc-link:hover, .toc-link.active {
-    color: var(--navy);
-    border-color: var(--navy);
-  }
-
-  /* ── MAIN CONTENT ── */
-  .case-main { display: flex; flex-direction: column; gap: 72px; }
-
-  .cs-section { display: flex; flex-direction: column; gap: 24px; }
-
-  .cs-section-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--purple);
-  }
-
-  .cs-section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--black);
-    line-height: 1.2;
-  }
-
-  .cs-body {
-    font-size: clamp(0.95rem, 1.5vw, 1rem);
-    color: var(--gray);
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  /* ── DIVIDER ── */
-  .cs-divider {
-    height: 1px;
-    background: var(--purple-light);
-  }
-
-  /* ── OVERVIEW STATS ── */
-  .overview-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .overview-stat {
-    background: var(--gray-light);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-  }
-  .overview-stat-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 6px;
-  }
-  .overview-stat-value {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 1.3;
-  }
-
-  /* ── CHALLENGE CARDS ── */
-  .challenge-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .challenge-card {
-    background: var(--gray-light);
-    border-radius: var(--radius);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: transform 0.2s;
-  }
-  .challenge-card:hover { transform: translateY(-3px); }
-
-  .challenge-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--white);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .challenge-icon .material-symbols-outlined {
-    font-size: 20px;
-    color: var(--navy);
-    font-variation-settings: 'FILL' 1;
-  }
-
-  .challenge-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 1.3;
-  }
-
-  .challenge-desc {
-    font-size: 0.82rem;
-    color: var(--gray);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ── USER SECTION ── */
-  .user-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .user-persona {
-    background: var(--gray-light);
-    border-radius: var(--radius);
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .persona-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .persona-avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    flex-shrink: 0;
-    border: 3px solid var(--white);
-  }
-
-  .persona-name {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--black);
-    letter-spacing: -0.01em;
-  }
-
-  .persona-role {
-    font-size: 0.8rem;
-    color: var(--gray);
-  }
-
-  .persona-quote {
-    font-size: 0.9rem;
-    color: var(--black);
-    font-style: italic;
-    line-height: 1.6;
-    padding-left: 16px;
-    border-left: 3px solid var(--secondary);
-  }
-
-  .persona-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .persona-tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: var(--white);
-    color: var(--navy);
-    border: 1px solid var(--purple-light);
-  }
-
-  /* ── OBJECTIVES ── */
-  .objectives-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .objective-card {
-    background: var(--gray-light);
-    border-radius: var(--radius-sm);
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border-left: 3px solid var(--purple-light);
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .objective-card:hover {
-    border-color: var(--navy);
-    transform: translateY(-2px);
-  }
-
-  .objective-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--purple);
-  }
-
-  .objective-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--black);
-    line-height: 1.35;
-  }
-
-  .objective-desc {
-    font-size: 0.82rem;
-    color: var(--gray);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ── FEATURE ROWS ── */
-  .feature-list { display: flex; flex-direction: column; gap: 48px; }
-
-  .feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-
-  .feature-row.reverse { direction: rtl; }
-  .feature-row.reverse > * { direction: ltr; }
-
-  .feature-content { display: flex; flex-direction: column; gap: 14px; }
-
-  .feature-tag {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--purple);
-  }
-
-  .feature-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2vw, 1.35rem);
-    font-weight: 600;
-    color: var(--black);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-  }
-
-  .feature-desc {
-    font-size: 0.9rem;
-    color: var(--gray);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-
-  /* screen mockup inside feature */
-  .feature-screen {
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--gray-light);
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: stretch;
-    position: relative;
-  }
-
-  .feature-screen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* placeholder screens */
-  .screen-mockup-wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    gap: 12px;
-    align-items: flex-end;
-    padding: 20px;
-    background: var(--gray-light);
-  }
-
-  .screen-bar {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .screen-bar-item {
-    height: 10px;
-    border-radius: 4px;
-    background: var(--purple-light);
-  }
-  .screen-bar-item:nth-child(1) { width: 70%; }
-  .screen-bar-item:nth-child(2) { width: 90%; background: var(--secondary); }
-  .screen-bar-item:nth-child(3) { width: 55%; }
-
-  .screen-phone {
-    width: 44%;
-    aspect-ratio: 9/16;
-    background: var(--white);
-    border-radius: 12px;
-    border: 1.5px solid var(--purple-light);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px;
-    overflow: hidden;
-  }
-
-  .screen-phone-row {
-    height: 8px;
-    border-radius: 4px;
-    background: var(--purple-light);
-  }
-  .screen-phone-row.accent { background: var(--secondary); width: 60%; }
-  .screen-phone-row.wide   { width: 100%; }
-  .screen-phone-row.narrow { width: 50%; }
-
-  /* ── DATA VIZ SECTION ── */
-  .data-viz-block {
-    background: var(--navy);
-    border-radius: var(--radius);
-    padding: clamp(32px, 5vw, 56px);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .data-viz-content { display: flex; flex-direction: column; gap: 16px; }
-
-  .data-viz-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--secondary);
-  }
-
-  .data-viz-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-
-  .data-viz-desc {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* donut chart */
-  .donut-wrap {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    flex-shrink: 0;
-  }
-
-  .donut-wrap svg { transform: rotate(-90deg); }
-
-  .donut-center {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .donut-number {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  .donut-label {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 4px;
-  }
-
-  /* ── QUOTE ── */
-  .cs-quote {
-    background: var(--navy);
-    border-radius: var(--radius);
-    padding: 32px 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cs-quote::before {
-    content: '"';
-    position: absolute;
-    top: -20px; left: 20px;
-    font-family: var(--font-display);
-    font-size: 8rem;
-    color: rgba(255,255,255,0.06);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .cs-quote p {
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
-    color: var(--white);
-    line-height: 1.55;
-    font-weight: 400;
-    font-style: italic;
-    position: relative;
-    z-index: 1;
-  }
-  .cs-quote cite {
-    display: block;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    font-style: normal;
-    margin-top: 14px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── OUTCOME CARDS ── */
-  .outcome-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .outcome-card {
-    background: var(--navy);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .outcome-number {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: var(--secondary);
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-  .outcome-label {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  /* ── REFLECTION GRID ── */
-  .reflection-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .reflection-card {
-    background: var(--gray-light);
-    border-radius: var(--radius-sm);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-left: 3px solid var(--purple-light);
-  }
-  .reflection-card.highlight { border-left-color: var(--navy); }
-  .reflection-title { font-size: 0.875rem; font-weight: 600; color: var(--black); }
-  .reflection-text { font-size: 0.82rem; color: var(--gray); line-height: 1.65; font-weight: 300; }
-
-  /* ── NEXT PROJECT ── */
-  .next-project {
-    background: var(--gray-light);
-    border-radius: var(--radius);
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s, box-shadow 0.25s;
-    margin-top: 16px;
-  }
-  .next-project:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(40,50,135,0.1);
-  }
-  .next-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 8px;
-  }
-  .next-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    font-weight: 600;
-    color: var(--black);
-    letter-spacing: -0.02em;
-  }
-  .next-arrow {
-    width: 48px;
-    height: 48px;
-    background: var(--navy);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-  .next-project:hover .next-arrow { transform: translate(4px, -4px); }
-  .next-arrow .material-symbols-outlined { color: var(--white); font-size: 20px; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .case-body { grid-template-columns: 1fr; }
-    .case-toc { display: none; }
-    .challenge-grid { grid-template-columns: 1fr 1fr; }
-    .objectives-grid { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 768px) {
-    .case-hero-inner { grid-template-columns: 1fr; }
-    .case-hero-image { display: none; }
-    .user-grid { grid-template-columns: 1fr; }
-    .feature-row { grid-template-columns: 1fr; }
-    .feature-row.reverse { direction: ltr; }
-    .outcome-grid { grid-template-columns: 1fr; }
-    .reflection-grid { grid-template-columns: 1fr; }
-    .overview-stats { grid-template-columns: 1fr 1fr; }
-    .data-viz-block { grid-template-columns: 1fr; }
-    .donut-wrap { margin: 0 auto; }
-  }
-
-  @media (max-width: 480px) {
-    .challenge-grid { grid-template-columns: 1fr; }
-    .overview-stats { grid-template-columns: 1fr; }
-    .next-project { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow with CPF — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward,trending_up,flag,people,school" />
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ── PAGE-SPECIFIC: CPF CASE STUDY ── */
+
+    /* ── HERO ── */
+    .case-hero {
+      background: var(--navy);
+      padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .case-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .case-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -60px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(213, 180, 251, 0.06);
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--white);
+    }
+
+    .breadcrumb span {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .case-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-hero-content {
+      padding-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .case-subtitle {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .case-meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .case-meta-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .case-meta-value {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+    }
+
+    /* hero illustration area */
+    .case-hero-image {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-bottom: 0;
+      gap: 20px;
+      align-self: start;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      height: 700px;
+      margin-top: calc(-1 * clamp(60px, 8vw, 100px));
+    }
+
+    .hero-illustration img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .case-body {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 60px;
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
+      align-items: start;
+    }
+
+    /* ── TOC ── */
+    .case-toc {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toc-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .toc-link {
+      font-size: 0.82rem;
+      color: var(--gray);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-left: 2px solid var(--purple-light);
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .case-main {
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+
+    .cs-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .cs-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      line-height: 1.2;
+    }
+
+    .cs-body {
+      font-size: clamp(0.95rem, 1.5vw, 1rem);
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .cs-divider {
+      height: 1px;
+      background: var(--purple-light);
+    }
+
+    /* ── OVERVIEW STATS ── */
+    .overview-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .overview-stat {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+
+    .overview-stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .overview-stat-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    /* ── CHALLENGE CARDS ── */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .challenge-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.2s;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .challenge-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .challenge-icon .material-symbols-outlined {
+      font-size: 20px;
+      color: var(--navy);
+      font-variation-settings: 'FILL' 1;
+    }
+
+    .challenge-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    .challenge-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── USER SECTION ── */
+    .user-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .user-persona {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .persona-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 3px solid var(--white);
+    }
+
+    .persona-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    .persona-role {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .persona-quote {
+      font-size: 0.9rem;
+      color: var(--black);
+      font-style: italic;
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 3px solid var(--secondary);
+    }
+
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .persona-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--purple-light);
+    }
+
+    /* ── OBJECTIVES ── */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .objective-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-left: 3px solid var(--purple-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .objective-card:hover {
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .objective-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .objective-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.35;
+    }
+
+    .objective-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── FEATURE ROWS ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .feature-row.reverse {
+      direction: rtl;
+    }
+
+    .feature-row.reverse>* {
+      direction: ltr;
+    }
+
+    .feature-content {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feature-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* screen mockup inside feature */
+    .feature-screen {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--gray-light);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .feature-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* placeholder screens */
+    .screen-mockup-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      padding: 20px;
+      background: var(--gray-light);
+    }
+
+    .screen-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .screen-bar-item {
+      height: 10px;
+      border-radius: 4px;
+      background: var(--purple-light);
+    }
+
+    .screen-bar-item:nth-child(1) {
+      width: 70%;
+    }
+
+    .screen-bar-item:nth-child(2) {
+      width: 90%;
+      background: var(--secondary);
+    }
+
+    .screen-bar-item:nth-child(3) {
+      width: 55%;
+    }
+
+    .screen-phone {
+      width: 44%;
+      aspect-ratio: 9/16;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1.5px solid var(--purple-light);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .screen-phone-row {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--purple-light);
+    }
+
+    .screen-phone-row.accent {
+      background: var(--secondary);
+      width: 60%;
+    }
+
+    .screen-phone-row.wide {
+      width: 100%;
+    }
+
+    .screen-phone-row.narrow {
+      width: 50%;
+    }
+
+    /* ── INTERACTIVE CHART ── */
+    .interactive-card {
+      background: var(--white);
+      border: 1px solid var(--purple-light);
+      border-radius: var(--radius);
+      padding: 32px;
+      /* max-width: 480px; */
+      width: 100%;
+      margin: 20px auto;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Segmented Control */
+    .segmented-control {
+      background: var(--gray-light);
+      border-radius: 12px;
+      display: flex;
+      position: relative;
+      padding: 4px;
+      margin-bottom: 32px;
+      width: 180px;
+    }
+
+    .toggle-bg {
+      position: absolute;
+      width: calc(50% - 4px);
+      height: calc(100% - 8px);
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toggle-btn {
+      flex: 1;
+      border: none;
+      background: none;
+      padding: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--purple);
+      cursor: pointer;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .toggle-btn.active {
+      color: var(--navy);
+    }
+
+    .segmented-control[data-active="after"] .toggle-bg {
+      transform: translateX(100%);
+    }
+
+    /* Views */
+    .savings-view {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .savings-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .view-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--black);
+    }
+
+    .view-sub {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    /* Chart Styling */
+    .donut-chart {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      display: block;
+    }
+
+    .line-graph {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .chart-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .chart-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .chart-label .amount {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .chart-label .date {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    .graph-text {
+      font-size: 14px;
+      font-weight: 700;
+      fill: var(--black);
+    }
+
+    .graph-text.highlight {
+      font-size: 18px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .dot.top-up {
+      background: #D5B4FB;
+    }
+
+    .dot.current {
+      background: #9398C3;
+    }
+
+    .line.goal {
+      width: 15px;
+      height: 2px;
+      background: #D8E000;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+
+    /* ── QUOTE ── */
+    .cs-quote {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-quote::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: rgba(255, 255, 255, 0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .cs-quote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--white);
+      line-height: 1.55;
+      font-weight: 400;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-quote cite {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: normal;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── OUTCOME CARDS ── */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .outcome-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .outcome-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .outcome-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ── REFLECTION GRID ── */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .reflection-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 3px solid var(--purple-light);
+    }
+
+    .reflection-card.highlight {
+      border-left-color: var(--navy);
+    }
+
+    .reflection-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .reflection-text {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 16px;
+    }
+
+    .next-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(40, 50, 135, 0.1);
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .next-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .next-arrow {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .next-project:hover .next-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    .next-arrow .material-symbols-outlined {
+      color: var(--white);
+      font-size: 20px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .case-body {
+        grid-template-columns: 1fr;
+      }
+
+      .case-toc {
+        display: none;
+      }
+
+      .challenge-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .case-hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .case-hero-image {
+        display: none;
+      }
+
+      .user-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row.reverse {
+        direction: ltr;
+      }
+
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .data-viz-block {
+        grid-template-columns: 1fr;
+      }
+
+      .donut-wrap {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .challenge-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .next-project {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="nav-placeholder"></div>
+  <div id="nav-placeholder"></div>
 
-<!-- ── HERO ── -->
-<div class="case-hero">
-  <div class="breadcrumb">
-    <a href="index.html">Home</a>
-    <span>›</span>
-    <a href="projects.html">Projects</a>
-    <span>›</span>
-    <span>Grow with CPF</span>
+  <!-- ── HERO ── -->
+  <div class="case-hero">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../projects.html">Projects</a>
+      <span>›</span>
+      <span>Grow with CPF</span>
+    </div>
+
+    <div class="case-hero-inner">
+      <div class="case-hero-content fade-up">
+        <span class="case-tag">UX Design · 2025</span>
+        <h1 class="case-title">Grow with CPF: Reframing retirement for the next generation</h1>
+        <p class="case-subtitle">Helping young people overcome financial paralysis by reframing abstract long-term goals
+          into immediate, actionable progress.</p>
+        <div class="case-meta-row">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Role</span>
+            <span class="case-meta-value">One of four designers, focusing on product strategy and data
+              visualisations</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Methods</span>
+            <span class="case-meta-value">Lean UX, user research, prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-hero-image fade-up d1">
+        <div class="hero-illustration"><img src="cpf_hero.png"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="case-hero-inner">
-    <div class="case-hero-content fade-up">
-      <span class="case-tag">UX Design · 2025</span>
-      <h1 class="case-title">Grow with CPF: Reframing retirement for the next generation</h1>
-      <p class="case-subtitle">Helping young people understand and emotionally connect to long-term saving — turning a government product into something people actually want to use.</p>
-      <div class="case-meta-row">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Role</span>
-          <span class="case-meta-value">End-to-end UX Designer</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Timeline</span>
-          <span class="case-meta-value">8 weeks</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Type</span>
-          <span class="case-meta-value">Research · Strategy · Design</span>
+  <!-- ── BODY ── -->
+  <div class="case-body">
+
+    <!-- MAIN -->
+    <main class="case-main">
+
+      <!-- OVERVIEW -->
+      <div class="cs-section fade-up" id="overview">
+        <span class="cs-section-label">Overview</span>
+        <h2 class="cs-section-title">The project</h2>
+        <p class="cs-body">CPF is Singapore's mandatory savings scheme, but young adults rarely engage with it beyond
+          the payslip deduction. This project tackled the gap between people knowing CPF exists and actually caring
+          enough to grow it actively. The goal: reframe retirement planning as something relevant, achievable, and even
+          motivating for people in their 20s and 30s.</p>
+        <div class="overview-stats">
+          <div class="overview-stat">
+            <p class="overview-stat-label">Duration</p>
+            <p class="overview-stat-value">8 weeks</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Methods</p>
+            <p class="overview-stat-value">Interviews, surveys, prototyping</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Output</p>
+            <p class="overview-stat-value">Tested hi-fi prototype</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="case-hero-image fade-up d1">
-      <div class="hero-illustration">🧓💰📱</div>
-    </div>
+      <div class="cs-divider"></div>
+
+      <!-- THE CHALLENGE -->
+      <div class="cs-section fade-up" id="challenge">
+        <span class="cs-section-label">Problem</span>
+        <h2 class="cs-section-title">The challenge</h2>
+        <p class="cs-body">Understanding what stands between young Singaporeans and meaningful engagement with their
+          retirement product — and how to move the needle on that.</p>
+
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <span class="material-symbols-outlined">school</span>
+            </div>
+            <p class="challenge-title">Abstract concept</p>
+            <p class="challenge-desc">Retirement feels too far away to be motivating. Young people struggle to connect
+              future needs to present actions when the timeline spans decades.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <span class="material-symbols-outlined">trending_up</span>
+            </div>
+            <p class="challenge-title">Mixed emotions</p>
+            <p class="challenge-desc">Money anxiety, FOMO, and a general distrust of government products made CPF feel
+              like something that happens to you, not something you actively manage.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-icon">
+              <span class="material-symbols-outlined">flag</span>
+            </div>
+            <p class="challenge-title">Awareness gap</p>
+            <p class="challenge-desc">Despite being mandatory, many young adults didn't know what their CPF balance
+              actually meant, what the accounts were for, or how to grow them intentionally.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- UNDERSTANDING THE USER -->
+      <div class="cs-section fade-up" id="research">
+        <span class="cs-section-label">Research</span>
+        <h2 class="cs-section-title">Understanding our user</h2>
+        <p class="cs-body">I conducted in-depth interviews with 8 participants aged 24–35, alongside a survey of 47
+          respondents. The goal was to understand what retirement actually meant to them — not what the system said it
+          should mean.</p>
+
+        <div class="user-grid">
+          <div class="user-persona">
+            <div class="persona-header">
+              <div class="persona-avatar">👩</div>
+              <div>
+                <p class="persona-name">Sarah, 27</p>
+                <p class="persona-role">Marketing Executive · First job, 3 years in</p>
+              </div>
+            </div>
+            <p class="persona-quote">"I know CPF is important but it just feels so far away. I'd rather think about my
+              holiday fund."</p>
+            <div class="persona-tags">
+              <span class="persona-tag">Present-focused</span>
+              <span class="persona-tag">Anxious about money</span>
+              <span class="persona-tag">Low CPF literacy</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="cs-body">Three patterns emerged consistently across all participants — regardless of income,
+              education, or financial literacy:</p>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+              <div
+                style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">👁️ Inventory
+                  mismatch</p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">People regularly check
+                  their bank balance but almost never check their CPF — because it doesn't feel like "real money they
+                  can use".</p>
+              </div>
+              <div
+                style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">🎯 Goal resonance
+                </p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">When shown concrete life
+                  goals (flat, travel, retiring by 55), people immediately became more engaged — goals made the
+                  abstraction feel real.</p>
+              </div>
+              <div
+                style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">📊 Bonus insights
+                </p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">Learning about CPF's
+                  bonus interest rates through peers was a consistent trigger for increased engagement — people
+                  responded more to discovery than education.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-quote">
+          <p>"I only really started thinking about my CPF after my friend told me about the bonus interest. Nobody tells
+            you this stuff."</p>
+          <cite>— Participant, 29, Software Engineer</cite>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- STRATEGIC OBJECTIVES -->
+      <div class="cs-section fade-up" id="objectives">
+        <span class="cs-section-label">Strategy</span>
+        <h2 class="cs-section-title">Setting strategic objectives</h2>
+        <p class="cs-body">Measurable targets set to define the success of our product in achieving the business
+          objectives.</p>
+        <span class="objective-label">Business Objectives</span>
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <p class="objective-title">Increase voluntary top-ups</p>
+            <p class="objective-desc">Encourage consistent, small contributions to take advantage of compound interest
+              early in life.</p>
+          </div>
+          <div class="objective-card">
+            <p class="objective-title">Get users to start planning</p>
+            <p class="objective-desc">Have 30% of young adults take the first concrete step to plan for retirement.</p>
+          </div>
+          <div class="objective-card">
+            <p class="objective-title">Achieve BRS by age 55</p>
+            <p class="objective-desc">Ensure users are on a clear, projected path to hit their Basic Retirement Sum
+              milestone.</p>
+          </div>
+        </div>
+        <span class="objective-label">Product Success Metrics</span>
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <p class="objective-title">Adoption rate</p>
+            <p class="objective-desc">% of target users who access the feature - validates the product’s value
+              proposition.</p>
+          </div>
+          <div class="objective-card">
+            <p class="objective-title">Conversion rate</p>
+            <p class="objective-desc">% of users who follow through on a call-to-action to top-up their CPF.</p>
+          </div>
+          <div class="objective-card">
+            <p class="objective-title">Retention rate</p>
+            <p class="objective-desc">% of users who continue to use the product over a year - shows whether users find
+              value in the product.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- GROW WITH CPF — SOLUTION -->
+      <div class="cs-section fade-up" id="solution">
+        <span class="cs-section-label">Design</span>
+        <h2 class="cs-section-title">Grow with CPF</h2>
+        <p class="cs-body">The product parallels the user's life journey — not CPF's account structure. Instead of
+          showing balances and rules, it shows life goals and the path to reaching them. Three core features address the
+          three biggest barriers to engagement.</p>
+
+        <div class="feature-list">
+
+          <!-- Feature 1 -->
+          <div class="feature-row">
+            <div class="feature-content">
+              <span class="feature-tag">Help users take the first step</span>
+              <h3 class="feature-title">Help users take things one step at a time, so goals feel reachable</h3>
+              <p class="feature-desc">The onboarding flow anchors around a life goal the user already has — a flat,
+                early retirement, a safety net. From there, it back-calculates what they'd need to do each month. One
+                action, not a system to learn.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Goal-first onboarding flow</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Monthly action calculator</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Progress tracking over time</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-screen">
+              <div class="screen-mockup-wrap">
+                <div class="screen-bar">
+                  <div class="screen-bar-item"></div>
+                  <div class="screen-bar-item"></div>
+                  <div class="screen-bar-item"></div>
+                </div>
+                <div class="screen-phone">
+                  <div class="screen-phone-row accent wide"></div>
+                  <div class="screen-phone-row wide"></div>
+                  <div class="screen-phone-row narrow"></div>
+                  <div style="margin-top:6px;height:32px;background:var(--navy);border-radius:6px;"></div>
+                  <div class="screen-phone-row wide" style="margin-top:6px;"></div>
+                  <div class="screen-phone-row narrow"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-row reverse">
+            <div class="feature-content">
+              <span class="feature-tag">Assure users that their goals are within reach</span>
+              <h3 class="feature-title">Show users what their CPF can actually do for them</h3>
+              <p class="feature-desc">An interactive projection tool shows how different top-up amounts change the
+                retirement picture — not in CPF-speak, but in life terms: "At this rate, you could retire at 58." Making
+                the future tangible makes it actionable.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Interactive "what if" simulator</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Life-event milestones visualised</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Retirement age calculator</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-screen" style="background:var(--secondary);">
+              <div class="screen-mockup-wrap" style="background:var(--secondary);">
+                <div class="screen-bar">
+                  <div class="screen-bar-item" style="background:rgba(255,255,255,0.4);"></div>
+                  <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);width:90%;"></div>
+                  <div class="screen-bar-item" style="background:rgba(255,255,255,0.3);"></div>
+                </div>
+                <div class="screen-phone" style="border-color:rgba(255,255,255,0.4);">
+                  <div class="screen-phone-row wide" style="background:var(--navy);height:12px;border-radius:6px;">
+                  </div>
+                  <div class="screen-phone-row wide"
+                    style="height:40px;background:var(--purple-light);border-radius:6px;margin-top:4px;"></div>
+                  <div class="screen-phone-row narrow" style="margin-top:4px;"></div>
+                  <div class="screen-phone-row wide"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-row">
+            <div class="feature-content">
+              <span class="feature-tag">Make learning finances less intimidating</span>
+              <h3 class="feature-title">Introducing CPF's hidden features — at exactly the right moment</h3>
+              <p class="feature-desc">Instead of a help centre, contextual education surfaces when it's relevant. When a
+                user is looking at their OA balance, they see a tip about the bonus interest rate. When they top up,
+                they learn about tax relief. Discovery, not instruction.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Contextual financial tips</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Plain-language explanations</p>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
+                  <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">One-tap top-up from tip cards</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-screen" style="background:var(--purple-light);">
+              <div class="screen-mockup-wrap" style="background:var(--purple-light);">
+                <div class="screen-bar">
+                  <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);"></div>
+                  <div class="screen-bar-item" style="background:var(--white);width:90%;"></div>
+                  <div class="screen-bar-item" style="background:rgba(255,255,255,0.4);"></div>
+                </div>
+                <div class="screen-phone" style="border-color:rgba(255,255,255,0.6);background:var(--white);">
+                  <div class="screen-phone-row wide" style="background:var(--secondary);height:10px;border-radius:6px;">
+                  </div>
+                  <div class="screen-phone-row wide"></div>
+                  <div class="screen-phone-row narrow"></div>
+                  <div style="margin-top:6px;height:28px;background:var(--navy);border-radius:6px;"></div>
+                  <div class="screen-phone-row wide" style="margin-top:6px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- DATA VIZ -->
+      <div class="cs-section fade-up" id="data">
+        <span class="cs-section-label">Data</span>
+        <h2 class="cs-section-title">Visualisations that drive outcomes</h2>
+        <p class="cs-body">A graph showing a breakdown of the account balances didn’t motivate users to save. By
+          shifting the visualisation focus to “potential growth” and “progress”, we made the retirement goal feel
+          tangible and within reach.</p>
+
+        <div class="interactive-card fade-up">
+          <div class="segmented-control" id="savings-toggle">
+            <div class="toggle-bg"></div>
+            <button class="toggle-btn active" data-state="before">Before</button>
+            <button class="toggle-btn" data-state="after">After</button>
+          </div>
+
+          <div id="view-before" class="savings-view active">
+            <div class="view-header">
+              <h2 class="view-title">Savings Breakdown</h2>
+              <p class="view-sub">Total CPF balance to-date</p>
+            </div>
+
+            <div class="chart-container">
+              <svg viewBox="0 0 200 200" class="donut-chart">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#D4DEE8" stroke-width="20" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#9398C3" stroke-width="20" stroke-dasharray="251.2"
+                  stroke-dashoffset="100" />
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#283287" stroke-width="20" stroke-dasharray="251.2"
+                  stroke-dashoffset="200" />
+              </svg>
+              <div class="chart-label">
+                <span class="amount">$5,300.00</span>
+                <span class="date">As at 01 Jan 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="view-after" class="savings-view">
+            <div class="view-header">
+              <h2 class="view-title">Savings Projection</h2>
+              <p class="view-sub">Projected growth with top-up</p>
+            </div>
+
+            <div class="chart-container">
+              <svg viewBox="0 0 300 180" class="line-graph">
+                <line x1="10" y1="50" x2="290" y2="50" stroke="#D8E000" stroke-width="2" stroke-dasharray="4" />
+                <text x="220" y="40" class="graph-text highlight">$221k</text>
+
+                <path d="M10,150 Q150,140 290,100" fill="none" stroke="#9398C3" stroke-width="3" />
+                <circle cx="10" cy="150" r="6" fill="#9398C3" />
+                <circle cx="250" cy="110" r="6" fill="#9398C3" />
+                <text x="10" y="130" class="graph-text">$5.3k</text>
+                <text x="210" y="145" class="graph-text">$72.7k</text>
+
+                <path d="M10,150 Q150,130 290,30" fill="none" stroke="#D5B4FB" stroke-width="4" />
+                <circle cx="250" cy="55" r="8" fill="#D5B4FB" />
+              </svg>
+            </div>
+
+            <div class="legend">
+              <div class="item"><span class="dot top-up"></span> With top-up</div>
+              <div class="item"><span class="dot current"></span> Current</div>
+              <div class="item"><span class="line goal"></span> Retirement sum</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- OUTCOME -->
+        <div class="cs-section fade-up" id="outcome">
+          <span class="cs-section-label">Outcome</span>
+          <h2 class="cs-section-title">Make the most of your data</h2>
+          <p class="cs-body">The project demonstrated that the biggest barrier to CPF engagement wasn't awareness — it
+            was
+            relevance. When the product spoke to people's actual goals instead of the system's structure, behaviour
+            changed. Users went from passive observers to active participants in their own financial futures.</p>
+
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <p class="outcome-number">5/5</p>
+              <p class="outcome-label">Usability test participants successfully completed their first top-up action
+                within
+                the prototype</p>
+            </div>
+            <div class="outcome-card">
+              <p class="outcome-number">72%</p>
+              <p class="outcome-label">Said the projection feature changed how they thought about voluntary CPF
+                contributions</p>
+            </div>
+            <div class="outcome-card">
+              <p class="outcome-number">3 wks</p>
+              <p class="outcome-label">From research synthesis to tested, dev-ready prototype with full design system
+                handoff</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-divider"></div>
+
+        <!-- REFLECTION -->
+        <div class="cs-section fade-up" id="reflection">
+          <span class="cs-section-label">Reflection</span>
+          <h2 class="cs-section-title">Got a data problem to solve?</h2>
+          <p class="cs-body">The data background turned out to be the most valuable thing I brought to this project. Not
+            because I built charts — but because I knew when a number was meaningful and when it was noise. The hardest
+            design decision was removing data, not adding it.</p>
+
+          <div class="reflection-grid">
+            <div class="reflection-card highlight">
+              <p class="reflection-title">Data without context is decoration</p>
+              <p class="reflection-text">Showing someone their CPF balance changes nothing. Showing them what that
+                balance
+                means for their retirement at 55 changes everything. Always ask: what decision does this data support?
+              </p>
+            </div>
+            <div class="reflection-card">
+              <p class="reflection-title">Reframe the problem before designing</p>
+              <p class="reflection-text">The brief was "improve CPF engagement". The real problem was "retirement feels
+                irrelevant to young people". The solution only worked because we solved the right problem.</p>
+            </div>
+            <div class="reflection-card">
+              <p class="reflection-title">Emotion drives financial behaviour</p>
+              <p class="reflection-text">Every financial decision has an emotional component. Designing for that —
+                anxiety, aspiration, FOMO — was more effective than designing for information alone.</p>
+            </div>
+            <div class="reflection-card">
+              <p class="reflection-title">Teach through doing, not reading</p>
+              <p class="reflection-text">Contextual tips at the moment of action outperformed any onboarding tutorial or
+                help centre. People learn financial concepts when they're already motivated to act.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
+            <a href="projects.html" class="btn btn-outline">View all projects</a>
+          </div>
+        </div>
+
+        <!-- NEXT PROJECT -->
+        <a href="neighbourhood.html" class="next-project fade-up">
+          <div>
+            <p class="next-label">Next project</p>
+            <p class="next-title">Neighbourhood: From vague problem to meaningful product</p>
+          </div>
+          <div class="next-arrow">
+            <span class="material-symbols-outlined">arrow_outward</span>
+          </div>
+        </a>
+
+    </main>
+
+    <!-- TABLE OF CONTENTS -->
+    <aside class="case-toc">
+      <p class="toc-label">Contents</p>
+      <a href="#overview" class="toc-link">Overview</a>
+      <a href="#challenge" class="toc-link">The challenge</a>
+      <a href="#research" class="toc-link">Understanding our user</a>
+      <a href="#objectives" class="toc-link">Strategic objectives</a>
+      <a href="#solution" class="toc-link">Grow with CPF</a>
+      <a href="#data" class="toc-link">Data visualisations</a>
+      <a href="#outcome" class="toc-link">Outcome</a>
+      <a href="#reflection" class="toc-link">Reflection</a>
+    </aside>
+
   </div>
-</div>
 
-<!-- ── BODY ── -->
-<div class="case-body">
+  <div id="footer-placeholder"></div>
 
-  <!-- MAIN -->
-  <main class="case-main">
+  <script src="../components.js"></script>
+  <script>
+    renderNav('Projects');
+    renderFooter();
+    initScrollAnimations();
 
-    <!-- OVERVIEW -->
-    <div class="cs-section fade-up" id="overview">
-      <span class="cs-section-label">Overview</span>
-      <h2 class="cs-section-title">The project</h2>
-      <p class="cs-body">CPF is Singapore's mandatory savings scheme, but young adults rarely engage with it beyond the payslip deduction. This project tackled the gap between people knowing CPF exists and actually caring enough to grow it actively. The goal: reframe retirement planning as something relevant, achievable, and even motivating for people in their 20s and 30s.</p>
-      <div class="overview-stats">
-        <div class="overview-stat">
-          <p class="overview-stat-label">Duration</p>
-          <p class="overview-stat-value">8 weeks</p>
-        </div>
-        <div class="overview-stat">
-          <p class="overview-stat-label">Methods</p>
-          <p class="overview-stat-value">Interviews, surveys, prototyping</p>
-        </div>
-        <div class="overview-stat">
-          <p class="overview-stat-label">Output</p>
-          <p class="overview-stat-value">Tested hi-fi prototype</p>
-        </div>
-      </div>
-    </div>
+    // Highlight active TOC link on scroll
+    const sections = document.querySelectorAll('.cs-section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
 
-    <div class="cs-divider"></div>
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
 
-    <!-- THE CHALLENGE -->
-    <div class="cs-section fade-up" id="challenge">
-      <span class="cs-section-label">Problem</span>
-      <h2 class="cs-section-title">The challenge</h2>
-      <p class="cs-body">Understanding what stands between young Singaporeans and meaningful engagement with their retirement product — and how to move the needle on that.</p>
+    sections.forEach(s => tocObserver.observe(s));
 
-      <div class="challenge-grid">
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <span class="material-symbols-outlined">school</span>
-          </div>
-          <p class="challenge-title">Abstract concept</p>
-          <p class="challenge-desc">Retirement feels too far away to be motivating. Young people struggle to connect future needs to present actions when the timeline spans decades.</p>
-        </div>
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <span class="material-symbols-outlined">trending_up</span>
-          </div>
-          <p class="challenge-title">Mixed emotions</p>
-          <p class="challenge-desc">Money anxiety, FOMO, and a general distrust of government products made CPF feel like something that happens to you, not something you actively manage.</p>
-        </div>
-        <div class="challenge-card">
-          <div class="challenge-icon">
-            <span class="material-symbols-outlined">flag</span>
-          </div>
-          <p class="challenge-title">Awareness gap</p>
-          <p class="challenge-desc">Despite being mandatory, many young adults didn't know what their CPF balance actually meant, what the accounts were for, or how to grow them intentionally.</p>
-        </div>
-      </div>
-    </div>
+    // Interactive Chart Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('savings-toggle');
+      const btns = toggle.querySelectorAll('.toggle-btn');
+      const views = document.querySelectorAll('.savings-view');
 
-    <div class="cs-divider"></div>
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const state = btn.getAttribute('data-state');
 
-    <!-- UNDERSTANDING THE USER -->
-    <div class="cs-section fade-up" id="research">
-      <span class="cs-section-label">Research</span>
-      <h2 class="cs-section-title">Understanding our user</h2>
-      <p class="cs-body">I conducted in-depth interviews with 8 participants aged 24–35, alongside a survey of 47 respondents. The goal was to understand what retirement actually meant to them — not what the system said it should mean.</p>
+          // Update toggle visual
+          toggle.setAttribute('data-active', state);
+          btns.forEach(b => b.classList.toggle('active', b === btn));
 
-      <div class="user-grid">
-        <div class="user-persona">
-          <div class="persona-header">
-            <div class="persona-avatar">👩</div>
-            <div>
-              <p class="persona-name">Sarah, 27</p>
-              <p class="persona-role">Marketing Executive · First job, 3 years in</p>
-            </div>
-          </div>
-          <p class="persona-quote">"I know CPF is important but it just feels so far away. I'd rather think about my holiday fund."</p>
-          <div class="persona-tags">
-            <span class="persona-tag">Present-focused</span>
-            <span class="persona-tag">Anxious about money</span>
-            <span class="persona-tag">Low CPF literacy</span>
-          </div>
-        </div>
-
-        <div>
-          <p class="cs-body">Three patterns emerged consistently across all participants — regardless of income, education, or financial literacy:</p>
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-            <div style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-              <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">👁️ Inventory mismatch</p>
-              <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">People regularly check their bank balance but almost never check their CPF — because it doesn't feel like "real money they can use".</p>
-            </div>
-            <div style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-              <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">🎯 Goal resonance</p>
-              <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">When shown concrete life goals (flat, travel, retiring by 55), people immediately became more engaged — goals made the abstraction feel real.</p>
-            </div>
-            <div style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-              <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">📊 Bonus insights</p>
-              <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">Learning about CPF's bonus interest rates through peers was a consistent trigger for increased engagement — people responded more to discovery than education.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cs-quote">
-        <p>"I only really started thinking about my CPF after my friend told me about the bonus interest. Nobody tells you this stuff."</p>
-        <cite>— Participant, 29, Software Engineer</cite>
-      </div>
-    </div>
-
-    <div class="cs-divider"></div>
-
-    <!-- STRATEGIC OBJECTIVES -->
-    <div class="cs-section fade-up" id="objectives">
-      <span class="cs-section-label">Strategy</span>
-      <h2 class="cs-section-title">Setting strategic objectives</h2>
-      <p class="cs-body">The research pointed clearly to three design objectives that would need to be true for this product to actually change behaviour — not just inform it.</p>
-
-      <div class="objectives-grid">
-        <div class="objective-card">
-          <span class="objective-label">Objective 01</span>
-          <p class="objective-title">Make users feel the first step</p>
-          <p class="objective-desc">Connect CPF actions to things people already care about — a flat, a lifestyle, retiring early. Remove the abstraction.</p>
-        </div>
-        <div class="objective-card">
-          <span class="objective-label">Objective 02</span>
-          <p class="objective-title">Assure users that their goals are within reach</p>
-          <p class="objective-desc">Show concrete projections, not jargon. Make it obvious what small, consistent actions add up to over time.</p>
-        </div>
-        <div class="objective-card">
-          <span class="objective-label">Objective 03</span>
-          <p class="objective-title">Actively educate users</p>
-          <p class="objective-desc">Surface the features and bonuses people don't know about — at the moment they're most likely to act, not in a FAQ.</p>
-        </div>
-        <div class="objective-card">
-          <span class="objective-label">Objective 04</span>
-          <p class="objective-title">Make learning finances less intimidating</p>
-          <p class="objective-desc">Use plain language, visual metaphors, and personalised context to take the anxiety out of financial planning.</p>
-        </div>
-        <div class="objective-card">
-          <span class="objective-label">Objective 05</span>
-          <p class="objective-title">Practically applicable</p>
-          <p class="objective-desc">Every piece of information should come with a clear "so what" — a next step the user can take right now.</p>
-        </div>
-        <div class="objective-card">
-          <span class="objective-label">Objective 06</span>
-          <p class="objective-title">Never hide information</p>
-          <p class="objective-desc">Build trust by being transparent about rules, projections, and limitations — even when the numbers aren't flattering.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cs-divider"></div>
-
-    <!-- GROW WITH CPF — SOLUTION -->
-    <div class="cs-section fade-up" id="solution">
-      <span class="cs-section-label">Design</span>
-      <h2 class="cs-section-title">Grow with CPF</h2>
-      <p class="cs-body">The product parallels the user's life journey — not CPF's account structure. Instead of showing balances and rules, it shows life goals and the path to reaching them. Three core features address the three biggest barriers to engagement.</p>
-
-      <div class="feature-list">
-
-        <!-- Feature 1 -->
-        <div class="feature-row">
-          <div class="feature-content">
-            <span class="feature-tag">Help users take the first step</span>
-            <h3 class="feature-title">Help users take things one step at a time, so goals feel reachable</h3>
-            <p class="feature-desc">The onboarding flow anchors around a life goal the user already has — a flat, early retirement, a safety net. From there, it back-calculates what they'd need to do each month. One action, not a system to learn.</p>
-            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Goal-first onboarding flow</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Monthly action calculator</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Progress tracking over time</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-screen">
-            <div class="screen-mockup-wrap">
-              <div class="screen-bar">
-                <div class="screen-bar-item"></div>
-                <div class="screen-bar-item"></div>
-                <div class="screen-bar-item"></div>
-              </div>
-              <div class="screen-phone">
-                <div class="screen-phone-row accent wide"></div>
-                <div class="screen-phone-row wide"></div>
-                <div class="screen-phone-row narrow"></div>
-                <div style="margin-top:6px;height:32px;background:var(--navy);border-radius:6px;"></div>
-                <div class="screen-phone-row wide" style="margin-top:6px;"></div>
-                <div class="screen-phone-row narrow"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="feature-row reverse">
-          <div class="feature-content">
-            <span class="feature-tag">Assure users that their goals are within reach</span>
-            <h3 class="feature-title">Show users what their CPF can actually do for them</h3>
-            <p class="feature-desc">An interactive projection tool shows how different top-up amounts change the retirement picture — not in CPF-speak, but in life terms: "At this rate, you could retire at 58." Making the future tangible makes it actionable.</p>
-            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Interactive "what if" simulator</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Life-event milestones visualised</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Retirement age calculator</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-screen" style="background:var(--secondary);">
-            <div class="screen-mockup-wrap" style="background:var(--secondary);">
-              <div class="screen-bar">
-                <div class="screen-bar-item" style="background:rgba(255,255,255,0.4);"></div>
-                <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);width:90%;"></div>
-                <div class="screen-bar-item" style="background:rgba(255,255,255,0.3);"></div>
-              </div>
-              <div class="screen-phone" style="border-color:rgba(255,255,255,0.4);">
-                <div class="screen-phone-row wide" style="background:var(--navy);height:12px;border-radius:6px;"></div>
-                <div class="screen-phone-row wide" style="height:40px;background:var(--purple-light);border-radius:6px;margin-top:4px;"></div>
-                <div class="screen-phone-row narrow" style="margin-top:4px;"></div>
-                <div class="screen-phone-row wide"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="feature-row">
-          <div class="feature-content">
-            <span class="feature-tag">Make learning finances less intimidating</span>
-            <h3 class="feature-title">Introducing CPF's hidden features — at exactly the right moment</h3>
-            <p class="feature-desc">Instead of a help centre, contextual education surfaces when it's relevant. When a user is looking at their OA balance, they see a tip about the bonus interest rate. When they top up, they learn about tax relief. Discovery, not instruction.</p>
-            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Contextual financial tips</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">Plain-language explanations</p>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
-                <p style="font-size:0.82rem;color:var(--gray);font-weight:300;">One-tap top-up from tip cards</p>
-              </div>
-            </div>
-          </div>
-          <div class="feature-screen" style="background:var(--purple-light);">
-            <div class="screen-mockup-wrap" style="background:var(--purple-light);">
-              <div class="screen-bar">
-                <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);"></div>
-                <div class="screen-bar-item" style="background:var(--white);width:90%;"></div>
-                <div class="screen-bar-item" style="background:rgba(255,255,255,0.4);"></div>
-              </div>
-              <div class="screen-phone" style="border-color:rgba(255,255,255,0.6);background:var(--white);">
-                <div class="screen-phone-row wide" style="background:var(--secondary);height:10px;border-radius:6px;"></div>
-                <div class="screen-phone-row wide"></div>
-                <div class="screen-phone-row narrow"></div>
-                <div style="margin-top:6px;height:28px;background:var(--navy);border-radius:6px;"></div>
-                <div class="screen-phone-row wide" style="margin-top:6px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="cs-divider"></div>
-
-    <!-- DATA VIZ -->
-    <div class="cs-section fade-up" id="data">
-      <span class="cs-section-label">Data</span>
-      <h2 class="cs-section-title">Visualisations that drive outcomes</h2>
-      <p class="cs-body">Past data work showed that charts without context are just decoration. In Grow with CPF, every visualisation is tied to an action — not just showing a number, but prompting a decision. If it doesn't change behaviour, it doesn't belong in the product.</p>
-
-      <div class="data-viz-block">
-        <div class="data-viz-content">
-          <span class="data-viz-label">Key insight</span>
-          <h3 class="data-viz-title">Savings projection</h3>
-          <p class="data-viz-desc">By showing users a personalised projection — "based on your current top-ups, you'll hit your retirement sum by age 63" — the product gives people a concrete reason to act. The donut chart shows progress, not just balance.</p>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:8px;">
-            <div>
-              <p style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--secondary);letter-spacing:-0.03em;">72%</p>
-              <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px;">of test users said the projection changed how they thought about top-ups</p>
-            </div>
-            <div>
-              <p style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--secondary);letter-spacing:-0.03em;">4/5</p>
-              <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px;">usability test participants completed a top-up after seeing the projection</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Donut chart (pure CSS/SVG) -->
-        <div class="donut-wrap">
-          <svg width="160" height="160" viewBox="0 0 160 160">
-            <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="20"/>
-            <circle cx="80" cy="80" r="60" fill="none" stroke="#D5B4FB" stroke-width="20"
-              stroke-dasharray="267 110" stroke-linecap="round"/>
-          </svg>
-          <div class="donut-center">
-            <span class="donut-number">71%</span>
-            <span class="donut-label">on track</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cs-divider"></div>
-
-    <!-- OUTCOME -->
-    <div class="cs-section fade-up" id="outcome">
-      <span class="cs-section-label">Outcome</span>
-      <h2 class="cs-section-title">Make the most of your data</h2>
-      <p class="cs-body">The project demonstrated that the biggest barrier to CPF engagement wasn't awareness — it was relevance. When the product spoke to people's actual goals instead of the system's structure, behaviour changed. Users went from passive observers to active participants in their own financial futures.</p>
-
-      <div class="outcome-grid">
-        <div class="outcome-card">
-          <p class="outcome-number">5/5</p>
-          <p class="outcome-label">Usability test participants successfully completed their first top-up action within the prototype</p>
-        </div>
-        <div class="outcome-card">
-          <p class="outcome-number">72%</p>
-          <p class="outcome-label">Said the projection feature changed how they thought about voluntary CPF contributions</p>
-        </div>
-        <div class="outcome-card">
-          <p class="outcome-number">3 wks</p>
-          <p class="outcome-label">From research synthesis to tested, dev-ready prototype with full design system handoff</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="cs-divider"></div>
-
-    <!-- REFLECTION -->
-    <div class="cs-section fade-up" id="reflection">
-      <span class="cs-section-label">Reflection</span>
-      <h2 class="cs-section-title">Got a data problem to solve?</h2>
-      <p class="cs-body">The data background turned out to be the most valuable thing I brought to this project. Not because I built charts — but because I knew when a number was meaningful and when it was noise. The hardest design decision was removing data, not adding it.</p>
-
-      <div class="reflection-grid">
-        <div class="reflection-card highlight">
-          <p class="reflection-title">Data without context is decoration</p>
-          <p class="reflection-text">Showing someone their CPF balance changes nothing. Showing them what that balance means for their retirement at 55 changes everything. Always ask: what decision does this data support?</p>
-        </div>
-        <div class="reflection-card">
-          <p class="reflection-title">Reframe the problem before designing</p>
-          <p class="reflection-text">The brief was "improve CPF engagement". The real problem was "retirement feels irrelevant to young people". The solution only worked because we solved the right problem.</p>
-        </div>
-        <div class="reflection-card">
-          <p class="reflection-title">Emotion drives financial behaviour</p>
-          <p class="reflection-text">Every financial decision has an emotional component. Designing for that — anxiety, aspiration, FOMO — was more effective than designing for information alone.</p>
-        </div>
-        <div class="reflection-card">
-          <p class="reflection-title">Teach through doing, not reading</p>
-          <p class="reflection-text">Contextual tips at the moment of action outperformed any onboarding tutorial or help centre. People learn financial concepts when they're already motivated to act.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
-        <a href="projects.html" class="btn btn-outline">View all projects</a>
-      </div>
-    </div>
-
-    <!-- NEXT PROJECT -->
-    <a href="neighbourhood.html" class="next-project fade-up">
-      <div>
-        <p class="next-label">Next project</p>
-        <p class="next-title">Neighbourhood: From vague problem to meaningful product</p>
-      </div>
-      <div class="next-arrow">
-        <span class="material-symbols-outlined">arrow_outward</span>
-      </div>
-    </a>
-
-  </main>
-
-  <!-- TABLE OF CONTENTS -->
-  <aside class="case-toc">
-    <p class="toc-label">Contents</p>
-    <a href="#overview"    class="toc-link">Overview</a>
-    <a href="#challenge"   class="toc-link">The challenge</a>
-    <a href="#research"    class="toc-link">Understanding our user</a>
-    <a href="#objectives"  class="toc-link">Strategic objectives</a>
-    <a href="#solution"    class="toc-link">Grow with CPF</a>
-    <a href="#data"        class="toc-link">Data visualisations</a>
-    <a href="#outcome"     class="toc-link">Outcome</a>
-    <a href="#reflection"  class="toc-link">Reflection</a>
-  </aside>
-
-</div>
-
-<div id="footer-placeholder"></div>
-
-<script src="components.js"></script>
-<script>
-  renderNav('Projects');
-  renderFooter();
-  initScrollAnimations();
-
-  // Highlight active TOC link on scroll
-  const sections  = document.querySelectorAll('.cs-section[id]');
-  const tocLinks  = document.querySelectorAll('.toc-link');
-
-  const tocObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tocLinks.forEach(l => l.classList.remove('active'));
-        const match = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
+          // Switch views
+          views.forEach(view => {
+            view.classList.toggle('active', view.id === `view-${state}`);
+          });
+        });
+      });
     });
-  }, { threshold: 0.35 });
-
-  sections.forEach(s => tocObserver.observe(s));
-</script>
+  </script>
 </body>
+
 </html>
