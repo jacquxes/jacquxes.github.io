@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward,trending_up,flag,people,school" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,school,trending_up" />
   <link rel="stylesheet" href="../styles.css">
   <style>
     /* ── PAGE-SPECIFIC: CPF CASE STUDY ── */
@@ -356,6 +356,14 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      width: 100%;
+    }
+
+    .user-persona-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: start;
     }
 
     .persona-header {
@@ -375,6 +383,15 @@
       font-size: 1.6rem;
       flex-shrink: 0;
       border: 3px solid var(--white);
+      overflow: hidden
+    }
+
+    .persona-avatar img {
+      width: 150%;
+      height: 150%;
+      object-fit: cover;
+      object-position: center;
+      overflow: hidden
     }
 
     .persona-name {
@@ -930,6 +947,7 @@
       justify-content: center;
       flex-shrink: 0;
       transition: transform 0.2s;
+      color: var(--white)
     }
 
     .next-project:hover .next-arrow {
@@ -1071,7 +1089,7 @@
         <p class="cs-body">CPF is Singapore's mandatory savings scheme, but young adults rarely engage with it beyond
           the payslip deduction. This project tackled the gap between people knowing CPF exists and actually caring
           enough to grow it actively. The goal: reframe retirement planning as something relevant, achievable, and even
-          motivating for people in their 20s and 30s.</p>
+          motivating for people in their 20s</p>
         <div class="overview-stats">
           <div class="overview-stat">
             <p class="overview-stat-label">Duration</p>
@@ -1095,7 +1113,7 @@
         <span class="cs-section-label">Problem</span>
         <h2 class="cs-section-title">The challenge</h2>
         <p class="cs-body">Understanding what stands between young Singaporeans and meaningful engagement with their
-          retirement product — and how to move the needle on that.</p>
+          retirement plans — and how to move the needle on that.</p>
 
         <div class="challenge-grid">
           <div class="challenge-card">
@@ -1103,24 +1121,24 @@
               <span class="material-symbols-outlined">school</span>
             </div>
             <p class="challenge-title">Abstract concept</p>
-            <p class="challenge-desc">Retirement feels too far away to be motivating. Young people struggle to connect
-              future needs to present actions when the timeline spans decades.</p>
+            <p class="challenge-desc">In their 20s, retirement feels too far away. Users struggle to connect today's
+              small savings with a life decades away.</p>
           </div>
           <div class="challenge-card">
             <div class="challenge-icon">
               <span class="material-symbols-outlined">trending_up</span>
             </div>
-            <p class="challenge-title">Mixed emotions</p>
-            <p class="challenge-desc">Money anxiety, FOMO, and a general distrust of government products made CPF feel
-              like something that happens to you, not something you actively manage.</p>
+            <p class="challenge-title">Goal overwhelm</p>
+            <p class="challenge-desc">Retirement feels like a big goal, and they are not saving much. Users don’t know
+              how and where to start.</p>
           </div>
           <div class="challenge-card">
             <div class="challenge-icon">
-              <span class="material-symbols-outlined">flag</span>
+              <span class="material-symbols-outlined">trending_up</span>
             </div>
             <p class="challenge-title">Awareness gap</p>
-            <p class="challenge-desc">Despite being mandatory, many young adults didn't know what their CPF balance
-              actually meant, what the accounts were for, or how to grow them intentionally.</p>
+            <p class="challenge-desc">Many young adults lack awareness of schemes like the Basic Retirement Sum (BRS)
+              and how voluntary top-ups compound.</p>
           </div>
         </div>
       </div>
@@ -1131,65 +1149,80 @@
       <div class="cs-section fade-up" id="research">
         <span class="cs-section-label">Research</span>
         <h2 class="cs-section-title">Understanding our user</h2>
-        <p class="cs-body">I conducted in-depth interviews with 8 participants aged 24–35, alongside a survey of 47
-          respondents. The goal was to understand what retirement actually meant to them — not what the system said it
-          should mean.</p>
+        <p class="cs-body">We conducted in-depth interviews with 5 participants aged 20–29, alongside a survey of 34
+          respondents. The goal was to understand what retirement actually meant to them - their attitudes, goals and
+          personal approach to saving.</p>
 
         <div class="user-grid">
-          <div class="user-persona">
-            <div class="persona-header">
-              <div class="persona-avatar">👩</div>
-              <div>
-                <p class="persona-name">Sarah, 27</p>
-                <p class="persona-role">Marketing Executive · First job, 3 years in</p>
+          <div class="user-persona-grid">
+            <div class="user-persona">
+              <div class="persona-header">
+                <div class="persona-avatar"><img src="cpf_sally.png"></div>
+                <div>
+                  <p class="persona-name">Sally, 21</p>
+                  <p class="persona-role">Student juggling part-time work</p>
+                </div>
+              </div>
+              <p class="persona-quote">"I don’t need to be rich. I just want to not worry so much when I spend."</p>
+              <div class="persona-tags">
+                <span class="persona-tag">Present-focused</span>
+                <span class="persona-tag">Anxious about money</span>
+                <span class="persona-tag">Low CPF literacy</span>
               </div>
             </div>
-            <p class="persona-quote">"I know CPF is important but it just feels so far away. I'd rather think about my
-              holiday fund."</p>
-            <div class="persona-tags">
-              <span class="persona-tag">Present-focused</span>
-              <span class="persona-tag">Anxious about money</span>
-              <span class="persona-tag">Low CPF literacy</span>
+            <div class="user-persona">
+              <div class="persona-header">
+                <div class="persona-avatar"><img src="cpf_ryan.png"></div>
+                <div>
+                  <p class="persona-name">Ryan, 27</p>
+                  <p class="persona-role">Software developer, 3 years</p>
+                </div>
+              </div>
+              <p class="persona-quote">"I just need to minimise spending, maximise income."</p>
+              <div class="persona-tags">
+                <span class="persona-tag">Starting to save</span>
+                <span class="persona-tag">Seeking growth</span>
+                <span class="persona-tag">Overwhelmed by info</span>
+              </div>
             </div>
           </div>
 
           <div>
-            <p class="cs-body">Three patterns emerged consistently across all participants — regardless of income,
-              education, or financial literacy:</p>
+            <p class="cs-body">Three patterns emerged consistently across all participants:</p>
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
               <div
                 style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">👁️ Inventory
-                  mismatch</p>
-                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">People regularly check
-                  their bank balance but almost never check their CPF — because it doesn't feel like "real money they
-                  can use".</p>
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">Blind spot</p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">People felt that CPF
+                  was something they can't touch, and don't think actively about growing it or how it can help them with
+                  their goals.</p>
               </div>
               <div
                 style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">🎯 Goal resonance
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">Goal resonance
                 </p>
-                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">When shown concrete life
-                  goals (flat, travel, retiring by 55), people immediately became more engaged — goals made the
-                  abstraction feel real.</p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">When talking about
+                  concrete life
+                  goals (moving out, traveling, retiring early), people immediately became more engaged with their
+                  finances.</p>
               </div>
               <div
                 style="background:var(--gray-light);border-radius:var(--radius-sm);padding:16px 20px;border-left:3px solid var(--secondary);">
-                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">📊 Bonus insights
+                <p style="font-size:0.875rem;font-weight:600;color:var(--black);margin-bottom:4px;">Info drip
                 </p>
-                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">Learning about CPF's
-                  bonus interest rates through peers was a consistent trigger for increased engagement — people
-                  responded more to discovery than education.</p>
+                <p style="font-size:0.82rem;color:var(--gray);line-height:1.6;font-weight:300;">People were interested
+                  to learn about CPF in a structured way but wanted the information to be in small, manageable chunks.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="cs-quote">
+        <!-- <div class="cs-quote">
           <p>"I only really started thinking about my CPF after my friend told me about the bonus interest. Nobody tells
             you this stuff."</p>
           <cite>— Participant, 29, Software Engineer</cite>
-        </div>
+        </div> -->
       </div>
 
       <div class="cs-divider"></div>
@@ -1253,9 +1286,8 @@
             <div class="feature-content">
               <span class="feature-tag">Help users take the first step</span>
               <h3 class="feature-title">Help users take things one step at a time, so goals feel reachable</h3>
-              <p class="feature-desc">The onboarding flow anchors around a life goal the user already has — a flat,
-                early retirement, a safety net. From there, it back-calculates what they'd need to do each month. One
-                action, not a system to learn.</p>
+              <p class="feature-desc">The user will be prompted to go through an assessment quiz. Just by answering
+                questions, users would have taken the first step of setting up a financial plan.</p>
               <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
@@ -1272,7 +1304,8 @@
               </div>
             </div>
             <div class="feature-screen">
-              <div class="screen-mockup-wrap">
+              <img src="cpf_feature1.png">
+              <!-- <div class="screen-mockup-wrap">
                 <div class="screen-bar">
                   <div class="screen-bar-item"></div>
                   <div class="screen-bar-item"></div>
@@ -1286,7 +1319,7 @@
                   <div class="screen-phone-row wide" style="margin-top:6px;"></div>
                   <div class="screen-phone-row narrow"></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -1295,9 +1328,9 @@
             <div class="feature-content">
               <span class="feature-tag">Assure users that their goals are within reach</span>
               <h3 class="feature-title">Show users what their CPF can actually do for them</h3>
-              <p class="feature-desc">An interactive projection tool shows how different top-up amounts change the
-                retirement picture — not in CPF-speak, but in life terms: "At this rate, you could retire at 58." Making
-                the future tangible makes it actionable.</p>
+              <p class="feature-desc">Long-term goals of buying a house and retirement are reframed into yearly
+                milestones to make them more immediate and achievable. Data visualisation was used to show user how the
+                CPF balance would grow to meet their goals.</p>
               <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
@@ -1314,7 +1347,8 @@
               </div>
             </div>
             <div class="feature-screen" style="background:var(--secondary);">
-              <div class="screen-mockup-wrap" style="background:var(--secondary);">
+              <img src="cpf_feature2.png">
+              <!-- <div class="screen-mockup-wrap" style="background:var(--secondary);">
                 <div class="screen-bar">
                   <div class="screen-bar-item" style="background:rgba(255,255,255,0.4);"></div>
                   <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);width:90%;"></div>
@@ -1328,7 +1362,7 @@
                   <div class="screen-phone-row narrow" style="margin-top:4px;"></div>
                   <div class="screen-phone-row wide"></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -1336,10 +1370,9 @@
           <div class="feature-row">
             <div class="feature-content">
               <span class="feature-tag">Make learning finances less intimidating</span>
-              <h3 class="feature-title">Introducing CPF's hidden features — at exactly the right moment</h3>
-              <p class="feature-desc">Instead of a help centre, contextual education surfaces when it's relevant. When a
-                user is looking at their OA balance, they see a tip about the bonus interest rate. When they top up,
-                they learn about tax relief. Discovery, not instruction.</p>
+              <h3 class="feature-title">Introducing CPF's features — at exactly the right moment</h3>
+              <p class="feature-desc">In the learning module, text articles from CPF’s website are split into multiple
+                pages, with progress bars as visual signposts that motivate users to keep going.</p>
               <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;"></div>
@@ -1356,7 +1389,8 @@
               </div>
             </div>
             <div class="feature-screen" style="background:var(--purple-light);">
-              <div class="screen-mockup-wrap" style="background:var(--purple-light);">
+              <img src="cpf_feature3.png">
+              <!-- <div class="screen-mockup-wrap" style="background:var(--purple-light);">
                 <div class="screen-bar">
                   <div class="screen-bar-item" style="background:rgba(255,255,255,0.6);"></div>
                   <div class="screen-bar-item" style="background:var(--white);width:90%;"></div>
@@ -1370,7 +1404,7 @@
                   <div style="margin-top:6px;height:28px;background:var(--navy);border-radius:6px;"></div>
                   <div class="screen-phone-row wide" style="margin-top:6px;"></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -1450,28 +1484,24 @@
         <!-- OUTCOME -->
         <div class="cs-section fade-up" id="outcome">
           <span class="cs-section-label">Outcome</span>
-          <h2 class="cs-section-title">Make the most of your data</h2>
-          <p class="cs-body">The project demonstrated that the biggest barrier to CPF engagement wasn't awareness — it
-            was
-            relevance. When the product spoke to people's actual goals instead of the system's structure, behaviour
-            changed. Users went from passive observers to active participants in their own financial futures.</p>
+          <h2 class="cs-section-title">Reframing changed everything</h2>
+          <p class="cs-body">The brief was "improve CPF engagement". The real problem was "retirement feels irrelevant
+            to young people". The solution worked because we aligned the product to their goals and made it easy for
+            them to take action.</p>
 
           <div class="outcome-grid">
-            <div class="outcome-card">
-              <p class="outcome-number">5/5</p>
-              <p class="outcome-label">Usability test participants successfully completed their first top-up action
-                within
-                the prototype</p>
+            <div class="cs-quote">
+              <p>"Makes things feel a little less scary to start when I'm trying to plan my finances."</p>
+              <cite>— User, 24, Student</cite>
             </div>
-            <div class="outcome-card">
-              <p class="outcome-number">72%</p>
-              <p class="outcome-label">Said the projection feature changed how they thought about voluntary CPF
-                contributions</p>
+            <div class="cs-quote">
+              <p>"It does solidify my financial goals. A house or a trip won’t feel so far-fetched."
+              </p>
+              <cite>— User, 25, Freelancer</cite>
             </div>
-            <div class="outcome-card">
-              <p class="outcome-number">3 wks</p>
-              <p class="outcome-label">From research synthesis to tested, dev-ready prototype with full design system
-                handoff</p>
+            <div class="cs-quote">
+              <p>"The info is easier to get now that I have it in one place."</p>
+              <cite>— User, 25, Product manager</cite>
             </div>
           </div>
         </div>
@@ -1481,12 +1511,12 @@
         <!-- REFLECTION -->
         <div class="cs-section fade-up" id="reflection">
           <span class="cs-section-label">Reflection</span>
-          <h2 class="cs-section-title">Got a data problem to solve?</h2>
-          <p class="cs-body">The data background turned out to be the most valuable thing I brought to this project. Not
-            because I built charts — but because I knew when a number was meaningful and when it was noise. The hardest
-            design decision was removing data, not adding it.</p>
+          <h2 class="cs-section-title">Make the most of your data</h2>
+          <p class="cs-body">Showing someone their CPF balance changes nothing. Showing them how saving today aligns
+            with their future goals motivates them to act. When data is contexualised to the user's real problem, it
+            becomes a tool for change.</p>
 
-          <div class="reflection-grid">
+          <!-- <div class="reflection-grid">
             <div class="reflection-card highlight">
               <p class="reflection-title">Data without context is decoration</p>
               <p class="reflection-text">Showing someone their CPF balance changes nothing. Showing them what that
@@ -1509,7 +1539,7 @@
               <p class="reflection-text">Contextual tips at the moment of action outperformed any onboarding tutorial or
                 help centre. People learn financial concepts when they're already motivated to act.</p>
             </div>
-          </div>
+          </div> -->
 
           <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
             <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
@@ -1524,7 +1554,8 @@
             <p class="next-title">Neighbourhood: From vague problem to meaningful product</p>
           </div>
           <div class="next-arrow">
-            <span class="material-symbols-outlined">arrow_outward</span>
+            →
+            <!-- <span class="material-symbols-outlined">arrow_outward</span> -->
           </div>
         </a>
 
