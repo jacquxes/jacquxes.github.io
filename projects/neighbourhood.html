@@ -12,6 +12,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward" />
   <link rel="stylesheet" href="../styles.css">
+  <script src="https://kit.fontawesome.com/7881900bfb.js" crossorigin="anonymous"></script>
   <style>
     /* ── PAGE-SPECIFIC: CASE STUDY ── */
 
@@ -126,14 +127,39 @@
       font-weight: 400;
     }
 
+    /* hero illustration area */
     .case-hero-image {
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: center;
-      gap: 16px;
+      padding-bottom: 0;
+      gap: 20px;
+      align-self: start;
     }
 
-    .phone-mockup {
+    .hero-illustration {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      height: 700px;
+      margin-top: calc(-1 * clamp(60px, 8vw, 100px));
+    }
+
+    .hero-illustration img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* .phone-mockup {
       width: clamp(100px, 12vw, 150px);
       aspect-ratio: 9/19;
       background: rgba(255, 255, 255, 0.08);
@@ -157,7 +183,7 @@
     .phone-mockup.short {
       transform: translateY(16px);
       opacity: 0.7;
-    }
+    } */
 
     /* ── BODY LAYOUT ── */
     .case-body {
@@ -744,9 +770,10 @@
       </div>
 
       <div class="case-hero-image fade-up d1">
-        <div class="phone-mockup short"><img src="cpf_hero.png"></div>
+        <div class="hero-illustration"><img src="neighbourhood_hero.png"></div>
+        <!-- <div class="phone-mockup short"><img src="cpf_hero.png"></div>
         <div class="phone-mockup tall"></div>
-        <div class="phone-mockup short"></div>
+        <div class="phone-mockup short"></div> -->
       </div>
     </div>
   </div>
@@ -761,21 +788,20 @@
       <div class="cs-section fade-up" id="overview">
         <span class="cs-section-label">Overview</span>
         <h2 class="cs-section-title">The project</h2>
-        <p class="cs-body">This project used the design sprint process to respond to the vague problem of "loneliness in
-          communities", focusing on how it might be addressed through shared interests. Design sprint: 4 days
-          (synthesis, rapid product design, user testing).</p>
+        <p class="cs-body">This project used the design sprint process to research the vague brief of "improving
+          neighbourliness" and prototype a solution that connects neighbours through shared interests.</p>
         <div class="overview-stats">
           <div class="overview-stat">
             <p class="overview-stat-label">Duration</p>
-            <p class="overview-stat-value">4-day design sprint</p>
+            <p class="overview-stat-value">8 weeks</p>
           </div>
           <div class="overview-stat">
-            <p class="overview-stat-label">Team</p>
-            <p class="overview-stat-value">Solo designer</p>
+            <p class="overview-stat-label">Methods</p>
+            <p class="overview-stat-value">Design sprint, field research, prototyping, user testing</p>
           </div>
           <div class="overview-stat">
             <p class="overview-stat-label">Output</p>
-            <p class="overview-stat-value">High-fidelity prototype</p>
+            <p class="overview-stat-value">Tested hi-fi prototype</p>
           </div>
         </div>
       </div>
@@ -786,12 +812,12 @@
       <div class="cs-section fade-up" id="problem">
         <span class="cs-section-label">Discovery</span>
         <h2 class="cs-section-title">The vague problem</h2>
-        <p class="cs-body">We started with an even vaguer brief: "How might we improve neighbourhoods in Singapore?"</p>
-        <p class="cs-body">When digging around in general discussion forums and Reddit communities with 23K+ members, I
-          found that it isn't just loneliness — it's that people want to connect with neighbours who share their
-          interests. Simply being neighbours wasn't enough of a connection to make it feel safe.</p>
-        <p class="cs-body">I had to narrow down the app from a general neighbourhood improvement tool to one that solves
-          a very specific problem — and one that was passably explorable.</p>
+        <p class="cs-body">We started with an even vaguer brief: "How might we improve neighbourliness in Singapore?"
+        </p>
+        <p class="cs-body">While Singaporeans generally feel satisfied with their relationships with neighbours, a 2024
+          survey found that 83% still face barriers to meaningful interaction.</p>
+        <p class="cs-body">We had to narrow down the scope from a cultural goal to a tangible product intervention. The
+          first phase was purely explorative.</p>
 
         <div class="two-col-text">
           <div>
@@ -811,8 +837,39 @@
         </div>
 
         <div class="cs-quote">
-          <p>"How might we easily find neighbours with similar interests to connect?"</p>
-          <cite>— Design pivot question that reframed the entire project</cite>
+          <cite>Key inquiry</cite>
+          <p>“What motivates people to interact with their neighbours, what causes friction for them?"</p>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- UNDERSTANDING THE PROBLEM -->
+      <div class="cs-section fade-up" id="understanding">
+        <span class="cs-section-label">Research</span>
+        <h2 class="cs-section-title">Understanding the problem</h2>
+        <p class="cs-body">To move from a vague brief to a concrete direction, we ran three parallel streams of research
+          — each chosen to give us a different angle on why neighbourly connection breaks down.</p>
+
+        <div class="insight-grid">
+          <div class="insight-card">
+            <p class="insight-number">🔍</p>
+            <p class="insight-title">Competitor Analysis</p>
+            <p class="insight-desc">We looked at the strengths and weaknesses of apps and services that promote feedback
+              and neighbourly interactions.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">📰</p>
+            <p class="insight-title">Online Research</p>
+            <p class="insight-desc">We looked at news reports, what people were saying on forums, and studied how HDBs
+              were designed to foster communities.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">🗣️</p>
+            <p class="insight-title">Interviews</p>
+            <p class="insight-desc">We interviewed an HDB resident, a condominium resident and a landed estate resident
+              to understand their interactions with their neighbours.</p>
+          </div>
         </div>
       </div>
 
@@ -820,28 +877,28 @@
 
       <!-- KEY INSIGHTS -->
       <div class="cs-section fade-up" id="insights">
-        <span class="cs-section-label">Research</span>
+        <span class="cs-section-label">Define</span>
         <h2 class="cs-section-title">Key insights</h2>
-        <p class="cs-body">From my research, three key insights emerged that shaped our design strategy.</p>
+        <p class="cs-body">From our research, three key insights emerged that shaped our design strategy.</p>
 
         <div class="insight-grid">
           <div class="insight-card">
             <p class="insight-number">01</p>
             <p class="insight-title">Relationships feel like work</p>
-            <p class="insight-desc">Maintaining relationships in a community is based on an invisible cost-benefit
-              analysis — people need to feel the payoff is worth the social effort.</p>
+            <p class="insight-desc">Maintaining neighbourly relationships is seen as an added effort on top of already
+              busy daily lives.</p>
           </div>
           <div class="insight-card">
             <p class="insight-number">02</p>
             <p class="insight-title">People stick to what's familiar</p>
-            <p class="insight-desc">Existing relationships with family and close friends already fill connection needs.
-              Breaking into a new community requires a compelling enough hook.</p>
+            <p class="insight-desc">Neighbours prefer spending limited time with people they already know, and are
+              generally hesitant to initiate relationships with strangers.</p>
           </div>
           <div class="insight-card">
             <p class="insight-number">03</p>
             <p class="insight-title">Shared interests drive connection</p>
-            <p class="insight-desc">Community is something at a human scale — neighbours connected by a hobby or
-              interest are far more likely to build meaningful connections.</p>
+            <p class="insight-desc">Common needs or interests—such as parenting or hobbies—strongly motivate neighbours
+              to connect with one another.</p>
           </div>
         </div>
 
@@ -849,9 +906,9 @@
           <span class="pivot-icon">🏸</span>
           <div class="pivot-callout-content">
             <span class="pivot-callout-label">The design pivot</span>
-            <p class="pivot-callout-text">"With this pivot, we narrowed their asking for neighbours to start connecting
-              through shared interests. If you can play badminton at your doorstep, you're more likely to start, not 30
-              minutes away."</p>
+            <p class="pivot-callout-text">With this insight, we narrowed down from solving for neighbourliness to start
+              solving for connecting interests. If you want to play badminton, your best partner is likely 2 floors
+              down, not 20 minutes away.</p>
           </div>
         </div>
       </div>
@@ -860,7 +917,7 @@
 
       <!-- THE SOLUTION -->
       <div class="cs-section fade-up" id="solution">
-        <span class="cs-section-label">Design</span>
+        <span class="cs-section-label">Solution</span>
         <h2 class="cs-section-title">Neighbourhood</h2>
         <p class="cs-body">A community product that connects people in Singapore with their neighbours through shared
           interests. The design focused on three core principles that made connection feel effortless and low-stakes.
@@ -872,14 +929,13 @@
             <div class="feature-content">
               <span class="feature-tag">Familiar faces, shared interests</span>
               <h3 class="feature-title">People connect to people, not places</h3>
-              <p class="feature-desc">By suggesting nearby neighbours with compatible interests — a mutual contact,
-                sport or activity in common — users can discover a familiar face. The product leans into recommendations
-                that make the first message feel natural, not awkward.</p>
+              <p class="feature-desc">By suggesting nearby neighbours with shared interests or mutual contacts, and
+                recommending relevant local events, the product lowers the social barrier to initiating connections with
+                strangers.</p>
             </div>
             <div class="feature-image">
               <div class="feature-phones">
-                <div class="mini-phone"></div>
-                <div class="mini-phone"></div>
+                <img src="neighbourhood_feature1.png">
               </div>
             </div>
           </div>
@@ -888,14 +944,13 @@
             <div class="feature-content">
               <span class="feature-tag">Small steps to connection</span>
               <h3 class="feature-title">Instead of "friend me", start with small, manageable actions</h3>
-              <p class="feature-desc">Rather than forcing connection, the app suggests bite-size actions such as joining
-                a group run, sharing a recipe, or co-hosting a local event. Small actions build trust before bigger
-                connections form.</p>
+              <p class="feature-desc">Instead of framing connection as “making friends,” the product breaks interaction
+                into simple, manageable actions, such as starting conversations around common interests or joining
+                events with familiar faces.</p>
             </div>
             <div class="feature-image" style="background: var(--secondary);">
               <div class="feature-phones">
-                <div class="mini-phone"></div>
-                <div class="mini-phone"></div>
+                <img src="neighbourhood_feature2.png">
               </div>
             </div>
           </div>
@@ -903,15 +958,13 @@
           <div class="feature-row">
             <div class="feature-content">
               <span class="feature-tag">Connections that keep growing</span>
-              <h3 class="feature-title">After meeting, we suggest people expand to their neighbourhood</h3>
-              <p class="feature-desc">After meeting, we suggest people add new members to their neighbourhood activity —
-                organically extending their local network and reinforcing the habit of connection, making every
-                interaction a gateway to more.</p>
+              <h3 class="feature-title">After meeting, we suggest people to connect</h3>
+              <p class="feature-desc">After events, we suggest people users they’ve already met and visually show how
+                adding them expands their neighbourhood network—encouraging continued, effortless connection.</p>
             </div>
             <div class="feature-image" style="background: var(--purple-light);">
               <div class="feature-phones">
-                <div class="mini-phone"></div>
-                <div class="mini-phone"></div>
+                <img src="neighbourhood_feature3.png">
               </div>
             </div>
           </div>
@@ -925,28 +978,17 @@
       <div class="cs-section fade-up" id="outcome">
         <span class="cs-section-label">Outcome</span>
         <h2 class="cs-section-title">Vague problem to meaningful product</h2>
-        <p class="cs-body">This project started with an extremely open brief and no clear direction. The resulting
-          product doesn't try to force community — it instead creates the conditions for it to happen naturally. By
-          starting with shared interests, reducing friction, and building momentum through small actions, Neighbourhood
-          makes community feel possible again.</p>
-        <p class="cs-body">The resulting product doesn't try to force community. It instead creates the conditions for
-          it to happen — reducing friction at every step from first discovery to ongoing connection.</p>
+        <p class="cs-body">This project demonstrated how a broad and ambiguous goal—“improve neighbourliness”—can be
+          transformed into a product through research and problem framing. By uncovering the real barriers to
+          neighbourly interaction and reframing connection around
+          familiarity, effort, and shared interests, we moved towards concrete design decisions.</p>
+        <p class="cs-body">The resulting product doesn’t try to force community, but instead creates the conditions for
+          meaningful, low-friction connections. This demonstrates how clarity in problem definition is often the most
+          impactful design outcome.</p>
 
-        <div class="outcome-grid">
-          <div class="outcome-card">
-            <p class="outcome-number">5/5</p>
-            <p class="outcome-label">Usability test participants found the interest-matching concept immediately
-              intuitive</p>
-          </div>
-          <div class="outcome-card">
-            <p class="outcome-number">4 days</p>
-            <p class="outcome-label">From vague brief to tested, high-fidelity prototype ready for development handoff
-            </p>
-          </div>
-          <div class="outcome-card">
-            <p class="outcome-number">3</p>
-            <p class="outcome-label">Core design principles validated through research and user testing sessions</p>
-          </div>
+        <div class="cs-quote">
+          <p>“Connecting with neighbours feels like a game, with secret characters to uncover."</p>
+          <cite>- User, 39</cite>
         </div>
       </div>
 
@@ -955,12 +997,14 @@
       <!-- REFLECTION -->
       <div class="cs-section fade-up" id="reflection">
         <span class="cs-section-label">Reflection</span>
-        <h2 class="cs-section-title">Got a vague problem to solve?</h2>
-        <p class="cs-body">The most important skill in this project wasn't design — it was reframing. The initial brief
-          was so open it was almost impossible to act on. Narrowing it down to a specific, solvable question unlocked
+        <h2 class="cs-section-title">Solve a vague problem</h2>
+        <p class="cs-body">The most important skill in this project wasn't finding a solution — it was reframing the
+          problem. The initial brief
+          was so open it was almost impossible to act on. Using design to scope it down to a specific, solvable question
+          unlocked
           everything else.</p>
 
-        <div class="reflection-grid">
+        <!-- <div class="reflection-grid">
           <div class="reflection-card highlight">
             <p class="reflection-title">Start narrow, not broad</p>
             <p class="reflection-text">A vague problem is not an invitation to solve everything. It's an invitation to
@@ -983,7 +1027,7 @@
               talking to your neighbours. A product that solves a meaningful problem in the real world is the only kind
               worth building.</p>
           </div>
-        </div>
+        </div> -->
 
         <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
           <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
@@ -998,7 +1042,7 @@
           <p class="next-title">Grow with CPF: Reframing retirement for the next generation</p>
         </div>
         <div class="next-arrow">
-          <span class="material-symbols-outlined">arrow_outward</span>
+          <i class="fa-solid fa-arrow-right"></i>
         </div>
       </a>
 
@@ -1009,6 +1053,7 @@
       <p class="toc-label">Contents</p>
       <a href="#overview" class="toc-link">Overview</a>
       <a href="#problem" class="toc-link">The vague problem</a>
+      <a href="#understanding" class="toc-link">Understanding the problem</a>
       <a href="#insights" class="toc-link">Key insights</a>
       <a href="#solution" class="toc-link">The solution</a>
       <a href="#outcome" class="toc-link">Outcome</a>
