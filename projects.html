@@ -1,109 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Jacquelyn</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* PAGE-SPECIFIC STYLES (projects only) */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* PAGE-SPECIFIC STYLES (projects only) */
 
-  .page-header {
-    padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
-  }
-  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--gray); margin-bottom: 20px; }
-  .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
-  .breadcrumb a:hover { color: var(--primary); }
-  .breadcrumb span { color: var(--primary-light); }
-  .page-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -0.03em; color: var(--primary-dark); margin-bottom: 14px; }
-  .page-desc { font-size: clamp(0.95rem, 1.5vw, 1.05rem); color: var(--gray); line-height: 1.7; max-width: 520px; }
+    .page-header {
+      padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
+    }
 
-  .filter-bar { padding: 20px clamp(20px, 5vw, 80px); border-bottom: 1px solid var(--primary-light); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px; }
-  .filter-btn { padding: 7px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; font-family: var(--font-body); cursor: pointer; border: 1.5px solid var(--navy); background: transparent; color: var(--gray); transition: all 0.2s; }
-  .filter-btn:hover { border-color: var(--gray); color: var(--gray); }
-  .filter-btn.active { background: var(--gray); border-color: var(--gray); color: var(--white); }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
 
-  .projects-section { padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px); }
-  .projects-count { font-size: 0.82rem; color: var(--gray); margin-bottom: 28px; }
-  .projects-count strong { color: var(--primary-dark); font-weight: 700; }
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .breadcrumb a:hover {
+      color: var(--primary);
+    }
 
-  /* Featured card spans full width */
-  .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
-  .project-card.featured .project-thumb { aspect-ratio: auto; height: 100%; min-height: 280px; }
-  .project-card.featured .project-info { padding: 32px; justify-content: center; }
-  .project-card.featured .project-name { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+    .breadcrumb span {
+      color: var(--primary-light);
+    }
 
-  @media (max-width: 768px) {
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
-    .project-card.featured .project-thumb { min-height: 220px; height: auto; aspect-ratio: 16/10; }
-  }
-</style>
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.03em;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .page-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .filter-bar {
+      padding: 20px clamp(20px, 5vw, 80px);
+      border-bottom: 1px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 4px;
+    }
+
+    .filter-btn {
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: 1.5px solid var(--navy);
+      background: transparent;
+      color: var(--gray);
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--gray);
+      color: var(--gray);
+    }
+
+    .filter-btn.active {
+      background: var(--gray);
+      border-color: var(--gray);
+      color: var(--white);
+    }
+
+    .projects-section {
+      padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px);
+    }
+
+    .projects-count {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    .projects-count strong {
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    /* Featured card spans full width */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-card.featured .project-thumb {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 280px;
+    }
+
+    .project-card.featured .project-info {
+      padding: 32px;
+      justify-content: center;
+    }
+
+    .project-card.featured .project-name {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured .project-thumb {
+        min-height: 220px;
+        height: auto;
+        aspect-ratio: 16/10;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="nav-placeholder"></div>
+  <div id="nav-placeholder"></div>
 
-<div class="page-header">
-  <div class="breadcrumb">
-    <a href="index.html">Home</a>
-    <span>›</span>
-    <span>Projects</span>
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Projects</span>
+    </div>
+    <h1 class="page-title">Recent work</h1>
+    <p class="page-desc">A collection of product design projects spanning fintech, community, and data-driven
+      experiences.</p>
   </div>
-  <h1 class="page-title">Recent work</h1>
-  <p class="page-desc">A collection of product design projects spanning fintech, community, and data-driven experiences.</p>
-</div>
 
-<div class="filter-bar">
-  <span class="filter-label">Filter</span>
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="ux">UX Design</button>
-  <button class="filter-btn" data-filter="research">Research</button>
-  <button class="filter-btn" data-filter="strategy">Strategy</button>
-  <button class="filter-btn" data-filter="data">Data</button>
-</div>
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ux">UX Design</button>
+    <button class="filter-btn" data-filter="research">Research</button>
+    <button class="filter-btn" data-filter="strategy">Strategy</button>
+    <button class="filter-btn" data-filter="data">Data</button>
+  </div>
 
-<section class="projects-section">
-  <p class="projects-count">Showing <strong id="project-count"></strong></p>
-  <!-- All project cards injected from PROJECTS in components.js -->
-  <div class="projects-grid" id="all-projects"></div>
-</section>
+  <section class="projects-section">
+    <p class="projects-count">Showing <strong id="project-count"></strong></p>
+    <!-- All project cards injected from PROJECTS in components.js -->
+    <div class="projects-grid" id="all-projects"></div>
+  </section>
 
-<div id="cta-placeholder"></div>
-<div id="footer-placeholder"></div>
+  <div id="cta-placeholder"></div>
+  <div id="footer-placeholder"></div>
 
-<script src="components.js"></script>
-<script>
-  renderNav('Projects');
-  renderCTA();
-  renderFooter();
- 
-  // Define updateCount first so it's available everywhere
-  function updateCount(n) {
-    document.getElementById('project-count').textContent =
-      n + ' project' + (n !== 1 ? 's' : '');
-  }
- 
-  renderProjectCards('all-projects', { featured: true });
- 
-  // Count cards actually in the DOM after rendering
-  updateCount(document.querySelectorAll('.project-card').length);
+  <script src="components.js"></script>
+  <script>
+    renderNav('Projects');
+    renderCTA();
+    renderFooter();
 
-  // Filter buttons
+    // Define updateCount first so it's available everywhere
+    function updateCount(n) {
+      document.getElementById('project-count').textContent =
+        n + ' project' + (n !== 1 ? 's' : '');
+    }
+
+    renderProjectCards('all-projects', { featured: true });
+
+    // Count cards actually in the DOM after rendering
+    updateCount(document.querySelectorAll('.project-card').length);
+
+    // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-  
+
         const selected = btn.dataset.filter;
-  
+
         // Show/hide cards
         const cards = document.querySelectorAll('.project-card');
         let visible = 0;
@@ -113,7 +228,7 @@
           card.style.display = match ? '' : 'none';
           if (match) visible++;
         });
-  
+
         // Accent matching tag, default the rest
         document.querySelectorAll('.project-card').forEach(card => {
           if (card.style.display === 'none') return;
@@ -125,12 +240,13 @@
             }
           });
         });
-  
+
         updateCount(visible);
       });
     });
 
-  initScrollAnimations();
-</script>
+    initScrollAnimations();
+  </script>
 </body>
+
 </html>

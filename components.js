@@ -49,6 +49,17 @@ const PROJECTS = [
     href: 'https://jacquxes.github.io/projects/neighbourhood.html',
     thumbClass: 'project-thumb-alt',
   },
+  {
+    id: 'kinokuniya',
+    title: 'Kinokuniya: Adapting design cross-culturally',
+    desc: 'Redesigned the Kinokuniya website to make it accessible across languages.',
+    meta: 'UX Design',
+    year: '2025',
+    tags: ['ux'],
+    image: 'thumbnail-kinokuniya.png',
+    href: 'https://jacquxes.github.io/projects/kinokuniya.html',
+    thumbClass: 'project-thumb-alt',
+  },
   // {
   //   id: 'dashboard',
   //   title: 'Dashboard redesign: Making data actually useful',
