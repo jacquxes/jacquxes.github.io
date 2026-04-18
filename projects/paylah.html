@@ -1229,35 +1229,32 @@
       <div class="cs-section fade-up" id="heuristic">
         <span class="cs-section-label">Analysis</span>
         <h2 class="cs-section-title">Heuristic evaluation</h2>
-        <p class="cs-body">To complement the user research, I evaluated PayLah! against established usability heuristics
-          across the three core flows. This gave a structured, principle-based view of where the interface violated good
-          design practice — independent of what users said, but consistent with it.</p>
+        <p class="cs-body">To complement the user research, I evaluated PayLah! against Nielsen's usability heuristics
+          across the transfer and QR payment flows. This gave a structured, principle-based view of where the interface
+          fell short — independent of what users said, but consistent with it.</p>
 
         <div class="heuristic-list">
 
           <div class="heuristic-card fade-up">
             <div>
-              <p class="heuristic-area">Flow 01</p>
+              <p class="heuristic-area">Flow 01 · Heuristic #6 — Recognition rather than recall</p>
               <p class="heuristic-title">Transferring money</p>
-              <div class="heuristic-col-label current">Current experience</div>
+              <div class="heuristic-col-label current">Problem identified</div>
               <div class="heuristic-points">
-                <p class="heuristic-point">Transfer entry point not prominent on home screen — requires scanning to
-                  locate</p>
-                <p class="heuristic-point">Contact selection mixes PayLah! and phone contacts without clear distinction
-                </p>
-                <p class="heuristic-point">Amount entry lacks real-time balance visibility — users can't easily check
-                  limits</p>
+                <p class="heuristic-point">Users don't know their transfer limit until they hit an error — the limit
+                  isn't shown anywhere on the transfer screen</p>
+                <p class="heuristic-point">When they do hit the limit, there's no clear path to change it — users are
+                  left to figure it out on their own</p>
               </div>
             </div>
             <div>
               <p class="heuristic-title" style="visibility:hidden;">-</p>
-              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-col-label suggested">Suggested improvement</div>
               <div class="heuristic-points">
-                <p class="heuristic-point suggested-point">Surface transfer CTA prominently with persistent bottom
-                  navigation</p>
-                <p class="heuristic-point suggested-point">Separate PayLah! contacts from phone contacts with clear
-                  visual grouping</p>
-                <p class="heuristic-point suggested-point">Show available balance inline during amount entry</p>
+                <p class="heuristic-point suggested-point">Show the daily transfer limit on the transfer screen so users
+                  can see it before they need it</p>
+                <p class="heuristic-point suggested-point">If a user hits the limit anyway, surface a direct option to
+                  change it from the error state — don't make them hunt for it in settings</p>
               </div>
             </div>
             <div class="heuristic-image">
@@ -1267,61 +1264,55 @@
 
           <div class="heuristic-card fade-up">
             <div>
-              <p class="heuristic-area">Flow 02</p>
-              <p class="heuristic-title">Making payment via QR</p>
-              <div class="heuristic-col-label current">Current experience</div>
+              <p class="heuristic-area">Flow 02 · Heuristic #9 — Help users recover from errors</p>
+              <p class="heuristic-title">Making payment via QR — error recovery</p>
+              <div class="heuristic-col-label current">Problem identified</div>
               <div class="heuristic-points">
-                <p class="heuristic-point">QR scanner buried inside the app — not accessible from the lock screen or
-                  home</p>
-                <p class="heuristic-point">Post-payment confirmation screen disappears too quickly and lacks a
-                  persistent receipt</p>
-                <p class="heuristic-point">No way to distinguish between different QR payment types at a glance</p>
+                <p class="heuristic-point">Users expect QR codes to work interchangeably — when one doesn't, the generic
+                  "Invalid QR code" message gives them no idea what went wrong or what to do next</p>
               </div>
             </div>
             <div>
               <p class="heuristic-title" style="visibility:hidden;">-</p>
-              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-col-label suggested">Suggested improvement</div>
               <div class="heuristic-points">
-                <p class="heuristic-point suggested-point">Add QR scanner shortcut to lock screen widget and home screen
-                </p>
-                <p class="heuristic-point suggested-point">Make payment confirmation persistent and accessible from
-                  transaction history immediately</p>
-                <p class="heuristic-point suggested-point">Label QR payment types clearly (PayNow, NETS, etc.) before
-                  confirming</p>
+                <p class="heuristic-point suggested-point">Give a specific reason for the failure — for example, tell
+                  the user if they scanned a QR code that isn't for payment, or if multiple QR codes were detected at
+                  once</p>
+                <p class="heuristic-point suggested-point">Pair the error with a clear next step so the user knows
+                  exactly how to recover</p>
               </div>
             </div>
             <div class="heuristic-image">
-              <img src="paylah_heuristic2.png" alt="QR payment screens">
+              <img src="paylah_heuristic2.png" alt="QR payment error screens">
             </div>
           </div>
 
           <div class="heuristic-card fade-up">
             <div>
-              <p class="heuristic-area">Flow 03</p>
-              <p class="heuristic-title">Accessing the app</p>
-              <div class="heuristic-col-label current">Current experience</div>
+              <p class="heuristic-area">Flow 02 · Heuristic #5 — Error prevention</p>
+              <p class="heuristic-title">Making payment via QR — preventing mistakes</p>
+              <div class="heuristic-col-label current">Problem identified</div>
               <div class="heuristic-points">
-                <p class="heuristic-point">Biometric login inconsistently offered — some users not prompted to set it up
-                </p>
-                <p class="heuristic-point">Session timeout too aggressive, frequently interrupting mid-task flows</p>
-                <p class="heuristic-point">Error messages on login failure are generic and don't help users self-recover
-                </p>
+                <p class="heuristic-point">Beyond an extra confirmation screen and transfer limits, there's little to
+                  stop users from entering the wrong amount</p>
+                <p class="heuristic-point">White text on a black background on the confirmation screen may be hard to
+                  read for some users, making it easier to miss an error</p>
               </div>
             </div>
             <div>
               <p class="heuristic-title" style="visibility:hidden;">-</p>
-              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-col-label suggested">Suggested improvement</div>
               <div class="heuristic-points">
-                <p class="heuristic-point suggested-point">Proactively prompt biometric setup after first successful
-                  login for all users</p>
-                <p class="heuristic-point suggested-point">Extend session timeout for active use; only lapse during
-                  genuine inactivity</p>
-                <p class="heuristic-point suggested-point">Replace generic error messages with specific next steps for
-                  each failure mode</p>
+                <p class="heuristic-point suggested-point">Display the payment amount in a larger size against a
+                  higher-contrast background on the confirmation screen, so it's harder to miss</p>
+                <p class="heuristic-point suggested-point">If the amount is significantly higher than what the user
+                  usually pays, prompt them to confirm — a simple "This is more than you usually pay. Are you sure?" can
+                  catch mistakes before they happen</p>
               </div>
             </div>
             <div class="heuristic-image">
-              <img src="paylah_heuristic3.png" alt="App access screens">
+              <img src="paylah_heuristic3.png" alt="QR payment confirmation screens">
             </div>
           </div>
 
