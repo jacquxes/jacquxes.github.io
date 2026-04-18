@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBS PayLah! UX Research — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward" />
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://kit.fontawesome.com/7881900bfb.js" crossorigin="anonymous"></script>
+  <style>
+    /* ── HERO ── */
+    .case-hero {
+      background: var(--navy);
+      padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .case-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--white);
+    }
+
+    .breadcrumb span {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .case-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-hero-content {
+      padding-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .case-subtitle {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .case-meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .case-meta-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .case-meta-value {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+    }
+
+    .case-hero-image {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+      align-self: start;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      height: 700px;
+      margin-top: calc(-1 * clamp(60px, 8vw, 100px));
+    }
+
+    .hero-illustration img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .case-body {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 60px;
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
+      align-items: start;
+    }
+
+    /* ── STICKY TOC ── */
+    .case-toc {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toc-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .toc-link {
+      font-size: 0.82rem;
+      color: var(--gray);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-left: 2px solid var(--purple-light);
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .case-main {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    /* ── SECTION BLOCKS ── */
+    .cs-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .cs-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      line-height: 1.2;
+    }
+
+    .cs-body {
+      font-size: clamp(0.95rem, 1.5vw, 1rem);
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .cs-body+.cs-body {
+      margin-top: -8px;
+    }
+
+    /* ── OVERVIEW STATS ── */
+    .overview-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .overview-stat {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+
+    .overview-stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .overview-stat-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    /* ── TWO-COL TEXT ── */
+    .two-col-text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 8px;
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .cs-quote {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-quote::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: rgba(255, 255, 255, 0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .cs-quote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--white);
+      line-height: 1.5;
+      font-weight: 400;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-quote cite {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: normal;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── INSIGHT CARDS ── */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .insight-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .insight-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .insight-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.35;
+    }
+
+    .insight-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── PIVOT CALLOUT ── */
+    .pivot-callout {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .pivot-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .pivot-callout-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pivot-callout-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .pivot-callout-text {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* ── PERSONA CARD ── */
+    .user-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .user-persona {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .persona-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 3px solid var(--white);
+    }
+
+    .persona-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    .persona-role {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .persona-quote {
+      font-size: 0.9rem;
+      color: var(--black);
+      font-style: italic;
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 3px solid var(--secondary);
+    }
+
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .persona-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--purple-light);
+    }
+
+    /* ── OBJECTIVE CARDS ── */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .objective-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-left: 3px solid var(--purple-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .objective-card:hover {
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .objective-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .objective-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.35;
+    }
+
+    .objective-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── FEATURE ROWS ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      margin-top: 8px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .feature-row.reverse {
+      direction: rtl;
+    }
+
+    .feature-row.reverse>* {
+      direction: ltr;
+    }
+
+    .feature-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .feature-image {
+      background: var(--purple-light);
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feature-phones {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .mini-phone {
+      flex: 1;
+      aspect-ratio: 9/19;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+    }
+
+    .mini-phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mini-phone:nth-child(2) {
+      transform: translateY(-16px);
+    }
+
+    /* ── OUTCOME STATS ── */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .outcome-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .outcome-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .outcome-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ── REFLECTION CARDS ── */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .reflection-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 3px solid var(--purple-light);
+    }
+
+    .reflection-card.highlight {
+      border-left-color: var(--navy);
+    }
+
+    .reflection-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .reflection-text {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 16px;
+    }
+
+    .next-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(40, 50, 135, 0.1);
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .next-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .next-arrow {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .next-project:hover .next-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    /* ── DIVIDER ── */
+    .cs-divider {
+      height: 1px;
+      background: var(--purple-light);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .case-body {
+        grid-template-columns: 1fr;
+      }
+
+      .case-toc {
+        display: none;
+      }
+
+      .insight-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .case-hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .case-hero-image {
+        display: none;
+      }
+
+      .two-col-text {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row.reverse {
+        direction: ltr;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .user-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .case-meta-row {
+        gap: 20px;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .next-project {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ── PAGE-SPECIFIC: RESEARCH METHOD CARDS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .method-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 3px solid var(--purple-light);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .method-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--navy);
+    }
+
+    .method-card.qualitative {
+      border-color: var(--secondary);
+    }
+
+    .method-card.quantitative {
+      border-color: var(--navy);
+    }
+
+    .method-type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .method-card.qualitative .method-type {
+      color: var(--navy);
+    }
+
+    .method-card.quantitative .method-type {
+      color: var(--navy);
+    }
+
+    .method-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    .method-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .method-detail {
+      font-size: 0.78rem;
+      color: var(--gray);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 8px;
+      border-top: 1px solid var(--purple-light);
+    }
+
+    .method-detail span {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .method-detail span::before {
+      content: '–';
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+
+    /* ── HEURISTIC EVALUATION CARDS ── */
+    .heuristic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    .heuristic-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .heuristic-area {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .heuristic-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .heuristic-col-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .heuristic-col-label.current {
+      color: var(--gray);
+    }
+
+    .heuristic-col-label.suggested {
+      color: var(--navy);
+    }
+
+    .heuristic-points {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .heuristic-point {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.55;
+      font-weight: 300;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .heuristic-point::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--purple-light);
+      font-weight: 700;
+    }
+
+    .heuristic-point.suggested-point {
+      color: var(--black);
+    }
+
+    .heuristic-point.suggested-point::before {
+      color: var(--navy);
+    }
+
+    .heuristic-image {
+      grid-column: 1 / -1;
+      background: var(--purple-light);
+      border-radius: var(--radius-sm);
+      aspect-ratio: 16/6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .heuristic-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .heuristic-card {
+        grid-template-columns: 1fr;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- ── HERO ── -->
+  <div class="case-hero">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../projects.html">Projects</a>
+      <span>›</span>
+      <span>DBS PayLah! UX Research</span>
+    </div>
+
+    <div class="case-hero-inner">
+      <div class="case-hero-content fade-up">
+        <span class="case-tag">UX Research · 2025</span>
+        <h1 class="case-title">UX Research on DBS PayLah!</h1>
+        <p class="case-subtitle">A mixed-methods study combining interviews, surveys, and heuristic evaluation to
+          uncover where PayLah!'s payment and transfer experience breaks down — and what to do about it.</p>
+        <div class="case-meta-row">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Role</span>
+            <span class="case-meta-value">Solo UX Researcher</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Methods</span>
+            <span class="case-meta-value">Interviews · Survey · Heuristic evaluation</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Output</span>
+            <span class="case-meta-value">Research report + design recommendations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-hero-image fade-up d1">
+        <div class="hero-illustration">
+          <img src="paylah_hero.png" alt="DBS PayLah! UX Research">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BODY ── -->
+  <div class="case-body">
+    <main class="case-main">
+
+      <!-- OVERVIEW -->
+      <div class="cs-section fade-up" id="overview">
+        <span class="cs-section-label">Overview</span>
+        <h2 class="cs-section-title">The project</h2>
+        <p class="cs-body">PayLah! is DBS's digital wallet — used alongside PayNow for transfers and payments in
+          Singapore. Despite its widespread adoption, the app had friction points that weren't well understood. This
+          project set out to identify those areas through a structured, multi-method research process: first
+          understanding how real users experience the app, then evaluating it against usability principles, and finally
+          translating findings into concrete design recommendations that were tested with users.</p>
+
+        <div class="overview-stats">
+          <div class="overview-stat">
+            <p class="overview-stat-label">Approach</p>
+            <p class="overview-stat-value">Qualitative + quantitative</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Research methods</p>
+            <p class="overview-stat-value">Interviews, survey, heuristic eval, usability testing</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Focus areas</p>
+            <p class="overview-stat-value">Money transfer, QR payment, app access</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- PROBLEM -->
+      <div class="cs-section fade-up" id="problem">
+        <span class="cs-section-label">Problem</span>
+        <h2 class="cs-section-title">Where does PayLah! lose its users?</h2>
+        <p class="cs-body">PayLah! and PayNow serve overlapping but distinct use cases — and users often switch between
+          them without a clear mental model of why. The friction that results tends to surface in the same three
+          moments: sending money, making a QR payment, and simply getting into the app. The goal of this research was to
+          make those friction points visible and quantifiable, and to understand whether they were being felt broadly or
+          only by specific user types.</p>
+
+        <div class="two-col-text">
+          <div>
+            <p
+              style="font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;">
+              Research questions</p>
+            <p class="cs-body" style="font-size:0.875rem;">What prevents users from completing transfers and payments
+              smoothly? Where do they feel uncertain, frustrated, or unsupported? Are these issues consistent across
+              different user profiles?</p>
+          </div>
+          <div>
+            <p
+              style="font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;">
+              Scope</p>
+            <p class="cs-body" style="font-size:0.875rem;">Three core flows were examined: transferring money to a
+              contact, making a payment via QR code, and accessing the app reliably. Each was evaluated both through
+              user accounts and through heuristic analysis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- RESEARCH METHODS -->
+      <div class="cs-section fade-up" id="research">
+        <span class="cs-section-label">Research</span>
+        <h2 class="cs-section-title">A mixed-methods approach</h2>
+        <p class="cs-body">No single method gives the full picture. Interviews reveal the why — the mental models,
+          frustrations, and workarounds users have built. Surveys reveal the how common — whether those experiences are
+          isolated or widespread. Together, they let research findings be both rich and credible.</p>
+
+        <div class="method-grid">
+          <div class="method-card qualitative">
+            <span class="method-type">Qualitative</span>
+            <p class="method-title">User interviews</p>
+            <p class="method-desc">In-depth conversations with PayLah! users to understand how they think about money
+              transfer and payment, what trips them up, and what workarounds they've developed.</p>
+            <div class="method-detail">
+              <span>5 participants across different usage patterns</span>
+              <span>Semi-structured interview format</span>
+              <span>Thematic analysis to surface patterns</span>
+              <span>Questions covering transfer flow, QR payment, and app access</span>
+            </div>
+          </div>
+
+          <div class="method-card quantitative">
+            <span class="method-type">Quantitative</span>
+            <p class="method-title">Survey</p>
+            <p class="method-desc">A structured survey to test whether patterns found in interviews were broadly shared
+              — validating qualitative findings with measurable frequency data across a wider sample.</p>
+            <div class="method-detail">
+              <span>Broader sample beyond interview participants</span>
+              <span>Likert-scale and multiple choice questions</span>
+              <span>Focused on frequency, confidence, and task completion</span>
+              <span>Results used to prioritise which issues to address first</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-quote">
+          <cite>Research principle</cite>
+          <p>"Interviews tell you what's wrong. Surveys tell you how wrong it is. You need both to make a case for
+            change."</p>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- RESEARCH INSIGHTS -->
+      <div class="cs-section fade-up" id="insights">
+        <span class="cs-section-label">Findings</span>
+        <h2 class="cs-section-title">Research insights</h2>
+        <p class="cs-body">Three themes emerged consistently across both the interviews and the survey — pointing to the
+          same underlying issues regardless of user profile or payment context.</p>
+
+        <div class="insight-grid">
+          <div class="insight-card">
+            <p class="insight-number">01</p>
+            <p class="insight-title">Users want to avoid making costly mistakes</p>
+            <p class="insight-desc">90% of survey respondents cited "keying in the wrong amount" as a top concern, and
+              80% flagged "transferring to the wrong person". As one participant put it: <em>"Sometimes you type too
+                fast — instead of transferring $3.57 you transfer $357."</em> — Data scientist, 36.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">02</p>
+            <p class="insight-title">Users want to complete payments quickly and successfully</p>
+            <p class="insight-desc">70% flagged "unable to scan QR code" and 50% flagged "insufficient wallet balance"
+              as top concerns. As one participant explained: <em>"If my phone cannot scan the QR code, I'm concerned it
+                won't work — especially when there is a long queue behind me."</em> — Market research executive, 34.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-number">03</p>
+            <p class="insight-title">New and experienced users have fundamentally different needs</p>
+            <p class="insight-desc">Experienced users had built mental shortcuts that masked friction. New users
+              encountered the same flows as significantly harder. A single design cannot optimally serve both without
+              explicitly accounting for this split.</p>
+          </div>
+        </div>
+
+        <div class="pivot-callout">
+          <span class="pivot-icon">💡</span>
+          <div class="pivot-callout-content">
+            <span class="pivot-callout-label">Key research insight</span>
+            <p class="pivot-callout-text">"The biggest fears aren't about the app being hard to use — they're about the
+              consequences of using it wrong. Design that prevents errors matters more than design that looks clean."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- HEURISTIC EVALUATION -->
+      <div class="cs-section fade-up" id="heuristic">
+        <span class="cs-section-label">Analysis</span>
+        <h2 class="cs-section-title">Heuristic evaluation</h2>
+        <p class="cs-body">To complement the user research, I evaluated PayLah! against established usability heuristics
+          across the three core flows. This gave a structured, principle-based view of where the interface violated good
+          design practice — independent of what users said, but consistent with it.</p>
+
+        <div class="heuristic-list">
+
+          <div class="heuristic-card fade-up">
+            <div>
+              <p class="heuristic-area">Flow 01</p>
+              <p class="heuristic-title">Transferring money</p>
+              <div class="heuristic-col-label current">Current experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point">Transfer entry point not prominent on home screen — requires scanning to
+                  locate</p>
+                <p class="heuristic-point">Contact selection mixes PayLah! and phone contacts without clear distinction
+                </p>
+                <p class="heuristic-point">Amount entry lacks real-time balance visibility — users can't easily check
+                  limits</p>
+              </div>
+            </div>
+            <div>
+              <p class="heuristic-title" style="visibility:hidden;">-</p>
+              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point suggested-point">Surface transfer CTA prominently with persistent bottom
+                  navigation</p>
+                <p class="heuristic-point suggested-point">Separate PayLah! contacts from phone contacts with clear
+                  visual grouping</p>
+                <p class="heuristic-point suggested-point">Show available balance inline during amount entry</p>
+              </div>
+            </div>
+            <div class="heuristic-image">
+              <img src="paylah_heuristic1.png" alt="Transferring money screens">
+            </div>
+          </div>
+
+          <div class="heuristic-card fade-up">
+            <div>
+              <p class="heuristic-area">Flow 02</p>
+              <p class="heuristic-title">Making payment via QR</p>
+              <div class="heuristic-col-label current">Current experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point">QR scanner buried inside the app — not accessible from the lock screen or
+                  home</p>
+                <p class="heuristic-point">Post-payment confirmation screen disappears too quickly and lacks a
+                  persistent receipt</p>
+                <p class="heuristic-point">No way to distinguish between different QR payment types at a glance</p>
+              </div>
+            </div>
+            <div>
+              <p class="heuristic-title" style="visibility:hidden;">-</p>
+              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point suggested-point">Add QR scanner shortcut to lock screen widget and home screen
+                </p>
+                <p class="heuristic-point suggested-point">Make payment confirmation persistent and accessible from
+                  transaction history immediately</p>
+                <p class="heuristic-point suggested-point">Label QR payment types clearly (PayNow, NETS, etc.) before
+                  confirming</p>
+              </div>
+            </div>
+            <div class="heuristic-image">
+              <img src="paylah_heuristic2.png" alt="QR payment screens">
+            </div>
+          </div>
+
+          <div class="heuristic-card fade-up">
+            <div>
+              <p class="heuristic-area">Flow 03</p>
+              <p class="heuristic-title">Accessing the app</p>
+              <div class="heuristic-col-label current">Current experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point">Biometric login inconsistently offered — some users not prompted to set it up
+                </p>
+                <p class="heuristic-point">Session timeout too aggressive, frequently interrupting mid-task flows</p>
+                <p class="heuristic-point">Error messages on login failure are generic and don't help users self-recover
+                </p>
+              </div>
+            </div>
+            <div>
+              <p class="heuristic-title" style="visibility:hidden;">-</p>
+              <div class="heuristic-col-label suggested">Suggested experience</div>
+              <div class="heuristic-points">
+                <p class="heuristic-point suggested-point">Proactively prompt biometric setup after first successful
+                  login for all users</p>
+                <p class="heuristic-point suggested-point">Extend session timeout for active use; only lapse during
+                  genuine inactivity</p>
+                <p class="heuristic-point suggested-point">Replace generic error messages with specific next steps for
+                  each failure mode</p>
+              </div>
+            </div>
+            <div class="heuristic-image">
+              <img src="paylah_heuristic3.png" alt="App access screens">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- RECOMMENDATIONS & USABILITY TESTING -->
+      <div class="cs-section fade-up" id="recommendations">
+        <span class="cs-section-label">Design</span>
+        <h2 class="cs-section-title">Recommendations and usability testing</h2>
+        <p class="cs-body">Findings from the research and heuristic evaluation were translated into design changes,
+          which were then tested with participants in four structured tasks. The goal was to validate whether the
+          changes improved task completion and reduced the confusion identified in the research phase.</p>
+
+        <div class="feature-list">
+
+          <div class="feature-row">
+            <div class="feature-content">
+              <span class="feature-tag">Task 1 — Transfer flow</span>
+              <h3 class="feature-title">Restructured transfer entry and contact selection</h3>
+              <p class="feature-desc">The transfer action was elevated to a persistent home screen CTA. Contact
+                selection was reorganised to clearly separate PayLah! contacts from the phone book, with recent
+                transfers surfaced at the top. Usability testing confirmed users completed the task faster and with
+                fewer hesitations.</p>
+            </div>
+            <div class="feature-image">
+              <div class="feature-phones">
+                <div class="mini-phone"><img src="paylah_task1a.png" alt=""></div>
+                <div class="mini-phone"><img src="paylah_task1b.png" alt=""></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reverse">
+            <div class="feature-content">
+              <span class="feature-tag">Task 2 — QR payment</span>
+              <h3 class="feature-title">Surfaced QR scanner and improved payment confirmation</h3>
+              <p class="feature-desc">The QR scanner was added to the home screen and accessible from the lock screen.
+                After payment, a persistent confirmation screen was introduced that remained accessible from the
+                transaction history. Participants reported significantly higher confidence that payments had gone
+                through successfully.</p>
+            </div>
+            <div class="feature-image" style="background: var(--secondary);">
+              <div class="feature-phones">
+                <div class="mini-phone"><img src="paylah_task2a.png" alt=""></div>
+                <div class="mini-phone"><img src="paylah_task2b.png" alt=""></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-content">
+              <span class="feature-tag">Task 3 — New user onboarding</span>
+              <h3 class="feature-title">Differentiated experience for new vs. familiar users</h3>
+              <p class="feature-desc">A lightweight onboarding layer was introduced for first-time and infrequent users,
+                surfacing key shortcuts and labelling actions that experienced users had learned to navigate. Crucially,
+                this layer disappears after the first few sessions — so it doesn't add friction for users who already
+                know the app.</p>
+            </div>
+            <div class="feature-image" style="background: var(--gray-light);">
+              <div class="feature-phones">
+                <div class="mini-phone"><img src="paylah_task3a.png" alt=""></div>
+                <div class="mini-phone"><img src="paylah_task3b.png" alt=""></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-row reverse">
+            <div class="feature-content">
+              <span class="feature-tag">Task 4 — App access</span>
+              <h3 class="feature-title">Improved biometric setup and session handling</h3>
+              <p class="feature-desc">Biometric setup was made a proactive prompt rather than a buried setting. Session
+                timeout logic was adjusted to only trigger on genuine inactivity — not mid-flow. Error messages were
+                rewritten to give users specific recovery steps. Testing showed a marked reduction in login-related
+                drop-offs.</p>
+            </div>
+            <div class="feature-image" style="background: var(--secondary);">
+              <div class="feature-phones">
+                <div class="mini-phone"><img src="paylah_task4a.png" alt=""></div>
+                <div class="mini-phone"><img src="paylah_task4b.png" alt=""></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- CONCLUSION / REFLECTION -->
+      <div class="cs-section fade-up" id="reflection">
+        <span class="cs-section-label">Reflection</span>
+        <h2 class="cs-section-title">What this research revealed</h2>
+        <p class="cs-body">This project reinforced why mixed-methods research matters. The interviews alone might have
+          generated a long list of frustrations without a sense of priority. The survey alone might have confirmed
+          issues existed but not explained why. Together, they produced findings that were both specific enough to
+          design from and credible enough to advocate for.</p>
+
+        <div class="reflection-grid">
+          <div class="reflection-card highlight">
+            <p class="reflection-title">Qual tells the story. Quant makes the case.</p>
+            <p class="reflection-text">Interview findings are compelling to designers. Survey data is compelling to
+              stakeholders. Running both gives you the language to influence whoever you're presenting to — and the
+              credibility to back it up.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">Heuristic evaluation is a research method, not a shortcut</p>
+            <p class="reflection-text">Done rigorously — evaluated against specific principles, with both current and
+              suggested states — a heuristic evaluation produces actionable findings without requiring a full round of
+              user testing at that stage.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">Design for two users, not one</p>
+            <p class="reflection-text">The new user vs. experienced user split is one of the most commonly overlooked
+              distinctions in app design. The same screen that feels intuitive to someone who's used it for a year can
+              be opaque to someone opening it for the first time.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">Test your recommendations, not just your findings</p>
+            <p class="reflection-text">Research that ends at insights is only half done. Usability testing the
+              recommended designs closed the loop — confirming which changes actually improved the experience and which
+              needed further iteration.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
+          <a href="../projects.html" class="btn btn-outline">View all projects</a>
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <a href="kinokuniya.html" class="next-project fade-up">
+        <div>
+          <p class="next-label">Next project</p>
+          <p class="next-title">Kinokuniya: A design system for a multilingual world</p>
+        </div>
+        <div class="next-arrow">
+          <span class="material-symbols-outlined">arrow_outward</span>
+        </div>
+      </a>
+
+    </main>
+
+    <!-- TOC SIDEBAR -->
+    <aside class="case-toc">
+      <p class="toc-label">Contents</p>
+      <a href="#overview" class="toc-link">Overview</a>
+      <a href="#problem" class="toc-link">The problem</a>
+      <a href="#research" class="toc-link">Research methods</a>
+      <a href="#insights" class="toc-link">Research insights</a>
+      <a href="#heuristic" class="toc-link">Heuristic evaluation</a>
+      <a href="#recommendations" class="toc-link">Recommendations</a>
+      <a href="#reflection" class="toc-link">Reflection</a>
+    </aside>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../components.js"></script>
+  <script>
+    renderNav('Projects');
+    renderFooter();
+    initScrollAnimations();
+
+    const sections = document.querySelectorAll('.cs-section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => tocObserver.observe(s));
+  </script>
+</body>
+
+</html>
