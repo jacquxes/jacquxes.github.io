@@ -1325,20 +1325,27 @@
       <div class="cs-section fade-up" id="recommendations">
         <span class="cs-section-label">Design</span>
         <h2 class="cs-section-title">Recommendations and usability testing</h2>
-        <p class="cs-body">Findings from the research and heuristic evaluation were translated into design changes,
-          which were then tested with participants in four structured tasks. The goal was to validate whether the
-          changes improved task completion and reduced the confusion identified in the research phase.</p>
+        <p class="cs-body">Research findings were translated into two targeted design recommendations, each addressing a
+          specific point of failure identified in the research. Both were tested with participants to validate whether
+          they improved task completion — and to surface any new friction the designs introduced.</p>
 
         <div class="feature-list">
 
           <div class="feature-row">
             <div class="feature-content">
-              <span class="feature-tag">Task 1 — Transfer flow</span>
-              <h3 class="feature-title">Restructured transfer entry and contact selection</h3>
-              <p class="feature-desc">The transfer action was elevated to a persistent home screen CTA. Contact
-                selection was reorganised to clearly separate PayLah! contacts from the phone book, with recent
-                transfers surfaced at the top. Usability testing confirmed users completed the task faster and with
-                fewer hesitations.</p>
+              <span class="feature-tag">Recommendation 1 — Wrong payment recovery</span>
+              <h3 class="feature-title">Empower users to recover from a wrong payment</h3>
+              <p class="feature-desc">Previously, if a user sent money to the wrong person or for the wrong amount,
+                there was no recourse within the app — leaving them frustrated and dependent on external support. A
+                "Request Refund" feature was designed, letting users initiate and track refund requests directly within
+                PayLah!. This gives users a sense of control over mistakes and has the potential to reduce inbound
+                support volume.</p>
+              <p class="feature-desc"
+                style="margin-top:12px;padding:12px 16px;background:var(--gray-light);border-radius:var(--radius-sm);font-size:0.82rem;border-left:3px solid var(--purple-light);">
+                <strong style="color:var(--black);font-weight:600;">Testing outcome</strong><br>All users successfully
+                submitted a refund request. However, some were confused about which amount to enter — an area flagged
+                for further iteration.
+              </p>
             </div>
             <div class="feature-image">
               <div class="feature-phones">
@@ -1350,51 +1357,23 @@
 
           <div class="feature-row reverse">
             <div class="feature-content">
-              <span class="feature-tag">Task 2 — QR payment</span>
-              <h3 class="feature-title">Surfaced QR scanner and improved payment confirmation</h3>
-              <p class="feature-desc">The QR scanner was added to the home screen and accessible from the lock screen.
-                After payment, a persistent confirmation screen was introduced that remained accessible from the
-                transaction history. Participants reported significantly higher confidence that payments had gone
-                through successfully.</p>
+              <span class="feature-tag">Recommendation 2 — Transfer limit errors</span>
+              <h3 class="feature-title">Help users resolve their issue and complete the transaction</h3>
+              <p class="feature-desc">When users hit their daily transfer limit, they were previously met with a
+                dead-end error message — no explanation, no path forward. The error state was redesigned to guide users
+                directly to the transfer limit setting, where they can adjust it and immediately resume their
+                transaction. This turns a frustrating stopping point into a moment of recovery.</p>
+              <p class="feature-desc"
+                style="margin-top:12px;padding:12px 16px;background:var(--gray-light);border-radius:var(--radius-sm);font-size:0.82rem;border-left:3px solid var(--navy);">
+                <strong style="color:var(--black);font-weight:600;">Testing outcome</strong><br>All users were able to
+                follow the redesigned error message, update their daily limit, and complete the transaction
+                successfully.
+              </p>
             </div>
             <div class="feature-image" style="background: var(--secondary);">
               <div class="feature-phones">
                 <div class="mini-phone"><img src="paylah_task2a.png" alt=""></div>
                 <div class="mini-phone"><img src="paylah_task2b.png" alt=""></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-row">
-            <div class="feature-content">
-              <span class="feature-tag">Task 3 — New user onboarding</span>
-              <h3 class="feature-title">Differentiated experience for new vs. familiar users</h3>
-              <p class="feature-desc">A lightweight onboarding layer was introduced for first-time and infrequent users,
-                surfacing key shortcuts and labelling actions that experienced users had learned to navigate. Crucially,
-                this layer disappears after the first few sessions — so it doesn't add friction for users who already
-                know the app.</p>
-            </div>
-            <div class="feature-image" style="background: var(--gray-light);">
-              <div class="feature-phones">
-                <div class="mini-phone"><img src="paylah_task3a.png" alt=""></div>
-                <div class="mini-phone"><img src="paylah_task3b.png" alt=""></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-row reverse">
-            <div class="feature-content">
-              <span class="feature-tag">Task 4 — App access</span>
-              <h3 class="feature-title">Improved biometric setup and session handling</h3>
-              <p class="feature-desc">Biometric setup was made a proactive prompt rather than a buried setting. Session
-                timeout logic was adjusted to only trigger on genuine inactivity — not mid-flow. Error messages were
-                rewritten to give users specific recovery steps. Testing showed a marked reduction in login-related
-                drop-offs.</p>
-            </div>
-            <div class="feature-image" style="background: var(--secondary);">
-              <div class="feature-phones">
-                <div class="mini-phone"><img src="paylah_task4a.png" alt=""></div>
-                <div class="mini-phone"><img src="paylah_task4b.png" alt=""></div>
               </div>
             </div>
           </div>
