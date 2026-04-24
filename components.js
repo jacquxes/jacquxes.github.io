@@ -86,20 +86,27 @@ const PROJECTS = [
 
 // ── RENDER HELPERS ──────────────────────────
 
+// Helper to handle relative paths for sub-pages
+function getPathPrefix() {
+  return window.location.pathname.includes('/projects/') ? '../' : '';
+}
+
 function renderNav(activePage) {
+  const prefix = getPathPrefix();
+  
   const links = SITE.navLinks.map(link => {
     const isActive = link.label === activePage ? 'class="active"' : '';
-    return `<li><a href="${link.href}" ${isActive}>${link.label}</a></li>`;
+    return `<li><a href="${prefix}${link.href}" ${isActive}>${link.label}</a></li>`;
   }).join('\n    ');
 
   const mobileLinks = SITE.navLinks.map(link =>
-    `<a href="${link.href}">${link.label}</a>`
+    `<a href="${prefix}${link.href}">${link.label}</a>`
   ).join('\n  ');
 
   document.getElementById('nav-placeholder').innerHTML = `
     <nav>
-      <a href="index.html" class="nav-logo">
-        <img src="${SITE.logo}" alt="Logo">
+      <a href="${prefix}index.html" class="nav-logo">
+        <img src="${prefix}${SITE.logo}" alt="Logo">
         ${SITE.name}
       </a>
       <ul class="nav-links">
@@ -117,17 +124,20 @@ function renderNav(activePage) {
   // Wire up hamburger
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  mobileMenu.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'))
-  );
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+    );
+  }
 }
 
 function renderFooter() {
+  const prefix = getPathPrefix();
   document.getElementById('footer-placeholder').innerHTML = `
     <footer>
       <span class="footer-name">
-        <img src="${SITE.logo}" alt="Logo">
+        <img src="${prefix}${SITE.logo}" alt="Logo">
         ${SITE.name}
       </span>
       <span class="footer-copy">${SITE.copyright}</span>
@@ -148,11 +158,10 @@ function renderCTA() {
   `;
 }
 
-// Renders a single project card.
-// Pass featured:true for the wide layout used on projects.html
 function projectCardHTML(project, featured = false) {
+  const prefix = getPathPrefix();
   const thumb = project.image
-    ? `<img src="${project.image}" alt="${project.title}">`
+    ? `<img src="${prefix}${project.image}" alt="${project.title}">`
     : '';
 
   const thumbStyle = project.thumbStyle ? `style="${project.thumbStyle}"` : '';
@@ -167,7 +176,7 @@ function projectCardHTML(project, featured = false) {
   const featuredClass = featured ? ' featured' : '';
 
   return `
-    <a href="${project.href}" class="project-card${featuredClass} fade-up" data-tags="${project.tags.join(',')}">
+    <a href="${prefix}${project.href}" class="project-card${featuredClass} fade-up" data-tags="${project.tags.join(',')}">
       <div class="${thumbClass}" ${thumbStyle}>
         ${thumb}
         ${featured ? '<span class="project-thumb-tag">Featured</span>' : ''}
