@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Assisted Design-to-Code — Jacquelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=mail,arrow_outward" />
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://kit.fontawesome.com/7881900bfb.js" crossorigin="anonymous"></script>
+  <style>
+    /* ── HERO ── */
+    .case-hero {
+      background: var(--navy);
+      padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px) 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .case-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--white);
+    }
+
+    .breadcrumb span {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .case-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-hero-content {
+      padding-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .case-subtitle {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .case-meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .case-meta-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .case-meta-value {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+    }
+
+    .case-hero-image {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+      align-self: start;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      height: 700px;
+      margin-top: calc(-1 * clamp(60px, 8vw, 100px));
+    }
+
+    .hero-illustration img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .case-body {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 60px;
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
+      align-items: start;
+    }
+
+    /* ── STICKY TOC ── */
+    .case-toc {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toc-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .toc-link {
+      font-size: 0.82rem;
+      color: var(--gray);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-left: 2px solid var(--purple-light);
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .case-main {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    /* ── SECTION BLOCKS ── */
+    .cs-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .cs-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      line-height: 1.2;
+    }
+
+    .cs-body {
+      font-size: clamp(0.95rem, 1.5vw, 1rem);
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .cs-body+.cs-body {
+      margin-top: -8px;
+    }
+
+    /* ── OVERVIEW STATS ── */
+    .overview-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .overview-stat {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+
+    .overview-stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .overview-stat-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    /* ── TWO-COL TEXT ── */
+    .two-col-text {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 8px;
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .cs-quote {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-quote::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: rgba(255, 255, 255, 0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .cs-quote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--white);
+      line-height: 1.5;
+      font-weight: 400;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-quote cite {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: normal;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── INSIGHT CARDS ── */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .insight-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .insight-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .insight-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.35;
+    }
+
+    .insight-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── PIVOT CALLOUT ── */
+    .pivot-callout {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .pivot-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .pivot-callout-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pivot-callout-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .pivot-callout-text {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* ── PERSONA CARD ── */
+    .user-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .user-persona {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .persona-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      border: 3px solid var(--white);
+    }
+
+    .persona-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    .persona-role {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .persona-quote {
+      font-size: 0.9rem;
+      color: var(--black);
+      font-style: italic;
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 3px solid var(--secondary);
+    }
+
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .persona-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--purple-light);
+    }
+
+    /* ── OBJECTIVE CARDS ── */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .objective-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-left: 3px solid var(--purple-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .objective-card:hover {
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .objective-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .objective-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.35;
+    }
+
+    .objective-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── FEATURE ROWS ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      margin-top: 8px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .feature-row.reverse {
+      direction: rtl;
+    }
+
+    .feature-row.reverse>* {
+      direction: ltr;
+    }
+
+    .feature-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .feature-image {
+      background: var(--purple-light);
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feature-phones {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .mini-phone {
+      flex: 1;
+      aspect-ratio: 9/19;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+    }
+
+    .mini-phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mini-phone:nth-child(2) {
+      transform: translateY(-16px);
+    }
+
+    /* ── OUTCOME STATS ── */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .outcome-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .outcome-number {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .outcome-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ── REFLECTION CARDS ── */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .reflection-card {
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 3px solid var(--purple-light);
+    }
+
+    .reflection-card.highlight {
+      border-left-color: var(--navy);
+    }
+
+    .reflection-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .reflection-text {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── NEXT PROJECT ── */
+    .next-project {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s;
+      margin-top: 16px;
+    }
+
+    .next-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(40, 50, 135, 0.1);
+    }
+
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .next-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .next-arrow {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .next-project:hover .next-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    /* ── DIVIDER ── */
+    .cs-divider {
+      height: 1px;
+      background: var(--purple-light);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .case-body {
+        grid-template-columns: 1fr;
+      }
+
+      .case-toc {
+        display: none;
+      }
+
+      .insight-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .case-hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .case-hero-image {
+        display: none;
+      }
+
+      .two-col-text {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-row.reverse {
+        direction: ltr;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .user-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .case-meta-row {
+        gap: 20px;
+      }
+
+      .overview-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .next-project {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ── PAGE-SPECIFIC: APPROACH CARDS ── */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    .approach-card {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      border-top: 3px solid var(--purple-light);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .approach-card:hover {
+      border-top-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .approach-card.a1 {
+      border-top-color: var(--secondary);
+    }
+
+    .approach-card.a2 {
+      border-top-color: var(--purple);
+    }
+
+    .approach-card.a3 {
+      border-top-color: var(--navy);
+    }
+
+    .approach-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .approach-card.a1 .approach-number {
+      color: var(--secondary);
+    }
+
+    .approach-card.a2 .approach-number {
+      color: var(--purple);
+    }
+
+    .approach-card.a3 .approach-number {
+      color: var(--navy);
+    }
+
+    .approach-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 8px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .approach-desc {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .approach-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .approach-col-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .approach-col-label.good {
+      color: var(--navy);
+    }
+
+    .approach-col-label.pitfall {
+      color: var(--gray);
+    }
+
+    .approach-points {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .approach-point {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 300;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .approach-point::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--purple-light);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .approach-point.good-point {
+      color: var(--black);
+    }
+
+    .approach-point.good-point::before {
+      color: var(--navy);
+    }
+
+    .approach-use-case {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      border-left: 3px solid var(--secondary);
+      margin-top: 4px;
+    }
+
+    .approach-use-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .approach-use-text {
+      font-size: 0.82rem;
+      color: var(--black);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* ── SPOTLIGHT CARD (Claude Design) ── */
+    .spotlight-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .spotlight-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    .spotlight-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .spotlight-desc {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .spotlight-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .spotlight-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      border-left: 2px solid var(--secondary);
+    }
+
+    .spotlight-item-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    .spotlight-item-text {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    /* ── APPROACH IMAGE PLACEHOLDER ── */
+    .approach-visual {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px dashed var(--purple-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .approach-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .approach-visual-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+    }
+
+    .approach-visual-hint {
+      font-size: 0.75rem;
+      color: var(--purple-light);
+      text-align: center;
+      padding: 0 12px;
+      line-height: 1.5;
+      opacity: 0.7;
+    }
+
+    .approach-card.a1 .approach-visual {
+      border-color: var(--secondary);
+      background: rgba(200, 224, 0, 0.06);
+    }
+
+    .approach-card.a1 .approach-visual-label,
+    .approach-card.a1 .approach-visual-hint {
+      color: rgba(180, 160, 0, 0.7);
+    }
+
+    .approach-card.a2 .approach-visual {
+      border-color: var(--purple);
+      background: rgba(130, 60, 200, 0.06);
+    }
+
+    .approach-card.a2 .approach-visual-label,
+    .approach-card.a2 .approach-visual-hint {
+      color: var(--purple);
+      opacity: 0.5;
+    }
+
+    .approach-card.a3 .approach-visual {
+      border-color: var(--navy);
+      background: rgba(40, 50, 135, 0.05);
+    }
+
+    .approach-card.a3 .approach-visual-label,
+    .approach-card.a3 .approach-visual-hint {
+      color: var(--navy);
+      opacity: 0.4;
+    }
+
+    @media (max-width: 768px) {
+      .approach-card {
+        grid-template-columns: 1fr;
+      }
+
+      .approach-visual {
+        aspect-ratio: 16/9;
+      }
+
+      .spotlight-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- ── HERO ── -->
+  <div class="case-hero">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../projects.html">Projects</a>
+      <span>›</span>
+      <span>Translating design to code with AI</span>
+    </div>
+
+    <div class="case-hero-inner">
+      <div class="case-hero-content fade-up">
+        <span class="case-tag">Design Process · 2026</span>
+        <h1 class="case-title">Translating design to code with AI</h1>
+        <p class="case-subtitle">A 4-week exploration of three different ways to use AI to close the gap between a
+          design file and working frontend — faster iteration, fewer handoff loops, and more control for designers.</p>
+        <div class="case-meta-row">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Role</span>
+            <span class="case-meta-value">Designer (solo)</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Team</span>
+            <span class="case-meta-value">1 designer + 3 developers</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Duration</span>
+            <span class="case-meta-value">4 weeks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-hero-image fade-up d1">
+        <div class="hero-illustration">
+          <img src="aitocode_hero.png" alt="AI-assisted design to code">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BODY ── -->
+  <div class="case-body">
+    <main class="case-main">
+
+      <!-- OVERVIEW -->
+      <div class="cs-section fade-up" id="overview">
+        <span class="cs-section-label">Overview</span>
+        <h2 class="cs-section-title">The problem with design handoffs</h2>
+        <p class="cs-body">Translating a design to working frontend code is slower than it should be. Developers spend
+          time on pixel-pushing — matching spacing, colours, and layouts — that doesn't require engineering judgement.
+          Designers end up in a loop of review comments and back-and-forth checks that breaks everyone's momentum. This
+          project set out to find where AI can step in and remove that friction, testing three distinct approaches over
+          four weeks.</p>
+
+        <div class="overview-stats">
+          <div class="overview-stat">
+            <p class="overview-stat-label">Approaches tested</p>
+            <p class="overview-stat-value">3 distinct AI-to-code workflows</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Goal</p>
+            <p class="overview-stat-value">Reduce pixel-pushing, free developers for real work</p>
+          </div>
+          <div class="overview-stat">
+            <p class="overview-stat-label">Scope</p>
+            <p class="overview-stat-value">From full app generation to single component changes</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- OBJECTIVES -->
+      <div class="cs-section fade-up" id="objectives">
+        <span class="cs-section-label">What we wanted to fix</span>
+        <h2 class="cs-section-title">Three things slowing design-to-code down</h2>
+        <p class="cs-body">Before testing anything, the team aligned on what "better" would actually look like. The
+          friction wasn't in any one place — it spread across different roles and different stages of the build.</p>
+
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <span class="objective-label">Developer time</span>
+            <p class="objective-title">Too much time spent on visual details</p>
+            <p class="objective-desc">Developers were translating design specs manually — matching colours, spacing, and
+              type — work that doesn't require engineering skill.</p>
+          </div>
+          <div class="objective-card">
+            <span class="objective-label">Designer control</span>
+            <p class="objective-title">No way to validate interactions before dev</p>
+            <p class="objective-desc">Designers couldn't verify how something felt in-browser without waiting for a
+              developer to build it first.</p>
+          </div>
+          <div class="objective-card">
+            <span class="objective-label">Handoff loops</span>
+            <p class="objective-title">Time-consuming review cycles</p>
+            <p class="objective-desc">Minor visual corrections required repeated back-and-forth — a comment, a fix, a
+              review — for changes that should take minutes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- APPROACHES -->
+      <div class="cs-section fade-up" id="approaches">
+        <span class="cs-section-label">The Experiments</span>
+        <h2 class="cs-section-title">Three approaches, three different use cases</h2>
+        <p class="cs-body">Each approach was tested on a real piece of work — not a hypothetical. That meant the
+          trade-offs became visible quickly. What worked well in one context created new problems in another.</p>
+
+        <div class="approach-grid">
+
+          <!-- Approach 1 -->
+          <div class="approach-card a1 fade-up">
+            <div>
+              <p class="approach-number">01</p>
+              <p class="approach-name">Generate the frontend entirely from AI</p>
+              <p class="approach-desc">Used AI to generate a complete frontend from scratch — design system, components,
+                and all — as a product demo for a potential client. Two apps were built this way, with no existing
+                codebase to work around.</p>
+            </div>
+            <div class="approach-right">
+              <div>
+                <p class="approach-col-label good">What worked</p>
+                <div class="approach-points">
+                  <p class="approach-point good-point">Design system and components are set up from the start —
+                    consistent tokens and styles across the whole app</p>
+                  <p class="approach-point good-point">Fast to spin up a working prototype that looks polished</p>
+                </div>
+              </div>
+              <div>
+                <p class="approach-col-label pitfall">The catch</p>
+                <div class="approach-points">
+                  <p class="approach-point">Most teams already have a codebase — integrating AI-generated code into it
+                    is tedious and error-prone</p>
+                  <p class="approach-point">A lot of hardcoded values that need manual fixing (e.g. hardcoded hex
+                    colours instead of CSS tokens meant light/dark mode didn't work until each one was changed)</p>
+                </div>
+              </div>
+              <div class="approach-use-case">
+                <p class="approach-use-label">Works best for</p>
+                <p class="approach-use-text">Testing a new concept, client demos, or starting a product completely from
+                  scratch with no existing codebase</p>
+              </div>
+            </div>
+            <div class="approach-visual">
+              <!-- Replace with: <img src="aitocode_approach1.png" alt="Approach 1 — AI-generated frontend"> -->
+              <p class="approach-visual-label">Approach 1</p>
+              <p class="approach-visual-hint">aitocode_approach1.png</p>
+            </div>
+          </div>
+
+          <!-- Approach 2 -->
+          <div class="approach-card a2 fade-up">
+            <div>
+              <p class="approach-number">02</p>
+              <p class="approach-name">Playground pages in the existing codebase</p>
+              <p class="approach-desc">Created a sandbox section of the real codebase and used AI to build pages using
+                existing components. Tested with a mobile version of an app that the team wanted to explore before
+                committing to it across the product.</p>
+            </div>
+            <div class="approach-right">
+              <div>
+                <p class="approach-col-label good">What worked</p>
+                <div class="approach-points">
+                  <p class="approach-point good-point">Builds within the real design language — components, spacing, and
+                    type all match what's already in the product</p>
+                  <p class="approach-point good-point">A safe space to test major changes (like a new typography system)
+                    before rolling them out app-wide</p>
+                </div>
+              </div>
+              <div>
+                <p class="approach-col-label pitfall">The catch</p>
+                <div class="approach-points">
+                  <p class="approach-point">AI tends to generate a lot of mock data and local components that don't
+                    belong in the real codebase — cleaning up afterward takes time</p>
+                  <p class="approach-point">Playground code can drift from production patterns, making it harder to port
+                    across later</p>
+                </div>
+              </div>
+              <div class="approach-use-case">
+                <p class="approach-use-label">Works best for</p>
+                <p class="approach-use-text">Exploring significant changes — new layouts, navigation patterns, or design
+                  system updates — before committing app-wide</p>
+              </div>
+            </div>
+            <div class="approach-visual">
+              <!-- Replace with: <img src="aitocode_approach2.png" alt="Approach 2 — Playground in existing codebase"> -->
+              <p class="approach-visual-label">Approach 2</p>
+              <p class="approach-visual-hint">aitocode_approach2.png</p>
+            </div>
+          </div>
+
+          <!-- Approach 3 -->
+          <div class="approach-card a3 fade-up">
+            <div>
+              <p class="approach-number">03</p>
+              <p class="approach-name">Designer makes changes directly in code via AI agent</p>
+              <p class="approach-desc">The designer used an AI agent alongside Figma to make targeted changes directly
+                in the codebase, preview them locally, then push to GitHub for a developer to review and merge. Tested
+                on a poll component redesign.</p>
+            </div>
+            <div class="approach-right">
+              <div>
+                <p class="approach-col-label good">What worked</p>
+                <div class="approach-points">
+                  <p class="approach-point good-point">Designer can see exactly how the change behaves in the real
+                    product — no guessing from a static mockup</p>
+                  <p class="approach-point good-point">Developer receives a diff to review and merge, rather than having
+                    to build from scratch</p>
+                  <p class="approach-point good-point">The agent works within the existing codebase rather than
+                    generating parallel code</p>
+                </div>
+              </div>
+              <div>
+                <p class="approach-col-label pitfall">The catch</p>
+                <div class="approach-points">
+                  <p class="approach-point">Designers don't always know if the agent is making the right kind of change
+                    — in one case, the agent was overriding CSS styles via a separate .ts file, which a developer had to
+                    flag and the designer had to roll back</p>
+                  <p class="approach-point">Requires comfort with an IDE and some understanding of how the codebase is
+                    structured</p>
+                </div>
+              </div>
+              <div class="approach-use-case">
+                <p class="approach-use-label">Works best for</p>
+                <p class="approach-use-text">Surface-level changes in a legacy codebase — tweaking a component,
+                  adjusting styles — where the scope is small and well-defined</p>
+              </div>
+            </div>
+            <div class="approach-visual">
+              <!-- Replace with: <img src="aitocode_approach3.png" alt="Approach 3 — Designer edits code via AI agent"> -->
+              <p class="approach-visual-label">Approach 3</p>
+              <p class="approach-visual-hint">aitocode_approach3.png</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- SPOTLIGHT: CLAUDE DESIGN -->
+      <div class="cs-section fade-up" id="spotlight">
+        <span class="cs-section-label">Spotlight</span>
+        <h2 class="cs-section-title">Claude Design: Approach 3 without the IDE</h2>
+        <p class="cs-body">Midway through the project, Claude Design offered a way to do what Approach 3 does — but
+          without the designer needing to open an IDE or read any code. You work from the visual, and hand off the
+          resulting code changes to Claude Code.</p>
+
+        <div class="spotlight-card">
+          <div style="position:relative;z-index:1;">
+            <p class="spotlight-eyebrow">How it works</p>
+            <p class="spotlight-title">Visual-first, code handed off behind the scenes</p>
+            <p class="spotlight-desc">Claude Design lets the designer stay in the visual — describing or clicking on
+              what to change — while Claude Code handles the actual code edits. The output is a diff the developer can
+              review, just like Approach 3, but without the designer ever needing to touch the codebase directly.</p>
+          </div>
+          <div class="spotlight-right">
+            <div class="spotlight-item">
+              <p class="spotlight-item-label">What it's good for</p>
+              <p class="spotlight-item-text">Designers who want the benefits of Approach 3 without needing to learn an
+                IDE or understand how the codebase is structured</p>
+            </div>
+            <div class="spotlight-item">
+              <p class="spotlight-item-label">Current limitation</p>
+              <p class="spotlight-item-text">Making very precise visual adjustments is harder than in Figma — the tool
+                works better for changes at the component or layout level than for minute spacing or type tweaks</p>
+            </div>
+            <div class="spotlight-item">
+              <p class="spotlight-item-label">The opportunity</p>
+              <p class="spotlight-item-text">As tooling matures, this could become the default handoff — designer
+                validates the change visually, code is generated and reviewed, developer merges</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-divider"></div>
+
+      <!-- REFLECTION -->
+      <div class="cs-section fade-up" id="reflection">
+        <span class="cs-section-label">Takeaways</span>
+        <h2 class="cs-section-title">Let's find the best approach</h2>
+        <p class="cs-body">The conclusion wasn't a ranking — it was a map. Each approach solves a different problem for
+          a different type of project. The best AI-powered workflow is the one that fits what the team is already doing,
+          not the one that forces a new process on top of an existing one.</p>
+
+        <!-- <div class="reflection-grid">
+          <div class="reflection-card highlight">
+            <p class="reflection-title">Context determines the right approach</p>
+            <p class="reflection-text">Starting from scratch, exploring a big change, or tweaking a legacy component
+              each call for a different method. Using the wrong approach creates more cleanup work than it saves.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">The designer still needs to understand the rules</p>
+            <p class="reflection-text">AI agents can make changes that look right visually but break patterns in the
+              codebase. Having a developer review the output — even briefly — is essential, not optional.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">Hardcoded values are a hidden tax</p>
+            <p class="reflection-text">AI-generated code often hardcodes things that should be tokens or variables. That
+              debt compounds over time — catching it early (like swapping hex codes for CSS custom properties before
+              shipping) saves pain later.</p>
+          </div>
+          <div class="reflection-card">
+            <p class="reflection-title">The best workflow is the one the team will use</p>
+            <p class="reflection-text">Approach 3 gives a designer the most control, but only if they're comfortable in
+              an IDE. Claude Design lowers that bar. The right choice depends on the team, not just the task.</p>
+          </div>
+        </div>
+
+        <div class="pivot-callout">
+          <span class="pivot-icon">🗺️</span>
+          <div class="pivot-callout-content">
+            <span class="pivot-callout-label">The bottom line</span>
+            <p class="pivot-callout-text">"AI doesn't replace the designer-developer relationship — it changes where the
+              conversation happens. The goal is fewer loops, not no loops."</p>
+          </div>
+        </div> -->
+
+        <div style="margin-top:8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <a href="mailto:hello@jacquelyn.com" class="btn btn-primary">Get in touch</a>
+          <a href="../projects.html" class="btn btn-outline">View all projects</a>
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <a href="paylah.html" class="next-project fade-up">
+        <div>
+          <p class="next-label">Next project</p>
+          <p class="next-title">DBS PayLah! UX Research</p>
+        </div>
+        <div class="next-arrow">
+          <span class="material-symbols-outlined">arrow_outward</span>
+        </div>
+      </a>
+
+    </main>
+
+    <!-- TOC SIDEBAR -->
+    <aside class="case-toc">
+      <p class="toc-label">Contents</p>
+      <a href="#overview" class="toc-link">Overview</a>
+      <a href="#objectives" class="toc-link">The problem</a>
+      <a href="#approaches" class="toc-link">Three approaches</a>
+      <a href="#spotlight" class="toc-link">Claude Design</a>
+      <a href="#reflection" class="toc-link">Takeaways</a>
+    </aside>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../components.js"></script>
+  <script>
+    renderNav('Projects');
+    renderFooter();
+    initScrollAnimations();
+
+    const sections = document.querySelectorAll('.cs-section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => tocObserver.observe(s));
+  </script>
+</body>
+
+</html>

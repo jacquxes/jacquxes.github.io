@@ -8,18 +8,18 @@
 // Change these values to update across the whole site
 const SITE = {
   name: 'acquelyn',
-  logo: 'https://jacquxes.github.io/logo.png',
+  logo: 'images/logo.png',
   email: 'hello@jacquelyn.com',
   copyright: '© 2026 · Jacquelyn Tan',
 
   // Nav links — { label, href }
   // Use full paths like 'index.html#projects' from other pages
   navLinks: [
-    { label: 'Home', href: 'https://jacquxes.github.io/' },
-    { label: 'Projects', href: 'https://jacquxes.github.io/projects.html' },
-    { label: 'Articles', href: 'https://jacquxes.github.io/article.html' },
-    { label: 'About', href: 'https://jacquxes.github.io/about.html' },
-    { label: 'Contact', href: 'https://jacquxes.github.io/contact.html' },
+    { label: 'Home', href: 'index.html' },
+    { label: 'Projects', href: 'projects.html' },
+    { label: 'Articles', href: 'article.html' },
+    { label: 'About', href: 'about.html' },
+    { label: 'Contact', href: 'contact.html' },
   ],
 };
 
@@ -28,15 +28,26 @@ const SITE = {
 // They will render on any page that calls renderProjectCards()
 const PROJECTS = [
   {
+    id: 'ai-to-code',
+    title: 'Translating design to code with AI',
+    desc: 'Explored different AI workflows to eliminate design-to-code friction',
+    meta: 'Design Process',
+    year: '2026',
+    tags: ['ai', 'process'],
+    image: 'images/thumbnail-ai-to-code.png',
+    href: 'projects/ai-to-code.html',
+    featured: true,
+  },
+  {
     id: 'cpf',
     title: 'Grow with CPF: Reframing retirement for the next generation',
     desc: 'Reframed retirement planning to motivate young adults to start saving.',
     meta: 'Product Design',
     year: '2025',
     tags: ['ux', 'data', 'strategy'],
-    image: 'https://jacquxes.github.io/thumbnail-cpf.png',
-    href: 'https://jacquxes.github.io/projects/cpf.html',
-    featured: true,
+    image: 'images/thumbnail-cpf.png',
+    href: 'projects/cpf.html',
+    thumbClass: 'project-thumb-alt',
   },
   {
     id: 'neighbourhood',
@@ -45,8 +56,8 @@ const PROJECTS = [
     meta: 'Product Design',
     year: '2025',
     tags: ['ux', 'research'],
-    image: 'https://jacquxes.github.io/thumbnail-neighbours.png',
-    href: 'https://jacquxes.github.io/projects/neighbourhood.html',
+    image: 'images/thumbnail-neighbours.png',
+    href: 'projects/neighbourhood.html',
     thumbClass: 'project-thumb-alt',
   },
   {
@@ -56,8 +67,8 @@ const PROJECTS = [
     meta: 'Design System',
     year: '2025',
     tags: ['ux'],
-    image: 'thumbnail-kinokuniya.png',
-    href: 'https://jacquxes.github.io/projects/kinokuniya.html',
+    image: 'images/thumbnail-kinokuniya.png',
+    href: 'projects/kinokuniya.html',
     thumbClass: 'project-thumb-alt',
   },
   {
@@ -67,40 +78,10 @@ const PROJECTS = [
     meta: 'UX Research',
     year: '2025',
     tags: ['ux', 'research'],
-    image: 'thumbnail-paylah.png',
+    image: 'images/thumbnail-paylah.png',
     href: 'projects/paylah.html',
     thumbClass: 'project-thumb-alt',
   },
-  // {
-  //   id: 'dashboard',
-  //   title: 'Dashboard redesign: Making data actually useful',
-  //   desc: 'Redesigned an internal analytics dashboard to surface insights that teams actually act on.',
-  //   meta: 'Data',
-  //   year: '2024',
-  //   tags: ['data', 'strategy'],
-  //   thumbStyle: 'background: linear-gradient(135deg, #D6D9EE 0%, #C9B8F5 100%);',
-  //   href: '#',
-  // },
-  // {
-  //   id: 'research',
-  //   title: 'Understanding the first-time investor: A research study',
-  //   desc: 'Conducted 20 user interviews to map the mental models of people investing for the first time.',
-  //   meta: 'Research',
-  //   year: '2024',
-  //   tags: ['research'],
-  //   thumbStyle: 'background: linear-gradient(135deg, #C8E000 30%, #D6D9EE 100%);',
-  //   href: '#',
-  // },
-  // {
-  //   id: 'strategy',
-  //   title: '0 to 1: Building a product strategy from scratch',
-  //   desc: 'Defined the product vision, OKRs and roadmap for a new fintech feature from zero.',
-  //   meta: 'Strategy',
-  //   year: '2023',
-  //   tags: ['strategy', 'data'],
-  //   thumbStyle: 'background: linear-gradient(135deg, #141A4A 0%, #1E2A6E 100%);',
-  //   href: '#',
-  // },
 ];
 
 // ── RENDER HELPERS ──────────────────────────
@@ -177,7 +158,7 @@ function projectCardHTML(project, featured = false) {
   const thumbStyle = project.thumbStyle ? `style="${project.thumbStyle}"` : '';
   const thumbClass = `project-thumb ${project.thumbClass || ''}`;
 
-  const tagLabels = { ux: 'UX Design', research: 'Research', strategy: 'Strategy', data: 'Data' };
+  const tagLabels = { ux: 'UX Design', research: 'Research', strategy: 'Strategy', data: 'Data', ai: 'AI', process: 'Process Improvement' };
 
   const tags = project.tags.map(t =>
     `<span class="tag" data-tag="${t}">${tagLabels[t] || t}</span>`

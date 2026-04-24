@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Jacquelyn</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=bar_chart_4_bars,co_present,mail,user_attributes,wb_incandescent" />
   <link rel="stylesheet" href="styles.css">
   <style>
     /* PAGE-SPECIFIC STYLES */
-    
+
     .page-header {
       padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px);
     }
@@ -31,8 +34,13 @@
       transition: color 0.2s;
     }
 
-    .breadcrumb a:hover { color: var(--navy); }
-    .breadcrumb span { color: var(--purple); }
+    .breadcrumb a:hover {
+      color: var(--navy);
+    }
+
+    .breadcrumb span {
+      color: var(--purple);
+    }
 
     .page-title {
       font-family: var(--font-display);
@@ -72,7 +80,7 @@
       background: var(--secondary);
       border: 3px solid var(--navy);
     }
-    
+
     .hero-photo {
       position: absolute;
       bottom: 0px;
@@ -88,18 +96,39 @@
       color: var(--navy);
       animation: spin 4s linear infinite;
     }
-    .sparkle-1 { top: 34px; right: 10px; }
-    .sparkle-2 { bottom: 100px; left: -12px; animation-direction: reverse; animation-duration: 6s; }
+
+    .sparkle-1 {
+      top: 34px;
+      right: 10px;
+    }
+
+    .sparkle-2 {
+      bottom: 100px;
+      left: -12px;
+      animation-direction: reverse;
+      animation-duration: 6s;
+    }
 
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Sections */
-    .skills-section { background: var(--gray-light); padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px); }
-    .strengths-section { padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px); }
-    
+    .skills-section {
+      background: var(--gray-light);
+      padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px);
+    }
+
+    .strengths-section {
+      padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 80px);
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -151,12 +180,23 @@
     }
 
     @media (max-width: 768px) {
-      .about-header-grid { grid-template-columns: 1fr; }
-      .hero-image-wrap { margin: 0 auto; margin-top: 32px; }
-      .grid-3 { grid-template-columns: 1fr; gap: 40px; }
+      .about-header-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        margin: 0 auto;
+        margin-top: 32px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div id="nav-placeholder"></div>
@@ -170,7 +210,9 @@
     <div class="about-header-grid">
       <div>
         <h1 class="page-title">Jacquelyn Tan</h1>
-        <p class="page-desc" style="margin-bottom: 24px;">I started out in data and strategy, where I built analytics tools and solved business problems with data. Looking back, I realised what excited me most was shaping the products themselves. Now, I'm using that experience to design products that are impactful and intuitive.</p>
+        <p class="page-desc" style="margin-bottom: 24px;">I started out in data and strategy, where I built analytics
+          tools and solved business problems with data. Looking back, I realised what excited me most was shaping the
+          products themselves. Now, I'm using that experience to design products that are impactful and intuitive.</p>
         <a href="#" class="btn btn-primary">View Resume</a>
       </div>
       <div class="hero-image-wrap">
@@ -187,7 +229,8 @@
     <div class="grid-3">
       <div>
         <h3 class="col-title">Design</h3>
-        <p class="col-desc">I pursued a diploma in UX and Product Design to pick up practical skills to design products end-to-end.</p>
+        <p class="col-desc">I pursued a diploma in UX and Product Design to pick up practical skills to design products
+          end-to-end.</p>
         <div class="skill-tags">
           <span class="skill-badge">User Research</span>
           <span class="skill-badge">Interaction Design</span>
@@ -198,7 +241,8 @@
       </div>
       <div>
         <h3 class="col-title">Data</h3>
-        <p class="col-desc">I have deep expertise in data, with experience in web analytics implementation and organisation data management.</p>
+        <p class="col-desc">I have deep expertise in data, with experience in web analytics implementation and
+          organisation data management.</p>
         <div class="skill-tags">
           <span class="skill-badge">Web Analytics</span>
           <span class="skill-badge">Data Analysis</span>
@@ -209,7 +253,8 @@
       </div>
       <div>
         <h3 class="col-title">Strategy</h3>
-        <p class="col-desc">I honed process improvement skills from business school, and later applied them in coaching and strategy roles.</p>
+        <p class="col-desc">I honed process improvement skills from business school, and later applied them in coaching
+          and strategy roles.</p>
         <div class="skill-tags">
           <span class="skill-badge">Lean Six Sigma</span>
           <span class="skill-badge">Design Thinking</span>
@@ -224,7 +269,8 @@
     <div class="grid-3">
       <div>
         <h3 class="col-title">Comfortable with ambiguity</h3>
-        <p class="col-desc">I thrive in work environments with undefined scope and problems, and adapt quickly as the situation requires.</p>
+        <p class="col-desc">I thrive in work environments with undefined scope and problems, and adapt quickly as the
+          situation requires.</p>
       </div>
       <div>
         <h3 class="col-title">Bias for action</h3>
@@ -232,7 +278,8 @@
       </div>
       <div>
         <h3 class="col-title">Intentional in communicating</h3>
-        <p class="col-desc">I don't leave things vague. I take effort to ensure teammates, managers and stakeholders are on the same page.</p>
+        <p class="col-desc">I don't leave things vague. I take effort to ensure teammates, managers and stakeholders are
+          on the same page.</p>
       </div>
     </div>
   </section>
@@ -248,4 +295,5 @@
     initScrollAnimations();
   </script>
 </body>
+
 </html>
