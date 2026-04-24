@@ -1206,35 +1206,36 @@
     .approach-visual.desktop-mockup {
       background: none !important;
       border: none !important;
-      overflow: hidden;
-      border-radius: 6px;
-      /* clips to laptop screen corners */
-      aspect-ratio: 1153/750;
+      position: relative;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 1446/876;
+      /* full image ratio, not just the screen */
     }
 
     .desktop-frame-img {
-      width: 100%;
-      height: 100%;
-      position: relative;
+      position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 10;
       pointer-events: none;
     }
 
     .desktop-video {
       position: absolute;
-      top: 3%;
-      left: 10%;
-      width: 78%;
-      height: 70%;
+      top: 2.1%;
+      /* 18px ÷ 876px */
+      left: 9.0%;
+      /* 130px ÷ 1446px */
+      width: 82%;
+      /* 1186px ÷ 1446px */
+      height: 85.6%;
+      /* 750px ÷ 876px */
       object-fit: cover;
       object-position: top left;
       z-index: 1;
       border-radius: 4px;
-      background: #000;
     }
   </style>
 </head>
