@@ -34,7 +34,7 @@ const PROJECTS = [
     meta: 'Design Process',
     year: '2026',
     tags: ['ai', 'process'],
-    image: 'images/thumbnail-ai-to-code.png',
+    image: 'thumbnail-ai-to-code.png',
     href: 'projects/ai-to-code.html',
     featured: true,
   },
@@ -45,7 +45,7 @@ const PROJECTS = [
     meta: 'Product Design',
     year: '2025',
     tags: ['ux', 'data', 'strategy'],
-    image: 'images/thumbnail-cpf.png',
+    image: 'thumbnail-cpf.png',
     href: 'projects/cpf.html',
     thumbClass: 'project-thumb-alt',
   },
@@ -56,7 +56,7 @@ const PROJECTS = [
     meta: 'Product Design',
     year: '2025',
     tags: ['ux', 'research'],
-    image: 'images/thumbnail-neighbours.png',
+    image: 'thumbnail-neighbours.png',
     href: 'projects/neighbourhood.html',
     thumbClass: 'project-thumb-alt',
   },
@@ -67,7 +67,7 @@ const PROJECTS = [
     meta: 'Design System',
     year: '2025',
     tags: ['ux'],
-    image: 'images/thumbnail-kinokuniya.png',
+    image: 'thumbnail-kinokuniya.png',
     href: 'projects/kinokuniya.html',
     thumbClass: 'project-thumb-alt',
   },
@@ -78,7 +78,7 @@ const PROJECTS = [
     meta: 'UX Research',
     year: '2025',
     tags: ['ux', 'research'],
-    image: 'images/thumbnail-paylah.png',
+    image: 'thumbnail-paylah.png',
     href: 'projects/paylah.html',
     thumbClass: 'project-thumb-alt',
   },
@@ -98,7 +98,7 @@ function renderNav(activePage) {
 
   document.getElementById('nav-placeholder').innerHTML = `
     <nav>
-      <a href="index.html#hero" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <img src="${SITE.logo}" alt="Logo">
         ${SITE.name}
       </a>
