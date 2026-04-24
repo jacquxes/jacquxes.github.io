@@ -1085,7 +1085,8 @@
       position: relative;
     }
 
-    .approach-visual img {
+    .approach-visual img,
+    .approach-visual video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1100,6 +1101,45 @@
       color: var(--purple-light);
     }
 
+    /* ── MOBILE MOCKUP ── */
+    .approach-visual.mobile-mockup {
+      background: none !important;
+      border: none !important;
+      overflow: hidden;
+      border-radius: 40px;
+      /* clips video to phone screen corners */
+      aspect-ratio: 9/18.5;
+      height: 460px;
+      margin: 0 auto;
+    }
+
+    .mobile-frame-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .mobile-video {
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 87%;
+      /* tightened to stay within right bezel */
+      height: 93%;
+      /* tightened to stay within bottom bezel */
+      object-fit: cover;
+      object-position: top;
+      z-index: 1;
+      border-radius: 36px;
+      background: #000;
+    }
+
     .approach-visual-hint {
       font-size: 0.75rem;
       color: var(--purple-light);
@@ -1109,7 +1149,7 @@
       opacity: 0.7;
     }
 
-    .approach-card.a1 .approach-visual {
+    .approach-card.a1 .approach-visual:not(.mobile-mockup) {
       border-color: var(--secondary);
       background: rgba(200, 224, 0, 0.06);
     }
@@ -1119,7 +1159,7 @@
       color: rgba(180, 160, 0, 0.7);
     }
 
-    .approach-card.a2 .approach-visual {
+    .approach-card.a2 .approach-visual:not(.mobile-mockup) {
       border-color: var(--purple);
       background: rgba(130, 60, 200, 0.06);
     }
@@ -1130,7 +1170,7 @@
       opacity: 0.5;
     }
 
-    .approach-card.a3 .approach-visual {
+    .approach-card.a3 .approach-visual:not(.desktop-mockup) {
       border-color: var(--navy);
       background: rgba(40, 50, 135, 0.05);
     }
@@ -1153,6 +1193,48 @@
       .spotlight-card {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* ── DESKTOP MOCKUP ── */
+    .approach-card.a3 {
+      grid-template-columns: 1fr 1fr;
+      /* desc + pros/cons side by side */
+      grid-template-rows: auto auto;
+      /* desktop visual sits below */
+    }
+
+    .approach-visual.desktop-mockup {
+      background: none !important;
+      border: none !important;
+      overflow: hidden;
+      border-radius: 6px;
+      /* clips to laptop screen corners */
+      aspect-ratio: 1153/750;
+      width: 100%;
+      height: 100%;
+    }
+
+    .desktop-frame-img {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .desktop-video {
+      position: absolute;
+      top: 3%;
+      left: 10%;
+      width: 78%;
+      height: 70%;
+      object-fit: cover;
+      object-position: top left;
+      z-index: 1;
+      border-radius: 4px;
+      background: #000;
     }
   </style>
 </head>
@@ -1306,10 +1388,10 @@
                   scratch with no existing codebase</p>
               </div>
             </div>
-            <div class="approach-visual">
-              <!-- Replace with: <img src="aitocode_approach1.png" alt="Approach 1 — AI-generated frontend"> -->
-              <p class="approach-visual-label">Approach 1</p>
-              <p class="approach-visual-hint">aitocode_approach1.png</p>
+            <div class="approach-visual mobile-mockup">
+              <img src="mobile.png" class="mobile-frame-img" alt="">
+              <video src="aitocode_approach1.mov" autoplay loop muted playsinline
+                aria-label="Approach 1 — AI-generated frontend" class="mobile-video"></video>
             </div>
           </div>
 
@@ -1347,10 +1429,10 @@
                   system updates — before committing app-wide</p>
               </div>
             </div>
-            <div class="approach-visual">
-              <!-- Replace with: <img src="aitocode_approach2.png" alt="Approach 2 — Playground in existing codebase"> -->
-              <p class="approach-visual-label">Approach 2</p>
-              <p class="approach-visual-hint">aitocode_approach2.png</p>
+            <div class="approach-visual mobile-mockup">
+              <img src="mobile.png" class="mobile-frame-img" alt="">
+              <video src="aitocode_approach2.mov" autoplay loop muted playsinline
+                aria-label="Approach 2 — Playground in existing codebase" class="mobile-video"></video>
             </div>
           </div>
 
@@ -1391,10 +1473,10 @@
                   adjusting styles — where the scope is small and well-defined</p>
               </div>
             </div>
-            <div class="approach-visual">
-              <!-- Replace with: <img src="aitocode_approach3.png" alt="Approach 3 — Designer edits code via AI agent"> -->
-              <p class="approach-visual-label">Approach 3</p>
-              <p class="approach-visual-hint">aitocode_approach3.png</p>
+            <div class="approach-visual desktop-mockup" style="grid-column: 1 / -1;">
+              <img src="desktop.png" class="desktop-frame-img" alt="">
+              <video src="aitocode_approach3.mov" autoplay loop muted playsinline
+                aria-label="Approach 3 — Designer edits code via AI agent" class="desktop-video"></video>
             </div>
           </div>
 
