@@ -8,7 +8,7 @@
 // Change these values to update across the whole site
 const SITE = {
   name: 'acquelyn',
-  logo: 'images/logo.png',
+  logo: 'logo.png',
   email: 'hello@jacquelyn.com',
   copyright: '© 2026 · Jacquelyn Tan',
 
